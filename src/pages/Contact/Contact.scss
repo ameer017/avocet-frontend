@@ -1,0 +1,68 @@
+.contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .text {
+        margin: 0 auto;
+        width: 100%;
+        
+        p {
+            margin: 1.2rem 0;
+            // letter-spacing: .1em;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .gap{
+                display: flex;
+                gap: 2rem;
+            }
+
+            :is(input, textarea){
+                width: 250px;
+                padding-block: 8px;
+                padding-inline: 8px;
+                margin-bottom: 10px;
+                background: none;
+                border: 1px solid #dfdbdb;
+                border-radius: 5px;
+                outline: none;
+                color: black;
+                letter-spacing: .1em;
+                font-size: 12px;
+            }
+
+            .child-3, textarea {
+                width: 520px;
+            }
+    
+            input:hover, textarea:hover{
+                border: 1px solid grey;
+                transition-duration: 500ms;
+            }
+        
+            .btn {
+                border-radius: 5px;
+                transition-duration: 500ms;
+            }
+
+        } 
+    }
+
+    .left {
+        padding: 1rem .1rem;
+        text-align: center;
+        
+
+        h1,h3{
+            font-weight: lighter;
+        }
+
+    }
+}

@@ -1,0 +1,51 @@
+.about {
+    // text-align: center;
+
+    ul {
+        li{
+            text-align: left;
+            list-style-type: circle;
+            font-size: 14px;
+            margin: .5rem;
+        }
+    }
+    
+    .left {
+        p{
+            padding:1.2rem 0;
+        }
+
+        button{
+            background-image: url('../../assets/food.webp');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            color: greenyellow;
+            letter-spacing: .1em;
+        }
+    }
+    
+    .img {
+        padding: 0 1.2rem;
+
+        img{
+            width: 250px;
+        }
+    }
+
+    .last {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        gap: 1.2rem;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+    .left {
+        margin: 0 auto;
+    }
+}

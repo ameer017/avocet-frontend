@@ -1,0 +1,118 @@
+.statistic {
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    padding: 2rem;
+    
+    
+
+    .details{
+        box-shadow: 0 1.2rem 2rem #2e394755;
+        flex-basis: 250px;
+        padding: 2rem;
+        border-radius: 10px;   
+        text-align: left;
+
+        p{
+            color: #2d452d;
+        }
+    }
+    
+    .details:nth-child(1),
+    .details:nth-child(4) {
+        flex-grow: 4;
+        background: none;
+        box-shadow: none;
+    }
+
+    .details:nth-child(2) {
+        h2{
+            font-weight: lighter;
+        }
+    }
+
+    .details:nth-child(2):hover, 
+    .details:nth-child(3):hover,
+    .details:nth-child(5):hover,
+    .details:nth-child(6):hover
+    {
+        cursor: pointer;
+        transform: scale(1.1);
+        transition-duration: 500ms;
+        background-image:
+        url('https://images.pexels.com/photos/4946630/pexels-photo-4946630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: #1c9820d1;
+        background-blend-mode: multiply;
+        h2,p{
+            color: #fff;
+        }
+
+        @media  screen and (max-width: 992px){
+            background: unset;
+            transform: unset;
+
+            h2,p{
+                color: #000;
+            }
+        }
+    }
+
+    .details:nth-child(3) {
+        h2{
+            font-weight: 300;
+        }
+    }
+    .details:nth-child(4) {
+        h2{
+            font-weight: 300;
+        }
+    }
+    .details:nth-child(5) {
+        h2{
+            font-weight: 300;
+        }
+    }
+    .details:nth-child(6) {
+        h2{
+            font-weight: 300;
+        }
+    }
+
+}
+
+@media  screen and (max-width: 992px) {
+    .statistic{
+        h2 {
+            text-decoration: underline;
+        }
+
+        .details{
+            margin: 0 auto;
+            padding: unset;
+        }
+        :is(.details:nth-child(1), .details:nth-child(4)){
+            flex-grow: unset;
+        }
+        .details:nth-child(3), .details:nth-child(6){
+            box-shadow: unset;
+        }
+        .details:nth-child(2), .details:nth-child(5){
+            box-shadow: unset;
+        }
+        .details:nth-child(4){
+            order: 6;
+        }
+        .details:nth-child(4) {
+            h2{
+                font-weight: 800;
+                text-align: center;
+                font-size: 20px;
+            }
+        }
+    }
+}

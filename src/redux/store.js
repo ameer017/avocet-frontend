@@ -3,6 +3,7 @@ import authReducer from '../redux/features/auth/authSlice'
 import orderSlice from "./features/auth/orderSlice";
 import filterSlice from "./features/auth/filterSlice";
 import collectorSlice from "./features/auth/collectorSlice";
+import paymentSlice from "./features/payment/paymentSlice";
 
 export const store = configureStore({
     reducer: {
@@ -10,7 +11,6 @@ export const store = configureStore({
         order: orderSlice,
         filter: filterSlice,
         collector: collectorSlice,
-
-        
+        payment: paymentSlice       
     }
 })

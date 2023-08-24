@@ -1,14 +1,20 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import paymentService from './paymentService'
 
-const FLUTTERWAVE_API_URL = 'http://localhost:5000/api/payment/initiate-payment'; 
+const initialState = {
+  loading: false,
+  error: false,
+  paymentRequestStatus: null,
+  message: '', 
+  success: false
+};
 
-export const initiatePayment = createAsyncThunk(
-  'payment/initiatePayment',
-  async (paymentData, thunkAPI) => {
+// payment request
+export const requestPayment = createAsyncThunk(
+  'payment/request-payment',
+  async (requestData, thunkAPI) => {
     try {
-      const response = await axios.post(FLUTTERWAVE_API_URL, paymentData);
-      return { paymentLink: response.data.paymentLink };
+      return await paymentService.requestPayment(requestData)
     } catch (error) {
       const message =
         (error.response &&
@@ -19,44 +25,41 @@ export const initiatePayment = createAsyncThunk(
       return thunkAPI.rejectWithValue(message);
     }
   }
-);
-
-const initialState = {
-  loading: false,
-  paymentLink: null,
-  error: null,
-};
+)
 
 const paymentSlice = createSlice({
   name: 'payment',
   initialState,
   reducers: {
-    resetPaymentState: (state) => {
+    RESET(state) {
       state.loading = false;
-      state.paymentLink = null;
-      state.error = null;
-    },
+      state.error = false;
+      state.message = ""
+    }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(initiatePayment.pending, (state) => {
+      .addCase(requestPayment.pending, (state) => {
         state.loading = true;
-        state.paymentLink = null;
+        state.paymentRequestStatus = null;
         state.error = null;
       })
-      .addCase(initiatePayment.fulfilled, (state, action) => {
+      .addCase(requestPayment.fulfilled, (state, action) => {
         state.loading = false;
-        state.paymentLink = action.payload.paymentLink;
+        state.paymentRequestStatus = action.payload;
         state.error = null;
+        state.success = true;
       })
-      .addCase(initiatePayment.rejected, (state, action) => {
+      .addCase(requestPayment.rejected, (state, action) => {
         state.loading = false;
-        state.paymentLink = null;
+        state.paymentRequestStatus = null;
         state.error = action.payload;
       });
   },
 });
 
-export const { resetPaymentState } = paymentSlice.actions;
+export const {RESET} = paymentSlice.actions;
+
+export const selectPayment = (state) => state.payment;
 
 export default paymentSlice.reducer;

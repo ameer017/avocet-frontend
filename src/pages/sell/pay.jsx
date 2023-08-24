@@ -1,100 +1,99 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { getOrder } from '../../redux/features/auth/orderSlice';
-import { FlutterWaveButton, closePaymentModal } from 'flutterwave-react-v3';
-import Card from '../../components/card/Card';
-import { initiatePayment, resetPaymentState } from '../../redux/features/payment/paymentSlice';
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { requestPayment } from '../../redux/features/payment/paymentSlice'
+import Card from '../../components/card/Card'
+import { getOrder } from '../../redux/features/auth/orderSlice'
 
-
-
-const PaymentComponent = () => {
-  const dispatch = useDispatch()
-  const {isLoading, order} = useSelector((state) => state.order)
-  const {user} = useSelector((state) => state.auth)
-  // const paymentLink = useSelector((state) => state.payment.paymentLink); 
-  
   const initialState = {
-    name: user?.name || "",
-    type: order?.type || "",
-    weight: order?.weight || "",
-    amount: order?.amount || "",
-    phone: order?.phone || "",
-    address: order?.address || "",
-    email: order?.sellerEmail || "",
+    name: '', 
+    email: '', 
+    amount: ''
   }
+const PaymentRequestComponent = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  
+  const {loading, error, paymentRequestStatus, success} = useSelector((state) => state.payment);
+  const {order} = useSelector((state) => state.order);
+  
+  const [formData, setFormData] = useState(initialState)
+  const {name, email, amount} = formData;
 
-  const [formData, setFormData] = useState(initialState);
-
-  const config = {
-    public_key: 'FLWPUBK_TEST-491e470d88ecdd5c5e237a79979a758f-X',
-    tx_ref: Date.now(),
-    amount: order?.amount,
-    currency: 'NGN',
-    payment_options: 'card, mobilemoney, ussd',
-    customer: {
-      email: order?.sellerEmail,
-      phone_num: order?.phone,
-      name: 'Avocet',
-    },
-    customizations: {
-      title: 'Avocet Payment',
-      description: 'Payment for plastic sold',
-      logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
-    },
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    
+    setFormData({ ...formData, [name]: value });
   };
   
-    const fwConfig = {
-      ...config,
-      text: 'Pay with Flutterwave!',
-      callback: (response) => {
-         console.log(response);
-        closePaymentModal() // this will close the modal programmatically
+
+  const handlePaymentRequest = async (e) => {
+    e.preventDefault();
+
+    const requestData = {
+      reference: `payment-${Date.now()}`,
+      destination: {
+        type: 'mobile_money',
+        amount,
+        currency: 'NGN',
+        narration: 'Test Transfer Payment',
+        mobile_money: {
+          operator: 'eTranzact-ng',
+          mobile_number: '2348142793892',
+        },
+        customer: {
+          name,
+          email,
+        },
       },
-      onClose: () => {},
-    };
-
-
-    useEffect(() => {
-      dispatch(getOrder());
-      return () => {
-        dispatch(initiatePayment())
-        dispatch(resetPaymentState()); // Reset payment state when the component unmounts
-      };
-    }, [dispatch]);
-
-  useLayoutEffect(() => {
-    if(order) {
-        setFormData({
-            ...formData, 
-            type: order?.type,
-            weight: order?.weight,
-            amount: order?.amount,
-            phone: order?.phone,
-            address: order?.address,
-            email: order?.sellerEmail,
-        })
     }
-  }, [order])
+    console.log(requestData)
+    await dispatch(requestPayment(requestData))  
+  }
+
+  useEffect(() => {
+    if(success) {
+      navigate('/profile')
+    }
+    dispatch(getOrder())
+  }, [dispatch])
 
   return (
-    <div className='container auth'>
-    <Card cardClass={'card'}>
-      <p>Type: {order?.type}</p>
-      <p>Weight: {order?.weight}kg</p>
-      {formData.amount !== '' && <p>Amount: #{formData.amount}</p>}
-      <p>Phone Num: {order?.phone}</p>
-      <p>Email: {order?.sellerEmail}</p>
-      <FlutterWaveButton {...fwConfig} className='--btn --btn-primary' />
-      {/* {paymentLink && (
-        <a href={paymentLink} target='_blank' rel='noopener noreferrer'>
-          Proceed to Payment
-        </a>
-      )} */}
-      {/* {error && <p>Error: {error}</p>} */}
-    </Card>
-  </div>
-  );
-};
+    <section className='top'>
+      <div className='container'>
+        <div>
+          <h2>Payment Request Page.</h2>
 
-export default PaymentComponent;
+          <div className='profile --mt'>
+            <Card cardClass={'card'}>
+              <form onSubmit={handlePaymentRequest}>
+                <p>
+                  <label>name:</label>
+                  <input type='text' name='name' value={name} onChange={handleInputChange} placeholder='alim sanchez'/>
+                </p>
+                <p>
+                  <label>email:</label>
+                  <input type='email' name='email' value={order?.sellerEmail} onChange={handleInputChange} placeholder=''/>
+                </p>
+                <p>
+                  <label>amount (#):</label>
+                  <input type='text' name='amount' value={order?.amount} onChange={handleInputChange} placeholder='amount to be paid'/>
+                </p>
+
+                <button className='--btn --btn-success --btn-block' disabled={loading}>
+                  {loading ? 'Requesting Payment...' : 'Request Payment'}
+                </button>
+                {paymentRequestStatus && <p>Payment requested successfully!</p>}
+                {error && <p>Error requesting payment: {error.message}</p>}
+              </form>
+            </Card>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default PaymentRequestComponent

@@ -35,6 +35,8 @@ export const register = createAsyncThunk(
   }
 );
 
+
+
 // Register Collector
 export const registerCollector = createAsyncThunk(
     'auth/registerCollector',

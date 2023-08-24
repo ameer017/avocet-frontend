@@ -7,6 +7,7 @@ import Product from '../product/Product'
 import AppInner from '../app-inner/AppInner'
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
+import Partner from '../statistics/Partner'
 
 const Home = () => {
   
@@ -46,6 +47,7 @@ const Home = () => {
               
                 </div>
               
+                <Partner/>
               </div>
 
             </section>

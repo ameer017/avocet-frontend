@@ -28,8 +28,9 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import Terms from './components/terms/Terms'
 import CollectorInfo from './pages/auth/CollectorInfo';
 import Privacy from './components/terms/Privacy'
-import PaymentComponent from './pages/sell/Pay'
+// import PaymentComponent from './pages/sell/Pay'
 import Kyc from './pages/auth/kyc'
+import PaymentRequestComponent from './pages/sell/Pay'
 
 axios.defaults.withCredentials = true;
 
@@ -91,7 +92,7 @@ function App() {
 
             <Route path='/pay' element={
               <Layout>
-                <PaymentComponent/>
+                <PaymentRequestComponent/>
               </Layout>
             }/>
 

@@ -4,6 +4,7 @@ import orderSlice from "./features/auth/orderSlice";
 import filterSlice from "./features/auth/filterSlice";
 import collectorSlice from "./features/auth/collectorSlice";
 import paymentSlice from "./features/payment/paymentSlice";
+import kycSlice from "./features/auth/kycSlice";
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
         order: orderSlice,
         filter: filterSlice,
         collector: collectorSlice,
-        payment: paymentSlice       
+        payment: paymentSlice,       
+        kyc: kycSlice,       
     }
 })

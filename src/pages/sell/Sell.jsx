@@ -7,8 +7,6 @@ import { useSelector } from 'react-redux';
 import { RESET, createOrder } from '../../redux/features/auth/orderSlice';
 import { toast } from 'react-toastify';
 import { fetchCollectorsAsync } from '../../redux/features/auth/collectorService';
-import "react-confirm-alert/src/react-confirm-alert.css";
-import { confirmAlert } from 'react-confirm-alert'
 
 const initialState = {
   type: '',
@@ -103,10 +101,15 @@ const Sell = () => {
 
               <Card cardClass={'card'}>
                 <form onSubmit={fetchData}>
-                  <p>
-                    <label>Specify type:</label>
-                    <input type='text' name='type' value={type} onChange={handleInputChange} placeholder='e.g Bigi plastic bottles' />
-                  </p>
+                <p>
+                  <label>Specify type:</label>
+                  <select name='type' value={type} onChange={handleInputChange}>
+                    <option value='' disabled>Select a bottle type</option>
+                    <option value='Bigi plastic bottles'>Bigi plastic bottles</option>
+                    <option value='Mr V'>Mr V</option>
+                    <option value='Others'>Others</option>
+                  </select>
+                </p>
 
                   <p>
                     <label>Weight (kg):</label>

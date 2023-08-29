@@ -49,7 +49,6 @@ const Header = () => {
 
             <div className='--flex-center gap'>
                 <nav>
-                    <Link to='/' className='bg'>Home &nbsp;</Link>
                     <Link to='/about' className='bg'>Company &nbsp;</Link>
                     <Link to='/contact' className='bg'>Contact &nbsp;</Link>
                     <Link to='/faq' className='bg'>FAQ</Link>

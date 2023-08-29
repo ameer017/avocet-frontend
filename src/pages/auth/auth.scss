@@ -18,8 +18,15 @@
         text-align: center;
       }
       form {
+        label{
+          font-size: 15px;
+        }
+
         input[type="text"],
         input[type="email"],
+        input[type="number"],
+        input[type="date"],
+        input[type="file"],
         input[type="password"] {
           display: block;
           font-size: 1.6rem;

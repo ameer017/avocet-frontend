@@ -30,6 +30,7 @@ const AppInner = () => {
               <li>Ensure a smooth waste pickup process.</li>
               <li>Ensure that the waste is properly sorted, <br/> weighed, and packaged for further processing.</li>
               <li>Address must contain - House number, Street Name, <br/>Nearest Landmark, State of Residence. </li>
+              <li>In addition: you must be <b>18 years and above</b> as the mode  <br/>of validation is via <em>Voters Identity Number (VIN)</em></li>
             </ul>
           </ShowOnLogout>
           <button className='--btn --btn-success' onClick={registerCollector}>Click here</button>

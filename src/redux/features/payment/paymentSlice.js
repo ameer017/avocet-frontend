@@ -1,17 +1,17 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import paymentService from './paymentService'
+import axios from 'axios'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import paymentService from './paymentService';
 
 const initialState = {
-  loading: false,
-  error: false,
-  paymentRequestStatus: null,
-  message: '', 
-  success: false
+  success: false,
+  error: null,
+  paymentRequestStatus: 'idle',
+  message: "",
+  pending: false
 };
 
-// payment request
 export const requestPayment = createAsyncThunk(
-  'payment/request-payment',
+  'payment/initiatePayment',
   async (requestData, thunkAPI) => {
     try {
       return await paymentService.requestPayment(requestData)
@@ -25,41 +25,32 @@ export const requestPayment = createAsyncThunk(
       return thunkAPI.rejectWithValue(message);
     }
   }
-)
+);
 
 const paymentSlice = createSlice({
   name: 'payment',
   initialState,
-  reducers: {
-    RESET(state) {
-      state.loading = false;
-      state.error = false;
-      state.message = ""
-    }
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(requestPayment.pending, (state) => {
-        state.loading = true;
-        state.paymentRequestStatus = null;
-        state.error = null;
+        console.log('Payment request pending...');
+        state.paymentRequestStatus = 'loading';
+        state.pending = true
       })
       .addCase(requestPayment.fulfilled, (state, action) => {
-        state.loading = false;
-        state.paymentRequestStatus = action.payload;
-        state.error = null;
+        console.log('Payment request fulfilled');
+        state.paymentRequestStatus = 'succeeded';
         state.success = true;
+        state.error = null;
       })
       .addCase(requestPayment.rejected, (state, action) => {
-        state.loading = false;
-        state.paymentRequestStatus = null;
-        state.error = action.payload;
+        console.log('Payment request rejected:', action.error.message);
+        state.paymentRequestStatus = 'failed';
+        state.success = false;
+        state.error = action.error.message;
       });
   },
 });
-
-export const {RESET} = paymentSlice.actions;
-
-export const selectPayment = (state) => state.payment;
 
 export default paymentSlice.reducer;

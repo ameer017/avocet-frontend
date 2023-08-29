@@ -342,14 +342,10 @@ export const fetchUserProfile = () => async (dispatch) => {
     const response = await axios.get('/api/order/profile'); 
     const userProfile = response.data;
 
-    dispatch(setStripeAccountId(userProfile.stripeAccountId)); // Replace with your actual action
-
-
     // Dispatch the action to set the totalAmountBySeller in the Redux state
     dispatch(setTotalAmountBySeller(userProfile.totalAmountBySeller));
   } catch (error) {
     console.error('Error fetching user profile:', error);
-    // Handle the error if needed
   }
 };
 
@@ -728,8 +724,8 @@ const authSlice = createSlice({
   },
 });
 
-export const { RESET, CALC_VERIFIED_USER, CALC_SUSPENDED_USER, setTotalAmountBySeller, setStripeAccountId } =
-  authSlice.actions;
+export const { RESET, CALC_VERIFIED_USER, CALC_SUSPENDED_USER, setTotalAmountBySeller, setStripeAccountId } 
+= authSlice.actions;
 
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 export const selectUser = (state) => state.auth.user;

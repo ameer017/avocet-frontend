@@ -113,11 +113,10 @@ const Profile = () => {
                                     Address: {profile?.address}
                                 </p>
                                 <SellerLink>
-                                <hr/>
+                                {/* <hr/>
                                 {user.role === 'Seller' && (
                                     <p>Total Amount Earned: {totalAmountBySeller[user._id]}</p>
-                                )}
-                                </SellerLink>
+                                )} */}
                                 <hr/>
                                 <p className='--mt'>
                                     Bank Name: {profile?.bank}
@@ -126,6 +125,7 @@ const Profile = () => {
                                 <p className='--mt'>
                                     Account Number: {profile?.account_Num}
                                 </p>
+                                </SellerLink>
                             </section>
 
                         </>

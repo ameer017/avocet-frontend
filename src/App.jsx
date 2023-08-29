@@ -30,7 +30,7 @@ import CollectorInfo from './pages/auth/CollectorInfo';
 import Privacy from './components/terms/Privacy'
 // import PaymentComponent from './pages/sell/Pay'
 import Kyc from './pages/auth/kyc'
-import PaymentRequestComponent from './pages/sell/Pay'
+import PaymentRequestComponent from './pages/sell/pay'
 
 axios.defaults.withCredentials = true;
 

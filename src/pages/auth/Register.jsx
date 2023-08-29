@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RESET, register, sendVerificationEmail } from '../../redux/features/auth/authSlice';
 import PasswordInput from '../../components/passwordInput/PasswordInput'
 import Loading from '../../components/loading/Loading'
+
 const initialState = {
     name: '',
     email: '',

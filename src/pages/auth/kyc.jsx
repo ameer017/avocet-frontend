@@ -21,6 +21,7 @@ const initialState = {
 
 const Kyc = () => {
   const [formData, setFormData] = useState(initialState);
+  
   const {firstName,
     middleName,
     lastName,

@@ -73,6 +73,7 @@
         align-items: center;
         margin-top: 1rem;
       }
+
     }
   
     .group {
@@ -118,6 +119,30 @@
 
   } 
 
+  .input-fields {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    
+
+     .input {
+      height: 2.5em;
+      width: 2.5em;
+      outline: none;
+      text-align: center;
+      font-size: 1.5rem;
+      border-radius: 12px;
+      border: 2px solid rgba(44, 34, 34, 0.363);
+    }
+    
+     .input:focus {
+      border: 1px solid rgb(99, 236, 241);
+      box-shadow: inset -1px -1px 5px rgba(255, 255, 255, .6),
+            inset 10px 10px 10px rgba(0, 0, 0, .25);
+      transform: scale(1.05);
+      transition: 0.5s;
+    }
+  }
   
   @media screen and (max-width: 700px) {
     .img {

@@ -40,7 +40,7 @@ const PaymentRequestComponent = () => {
   useEffect(() =>
     {
        if(success || pending) {
-          navigate('/profile')
+          navigate('/success')
           setIsLoading(false)
         }
     }, [success, pending, navigate])
@@ -51,6 +51,9 @@ const PaymentRequestComponent = () => {
       <Card>
         <div className='form'>
           <form>
+          <h2>Payment Request Page.</h2>
+            <hr/>
+
             <input
               type="text"
               name="name"

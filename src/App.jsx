@@ -26,11 +26,10 @@ import { useSelector } from 'react-redux'
 import UpdateProfile from './pages/profile/UpdateProfile'
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Terms from './components/terms/Terms'
-import CollectorInfo from './pages/auth/CollectorInfo';
 import Privacy from './components/terms/Privacy'
-// import PaymentComponent from './pages/sell/Pay'
 import Kyc from './pages/auth/kyc'
 import PaymentRequestComponent from './pages/sell/pay'
+import Success from './pages/success/Success'
 
 axios.defaults.withCredentials = true;
 
@@ -64,6 +63,7 @@ function App() {
             <Route path='/verifyUser' element={<Kyc/>}/>
             <Route path='/collector' element={<Collector/>}/>
             <Route path='/forgot' element={<Forgot/>}/>
+            <Route path='/success' element={<Success/>}/>
             <Route path='/resetPassword/:resetToken' element={<Reset/>}/>
             <Route path='/loginWithCode/:email' element={<CodedLogin/>}/>
             <Route path='/verify/:verificationToken' element={
@@ -144,11 +144,6 @@ function App() {
               </Layout>
             }/>
 
-            <Route path='/nearby' element={
-              <Layout>
-                <CollectorInfo/>
-              </Layout>
-            }/>
 
           </Routes>
         </GoogleOAuthProvider>

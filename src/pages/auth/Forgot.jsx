@@ -60,7 +60,7 @@ const Forgot = () => {
             <button type="submit" className="--btn --btn-primary --btn-block">
               Get Reset Email
             </button>
-            <div className={styles.links}>
+            <div className='links'>
               <p>
                 <Link to="/">- Home</Link>
               </p>

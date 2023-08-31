@@ -14,7 +14,9 @@ const initialState = {
   amount: '',
   phone: '',
   address: '',
-  sellerEmail: ''
+  sellerEmail: '',
+  account_num: '', 
+  bank: ''
 };
 
 const Sell = () => {
@@ -25,12 +27,14 @@ const Sell = () => {
 
 
   const [formData, setFormData] = useState(initialState);
-  const { type, weight, amount, phone, address, sellerEmail } = formData;
+  const [customType, setCustomType] = useState('');
+  const [showAccountFields, setShowAccountFields] = useState(false);
+
+  const { type, weight, amount, phone, address, sellerEmail, account_num, bank } = formData;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Function to calculate the updated amount based on the weight input value
   const calculateAmount = (value) => {
     if (value === '') {
       return '';
@@ -43,12 +47,25 @@ const Sell = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+  
+    if (name === 'address') {
+      if (value === '') {
+        setShowAccountFields(false); 
+      } else {
+        setShowAccountFields(true); 
+      }
+    }
+  
     if (name === 'weight') {
       setFormData({ ...formData, [name]: value, amount: calculateAmount(value) });
+    } else if (name === 'type' && value === 'Others') {e
+      setCustomType('');
+      setFormData({ ...formData, [name]: value });
     } else {
       setFormData({ ...formData, [name]: value });
     }
   };
+  
 
   const orderGo = async (e) => {
     e.preventDefault();
@@ -59,7 +76,9 @@ const Sell = () => {
       amount,
       phone,
       address,
-      sellerEmail
+      sellerEmail,
+      account_num, 
+      bank
     };
     
     
@@ -104,12 +123,26 @@ const Sell = () => {
                 <p>
                   <label>Specify type:</label>
                   <select name='type' value={type} onChange={handleInputChange}>
-                    <option value='' disabled>Select a bottle type</option>
+                    <option value=''>-- Select --</option>
                     <option value='Bigi plastic bottles'>Bigi plastic bottles</option>
                     <option value='Mr V'>Mr V</option>
                     <option value='Others'>Others</option>
                   </select>
                 </p>
+
+                {/* Render the input field if customType has a value */}
+                {type === 'Others' && (
+                    <p>
+                      <label>Other Type:</label>
+                      <input
+                        type='text'
+                        name='customType'
+                        value={customType}
+                        onChange={(e) => setCustomType(e.target.value)}
+                        placeholder='Enter custom type'
+                      />
+                    </p>
+                  )}
 
                   <p>
                     <label>Weight (kg):</label>
@@ -136,6 +169,20 @@ const Sell = () => {
                     <label>Address:</label>
                     <input type='text' name='address' value={address} onChange={handleInputChange}/>
                   </p>
+
+                  {showAccountFields && (
+                    <>
+                      <p>
+                        <label>Account Number:</label>
+                        <input type='text' name='account_num' value={account_num} onChange={handleInputChange} />
+                      </p>
+
+                      <p>
+                        <label>Bank:</label>
+                        <input type='text' name='bank' value={bank} onChange={handleInputChange} />
+                      </p>
+                    </>
+                  )}
 
                   <button className='--btn --btn-success --btn-block'>Fetch Collectors</button>
                 </form>

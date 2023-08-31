@@ -19,15 +19,13 @@ const initialState = {
     password: '',
     address: '',
     password2: '',
-    role: 'Collector',
-    account_Num: '', 
-    bank: ''
+    role: 'Collector'
 }
 
 
 const Register = () => {
   const [formData, setFormData] = useState(initialState)
-  const {name, email, password, address, role, phone, account_Num, bank} = formData
+  const {name, email, password, address, role, phone} = formData
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -90,7 +88,7 @@ const Register = () => {
   const registerUser = async (e) => {
     e.preventDefault()
 
-    if(!name || !email || !password || !role || !phone || !account_Num || !bank) {
+    if(!name || !email || !password || !role || !phone ) {
       return toast.error("All fields are required")
     }
     if(password.length < 6) {
@@ -101,7 +99,7 @@ const Register = () => {
     }
 
     const userData = {
-      name, email, address, password, role, phone, account_Num, bank
+      name, email, address, password, role, phone
     }
     // console.log(userData)
     await dispatch(registerCollector(userData))
@@ -143,12 +141,6 @@ const Register = () => {
 
                         <PasswordInput placeholder='Password' name='password' value={password} onChange={handleInputChange}/>
 
-                        <p className='--mt'>Bank Account Info:</p>
-
-                        <input type='text' placeholder='bank name' required name='bank' value={bank} onChange={handleInputChange}/>
-
-                        <input type='text' placeholder='account number here' required name='account_Num' value={account_Num} onChange={handleInputChange}/>
-                        
                         {/* password strength */}
                         <Card cardClass='group'>
                             <ul className='form-list'>

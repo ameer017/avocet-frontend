@@ -17,14 +17,13 @@ const initialState = {
     email: '',
     password: '',
     password2: '',
-    address: '',
-    account_Num: '', 
-    bank: ''
+    address: ''
 }
 
 const Register = () => {
   const [formData, setFormData] = useState(initialState)
-  const {name, email, password, password2, address, account_Num, bank} = formData
+
+  const {name, email, password, password2, address} = formData
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,6 +50,7 @@ const Register = () => {
     const {name, value} = e.target
     setFormData({...formData, [name]: value})
   }
+
 
   // Password Strength
   useEffect(() => {
@@ -87,7 +87,7 @@ const Register = () => {
   const registerUser = async (e) => {
     e.preventDefault()
 
-    if(!name || !email || !password || !account_Num || !bank) {
+    if(!name || !email || !password ) {
       return toast.error("All fields are required")
     }
     if(password.length < 6) {
@@ -100,12 +100,9 @@ const Register = () => {
       return toast.error("Password do not match")
     }
 
-    if(account_Num.length < 10) {
-     return toast.error("account number incomplete")
-    }
 
     const userData = {
-      name, email, address, password, account_Num, bank
+      name, email, address, password
     }
     // console.log(userData)
     await dispatch(register(userData))
@@ -136,7 +133,7 @@ const Register = () => {
 
             <input type='text' placeholder='Address' required name='address' value={address} onChange={handleInputChange}/>
 
-            <PasswordInput placeholder='Password' name='password' value={password} onChange={handleInputChange}/>
+            <PasswordInput placeholder='Password' name='password' value={password} onChange={handleInputChange} />
             
             <PasswordInput placeholder='confirm Password' name='password2' value={password2} onChange={handleInputChange} onPaste={(e) => {
               e.preventDefault()
@@ -144,44 +141,40 @@ const Register = () => {
               return false
             }}/>
 
-            <p className='--mt'>Bank Account Info:</p>
-
-            <input type='text' placeholder='bank name' required name='bank' value={bank} onChange={handleInputChange}/>
-
-            <input type='text' placeholder='account number here' required name='account_Num' value={account_Num} onChange={handleInputChange}/>
+            
             
             {/* password strength */}
-            <Card cardClass='group'>
-                <ul className='form-list'>
-                    <li>
-                      <span className='indicator'> 
-                        {switchIcon(upperCase)}
-                        &nbsp; Lowercase & upperCase
-                      </span>
-                    </li>
+              <Card cardClass='group'>
+                  <ul className='form-list'>
+                      <li>
+                        <span className='indicator'> 
+                          {switchIcon(upperCase)}
+                          &nbsp; Lowercase & upperCase
+                        </span>
+                      </li>
 
-                    <li>
-                      <span className='indicator'>
-                        {switchIcon(num)}
-                        &nbsp; Number (0 - 9)
-                      </span>
-                    </li>
+                      <li>
+                        <span className='indicator'>
+                          {switchIcon(num)}
+                          &nbsp; Number (0 - 9)
+                        </span>
+                      </li>
 
-                    <li>
-                      <span className='indicator'>
-                        {switchIcon(specialChar)}
-                        &nbsp; Special Character (!@#$%^&*-_)
-                      </span>
-                    </li>
+                      <li>
+                        <span className='indicator'>
+                          {switchIcon(specialChar)}
+                          &nbsp; Special Character (!@#$%^&*-_)
+                        </span>
+                      </li>
 
-                    <li>
-                      <span className='indicator'>
-                        {switchIcon(passLength)}
-                        &nbsp; At least 6 characters
-                      </span>
-                    </li>
-                </ul>
-            </Card>
+                      <li>
+                        <span className='indicator'>
+                          {switchIcon(passLength)}
+                          &nbsp; At least 6 characters
+                        </span>
+                      </li>
+                  </ul>
+              </Card>
             <button className='--btn --btn-success --btn-block' type='submit'>Register</button>
           </form>
 

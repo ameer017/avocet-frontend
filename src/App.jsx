@@ -90,11 +90,7 @@ function App() {
               </Layout>
             }/>
 
-            <Route path='/pay' element={
-              <Layout>
-                <PaymentRequestComponent/>
-              </Layout>
-            }/>
+            <Route path='/pay' element={<Layout><PaymentRequestComponent/></Layout>} />
 
 
             <Route path='/changePassword' element={

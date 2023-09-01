@@ -34,8 +34,6 @@ const Profile = () => {
         address: user?.address || "",
         photo: user?.photo || "",
         role: user?.role || "",
-        bank: user?.bank || "",
-        account_Num: user?.account_Num || "",
         isVerified: user?.isVerified || false,
       };
 
@@ -57,8 +55,6 @@ const Profile = () => {
                 address: user.address,
                 photo: user.photo,
                 role: user.role,
-                bank: user?.bank,
-                account_Num: user?.account_Num,
                 isVerified: user.isVerified,
             })
         }
@@ -117,14 +113,14 @@ const Profile = () => {
                                 {user.role === 'Seller' && (
                                     <p>Total Amount Earned: {totalAmountBySeller[user._id]}</p>
                                 )} */}
-                                <hr/>
+                                {/* <hr/>
                                 <p className='--mt'>
                                     Bank Name: {profile?.bank}
                                 </p>
                                 <hr/>
                                 <p className='--mt'>
                                     Account Number: {profile?.account_Num}
-                                </p>
+                                </p> */}
                                 </SellerLink>
                             </section>
 

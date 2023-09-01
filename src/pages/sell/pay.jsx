@@ -4,14 +4,14 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { requestPayment } from '../../redux/features/payment/paymentSlice';
 import Card from '../../components/card/Card';
-
 const initialState = {
-  name: '',
-  email: '',
+  name:  '',
+  email:  '',
   amount: '',
   bank: '',
   account: ''
 }
+
 
 const PaymentRequestComponent = () => {
   const [paymentData, setPaymentData] = useState(initialState);
@@ -21,7 +21,7 @@ const PaymentRequestComponent = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const {success, error, paymentRequestStatus, pending} = useSelector((state) => state.payment)
+  const {success, pending} = useSelector((state) => state.payment)
 
   const handleInputChange = async (e) => {
     const {name, value} = e.target
@@ -37,6 +37,8 @@ const PaymentRequestComponent = () => {
     await dispatch(requestPayment(requestData));
   };
   
+
+
   useEffect(() =>
     {
        if(success || pending) {

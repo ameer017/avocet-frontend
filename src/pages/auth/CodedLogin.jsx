@@ -11,7 +11,7 @@ import Loading from '../../components/loading/Loading'
 
 
 const CodedLogin = () => {
-  const [loginCodes, setLoginCodes] = useState(['', '', '', '', '', ''])
+  const [loginCode, setLoginCode] = useState('')
   const {email} = useParams()
 
   const dispatch =useDispatch();
@@ -26,25 +26,22 @@ const CodedLogin = () => {
     };
 
     const loginUserWithCode = async (e) => {
-    e.preventDefault()
-
-    const joinedCode = loginCodes.join('')
-
-    if (joinedCode === '') {
-      return toast.error('Please fill in the login code')
-    }
-    if (joinedCode.length !== 6) {
-      return toast.error('Access code must be 6 characters')
-    }
-
-    await dispatch(loginWithCode({ code: joinedCode, email }))
-  }
+      e.preventDefault();
   
-  const handleCodeInputChange = (index, value) => {
-    const updatedCodes = [...loginCodes]
-    updatedCodes[index] = value
-    setLoginCodes(updatedCodes)
-  }
+      if (loginCode === "") {
+        return toast.error("Please fill in the login code");
+      }
+      if (loginCode.length !== 6) {
+        return toast.error("Access code must be 6 characters");
+      }
+  
+      const code = {
+        loginCode,
+      };
+  
+      await dispatch(loginWithCode({ code, email }));
+    };
+  
     useEffect(() => {
       if (isSuccess && isLoggedIn) {
         navigate("/profile");
@@ -67,19 +64,15 @@ const CodedLogin = () => {
           
 
           <form onSubmit={loginUserWithCode}>
-            <div className='input-fields --mb'>
-              {loginCodes.map((code, index) => (
-                <input
-                  key={index}
-                  type='tel'
-                  maxLength='1'
-                  required
-                  value={code}
-                  onChange={(e) => handleCodeInputChange(index, e.target.value)}
-                  className='input'
-                />
-              ))}
-            </div>
+            
+          <input
+              type="text"
+              placeholder="Access Code"
+              required
+              name="loginCode"
+              value={loginCode}
+              onChange={(e) => setLoginCode(e.target.value)}
+            />
 
             <button className='--btn --btn-primary --btn-block' type='submit'>Proceed To Login</button>
             <span className='--flex-center'>check your email for login access</span>

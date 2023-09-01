@@ -54,6 +54,9 @@ const Order = () => {
         dispatch(FILTER_ORDERS({orders, search}))
       }, [dispatch, orders, search])
 
+      const handleMoneyCheckClick = (orderData) => {
+        console.log('Order Data:', orderData);
+      };
 
 
   return (
@@ -114,9 +117,9 @@ const Order = () => {
                                                     </span>
                                                     
                                                     <span>
-                                                        <Link to='/pay'>&nbsp;| <FaMoneyCheck size={28} color='green'/></Link>        
+                                                        <Link to='/pay'
+                                                        >&nbsp;| <FaMoneyCheck size={28} color='green' onClick={() => handleMoneyCheckClick(order)}/></Link>        
                                                     </span>
-                                                    
                                                 </td>
                                         </tr>
                                     )

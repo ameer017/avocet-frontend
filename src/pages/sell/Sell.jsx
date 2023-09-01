@@ -58,7 +58,7 @@ const Sell = () => {
   
     if (name === 'weight') {
       setFormData({ ...formData, [name]: value, amount: calculateAmount(value) });
-    } else if (name === 'type' && value === 'Others') {e
+    } else if (name === 'type' && value === 'Others') {
       setCustomType('');
       setFormData({ ...formData, [name]: value });
     } else {

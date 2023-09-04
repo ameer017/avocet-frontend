@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BACKEND_URL = 'http://localhost:5000';
-const API_URL = `${BACKEND_URL}/api/order/`;
+const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL;
+export const API_URL = `${BACKEND_URL}/api/order/`;
 
 //   create order
 const createOrder = async (orderData) => {

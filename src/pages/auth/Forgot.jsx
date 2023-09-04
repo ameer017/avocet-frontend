@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { AiOutlineMail } from "react-icons/ai";
-import { BiLogIn } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Card from "../../components/card/Card";
-import Loader from "../../components/loader/Loader";
-import PasswordInput from "../../components/passwordInput/PasswordInput";
 import { validateEmail } from "../../redux/features/auth/authService";
 import { forgotPassword, RESET } from "../../redux/features/auth/authSlice";
 import "./auth.scss";

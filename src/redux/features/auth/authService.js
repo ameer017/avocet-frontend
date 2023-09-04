@@ -12,6 +12,12 @@ export const validateEmail = (email) => {
 };
 
 // Register User
+const contact = async (userData) => {
+  const response = await axios.post(API_URL + "contact-form", userData);
+  return response.data;
+};
+
+// Register User
 const register = async (userData) => {
   const response = await axios.post(API_URL + "register", userData);
   return response.data;
@@ -178,7 +184,8 @@ const authService = {
   sendLoginCode,
   loginWithCode,
   loginWithGoogle,
-  registerContact
+  registerContact,
+  contact
 };
 
 export default authService;

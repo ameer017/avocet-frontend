@@ -13,7 +13,7 @@ const Footer = () => {
             <h1>AVOCET</h1>
 
             <div className='footer-links'>  
-              <a href='https://twitter.com/avocet816589' className='bg'><ImTwitter/></a>
+              <a href='https://twitter.com/avocet816589' className='bg' target='_blank'><ImTwitter/></a>
             </div>
 
           </div>

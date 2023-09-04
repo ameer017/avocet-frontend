@@ -1,5 +1,9 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './Contact.scss';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RESET, contact } from '../../redux/features/auth/authSlice';
 
 const initialState = {
     firstName: '',
@@ -9,59 +13,39 @@ const initialState = {
 }
 
 const Contact = (props) => {
-    const [emailData, setEmailData] = useState(initialState); 
-    const [isValid, setIsValid] = useState(true);
+    const [formData, setFormData] = useState(initialState); 
+    const {firstName, lastName, email, message} = formData;
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
    
+  const {isLoading, isLoggedIn, isSuccess} = useSelector((state) => state.auth)
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setEmailData((prevData) => ({
-          ...prevData,
-          [name]: value
-        }));
-      };
-
-      const handleFormSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-          const transporter = nodemailer
-        } catch (error) {
-          
-        }
+  const handleInputChange = (e) => {
+    const {name, value} = e.target
+    setFormData({...formData, [name]: value})
+  }
     
-        // try {
-        //     const transporter = nodemailer.createTransport({
-        //         host: import.meta.env.EMAIL_HOST,
-        //         port: 587,
-        //         auth: {
-        //           user: import.meta.env.EMAIL_USER,
-        //           pass: import.meta.env.EMAIL_PASS,
-        //         },
-        //         tls: {
-        //           rejectUnauthorized: false,
-        //         },
-        //       });
-    
-        //   const mailOptions = {
-        //     from: `${emailData.email}`, 
-        //     to: import.meta.env.EMAIL_USER, 
-        //     subject: 'Contact Form Submission',
-        //     text: `
-        //       Name: ${emailData.firstName} ${emailData.lastName}
-        //       Email: ${emailData.email}
-        //       Message: ${emailData.message}
-        //     `
-        //   };
-    
-        //   await transporter.sendMail(mailOptions);
-        //   console.log('Email sent successfully');
-        // } catch (error) {
-        //   console.error('Error sending email:', error);
-        // }
-      };
+    const handleFormSubmit = async (e) => {
+       e.preventDefault();
 
+       if(!firstName || !lastName || !email || !message) {      
+        return toast.error("All fields are required")
+      }
+        
+      const userData = {
+        firstName, email, lastName, message
+      }
+      console.log(userData)
+      await dispatch(contact(userData))
+    }
+
+    useEffect(() => {
+      if(isSuccess){
+        navigate('/')
+      }
+      dispatch(RESET())
+    }, [isLoggedIn, isSuccess, dispatch, navigate])
 
   return (
     <section className='top'>
@@ -91,7 +75,6 @@ const Contact = (props) => {
                     <input type='email' name='email' placeholder='yourname@email.com' onChange={handleInputChange} className='child-3'
                     />
                     
-
                     <textarea type='text' name='message' placeholder='your message here' onChange={handleInputChange} rows='8'
                     />
 

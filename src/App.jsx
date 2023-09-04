@@ -60,7 +60,7 @@ function App() {
             }/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
-            <Route path='/verifyUser' element={<Kyc/>}/>
+            {/* <Route path='/verifyUser' element={<Kyc/>}/> */}
             <Route path='/collector' element={<Collector/>}/>
             <Route path='/forgot' element={<Forgot/>}/>
             <Route path='/success' element={<Success/>}/>

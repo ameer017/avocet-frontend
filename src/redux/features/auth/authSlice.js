@@ -35,6 +35,24 @@ export const register = createAsyncThunk(
   }
 );
 
+// Register User
+export const contact = createAsyncThunk(
+  "auth/contact-form",
+  async (userData, thunkAPI) => {
+    try {
+      return await authService.contact(userData);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 
 
 // Register Collector
@@ -411,6 +429,26 @@ const authSlice = createSlice({
         console.log(action.payload);
       })
       .addCase(register.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = null;
+        toast.error(action.payload);
+      })
+    
+      // Register User
+      .addCase(contact.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(contact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.user = action.payload;
+        toast.success("message sent successfully");
+        console.log(action.payload);
+      })
+      .addCase(contact.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

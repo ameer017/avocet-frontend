@@ -6,7 +6,6 @@ import { FaHome, FaTimes } from 'react-icons/fa'
 import { TiUserAddOutline } from 'react-icons/ti'
 import { Link, useNavigate } from 'react-router-dom'
 import PasswordInput from '../../components/PasswordInput/PasswordInput'
-import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { RESET, registerCollector } from '../../redux/features/auth/authSlice'
@@ -107,7 +106,7 @@ const Register = () => {
 
   useEffect(() => {
     if(isSuccess, isLoggedIn){
-      navigate('/verifyUser')
+      navigate('/profile')
     }
     dispatch(RESET())
   }, [isLoggedIn, isSuccess, dispatch, navigate])

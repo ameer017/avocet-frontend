@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Card from "../../components/card/Card";
 import "./ChangePassword.scss";
 import PageMenu from "../../components/pageMenu/PageMenu";
-import PasswordInput from "../../components/passwordInput/PasswordInput";
+import PasswordInput from "../../components/PasswordInput/PasswordInput";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";

@@ -9,7 +9,7 @@ import { validateEmail } from '../../redux/features/auth/authService'
 import { toast } from 'react-toastify'
 import { useSelector, useDispatch } from 'react-redux'
 import { RESET, register, sendVerificationEmail } from '../../redux/features/auth/authSlice';
-import PasswordInput from '../../components/passwordInput/PasswordInput'
+import PasswordInput from '../../components/PasswordInput/PasswordInput'
 import Loading from '../../components/loading/Loading'
 
 const initialState = {

@@ -6,7 +6,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Card from "../../components/card/Card";
 import Loader from "../../components/loader/Loader";
-import PasswordInput from "../../components/passwordInput/PasswordInput";
+import PasswordInput from "../../components/PasswordInput/PasswordInput";
 import { RESET, resetPassword } from "../../redux/features/auth/authSlice";
 import  "./auth.scss";
 

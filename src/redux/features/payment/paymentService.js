@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-import { API_URL } from "../auth/authService";
+
+const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL;
+export const API_URL = `${BACKEND_URL}/api/payment/`;
 
 const requestPayment = async (requestData) => {
   try {

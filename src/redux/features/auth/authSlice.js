@@ -577,7 +577,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload;
-        toast.success(action.payload);
+        toast.success('verification email sent');
       })
       .addCase(sendVerificationEmail.rejected, (state, action) => {
         state.isLoading = false;
@@ -594,7 +594,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload;
-        toast.success(action.payload);
+        toast.success('user verified');
       })
       .addCase(verifyUser.rejected, (state, action) => {
         state.isLoading = false;

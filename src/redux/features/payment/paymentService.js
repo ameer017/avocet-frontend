@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_URL = 'http://localhost:5000';
-const API_URL = `${BACKEND_URL}/api/payment/`;
+import { API_URL } from "../auth/authService";
 
 const requestPayment = async (requestData) => {
   try {

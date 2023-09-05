@@ -22,7 +22,7 @@ export const shortenText = (text, n) => {
   };
 
 const Profile = () => {
-    useRedirectLoggedOutUser('/login')
+    // useRedirectLoggedOutUser('/login')
     const dispatch = useDispatch()
 
     const {isLoading, user, totalAmountBySeller} = useSelector((state) => state.auth)

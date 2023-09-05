@@ -4,7 +4,7 @@ import { AdminAuthorLink,  Collector,  SellerLink, Verified } from "../protect/h
 
 const PageMenu = () => {
   return (
-    <div>
+    <div className="profile">
       <nav className="--btn-success --p --mb">
         <ul className="home-links">
           <li>

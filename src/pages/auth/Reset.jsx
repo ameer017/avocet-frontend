@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { MdPassword } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import Card from "../../components/card/Card";
-import Loader from "../../components/loader/Loader";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
 import { RESET, resetPassword } from "../../redux/features/auth/authSlice";
-import  "./auth.scss";
+import  "./new.scss";
 
 const initialState = {
   password: "",
@@ -58,14 +55,13 @@ const Reset = () => {
   }, [dispatch, navigate, message, isSuccess]);
 
   return (
-    <div className='container auth'>
+    <div className='container__form'>
       {isLoading}
-      <Card>
         <div className='form'>
           <div className="--flex-center">
             <MdPassword size={35} color="#999" />
           </div>
-          <h2>Reset Password</h2>
+          <h2 className="flex">Reset Password</h2>
 
           <form onSubmit={reset}>
             <PasswordInput
@@ -84,17 +80,17 @@ const Reset = () => {
             <button type="submit" className="--btn --btn-primary --btn-block">
               Reset Password
             </button>
-            <div className='links'>
+            <div className='links flex --mt'>
               <p>
                 <Link to="/">- Home</Link>
               </p>
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
               <p>
                 <Link to="/login">- Login</Link>
               </p>
             </div>
           </form>
         </div>
-      </Card>
     </div>
   );
 };

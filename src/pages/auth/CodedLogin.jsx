@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import './auth.scss'
-import Card from '../../components/card/Card'
+import './new.scss'
 import { GrInsecure } from 'react-icons/gr'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
@@ -51,10 +50,9 @@ const CodedLogin = () => {
     }, [isLoggedIn, isSuccess, dispatch, navigate]);
 
   return (
-    <div className='container auth'>
+    <div className='container__form'>
       {isLoading && <Loading/>}
 
-        <Card>
         <div className='form'>
           <div className='--flex-center'>
             <GrInsecure size={35} color='#999'/>
@@ -90,7 +88,6 @@ const CodedLogin = () => {
 
 
         </div>
-        </Card>
     </div>
   )
 }

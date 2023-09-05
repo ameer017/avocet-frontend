@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RESET, contact } from '../../redux/features/auth/authSlice';
-
+import '../../pages/auth/new.scss'
 const initialState = {
     firstName: '',
     lastName: '',

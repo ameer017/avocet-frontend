@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import './auth.scss'
+import './new.scss'
 import Card from '../../components/card/Card'
 import { BsCheck2All } from 'react-icons/bs'
 import { FaHome, FaTimes } from 'react-icons/fa'
@@ -114,23 +114,22 @@ const Register = () => {
   return (
 
    
-    <div className='container auth'>
+    <div className='container__form'>
       {isLoading && <Loading/>}
 
-        <Card>
             <div className='form'>
                     <div className='--flex-center'>
                         <TiUserAddOutline size={35} color='#999'/>
                     </div>
 
-                    <h2>Register - collector</h2>
+                    <h2 style={{textAlign: 'center'}}>Register X collector</h2>
 
                     
                     <form onSubmit={registerUser}>
                       
                         <input type='text' placeholder='Name' required name='name' value={name} onChange={handleInputChange}/>
                         
-                        <input type='text' placeholder='Email' required name='email' value={email} onChange={handleInputChange}/>
+                        <input type='email' placeholder='Email' required name='email' value={email} onChange={handleInputChange}/>
 
                         <input type='text' placeholder='Address' required name='address' value={address} onChange={handleInputChange}/>
 
@@ -141,7 +140,7 @@ const Register = () => {
                         <PasswordInput placeholder='Password' name='password' value={password} onChange={handleInputChange}/>
 
                         {/* password strength */}
-                        <Card cardClass='group'>
+                        <Card cardClass='group --mb --mt'>
                             <ul className='form-list'>
                                 <li>
                                 <span className='indicator'> 
@@ -177,11 +176,10 @@ const Register = () => {
                         
                 </form>
 
-                <span className='register'>
-                    <Link to='/' className='bg'><FaHome size={20}/></Link>
+                <span className='flex'>
+                    <Link to='/' className='bg --mt'><FaHome size={20}/></Link>
                 </span>
             </div>
-        </Card>
     </div>
   )
 }

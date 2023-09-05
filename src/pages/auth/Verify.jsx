@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { RESET, verifyUser } from "../../redux/features/auth/authSlice";
 import Loading from "../../components/loading/Loading";
-import Card from "../../components/card/Card";
-import './auth.scss'
+import './new.scss'
 
 const Verify = () => {
   const dispatch = useDispatch();
@@ -18,8 +17,7 @@ const Verify = () => {
   };
 
   return (
-    <section className="container auth">
-      <Card cardClass='--flex-center'>
+    <section className="container__form">
 
         {isLoading && <Loading/>}
         <div className="--center-all">
@@ -30,7 +28,6 @@ const Verify = () => {
             Verify Account
           </button>
         </div>
-      </Card>
     </section>
   );
 };

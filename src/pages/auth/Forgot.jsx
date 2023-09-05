@@ -3,10 +3,9 @@ import { AiOutlineMail } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import Card from "../../components/card/Card";
 import { validateEmail } from "../../redux/features/auth/authService";
 import { forgotPassword, RESET } from "../../redux/features/auth/authSlice";
-import "./auth.scss";
+import "./new.scss";
 import Loading from "../../components/loading/Loading";
 
 const Forgot = () => {
@@ -35,9 +34,9 @@ const Forgot = () => {
   };
 
   return (
-    <div className='container auth'>
+    <div className='container__form'>
       {isLoading && <Loading/>}
-      <Card>
+      
         <div className='form'>
           <div className="--flex-center">
             <AiOutlineMail size={35} color="#999" />
@@ -57,17 +56,17 @@ const Forgot = () => {
             <button type="submit" className="--btn --btn-primary --btn-block">
               Get Reset Email
             </button>
-            <div className='links'>
+            <div className='links flex --mt'>
               <p>
                 <Link to="/">- Home</Link>
               </p>
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <p>
                 <Link to="/login">- Login</Link>
               </p>
             </div>
           </form>
         </div>
-      </Card>
     </div>
   );
 };

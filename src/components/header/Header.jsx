@@ -69,6 +69,7 @@ const Header = () => {
                             <Link to='/login'>Login</Link>
                         </button>
                     </li>
+
                 </ShowOnLogout>
 
                 <ShowOnLogin>
@@ -106,6 +107,11 @@ const Header = () => {
                                     <Link to='/login'>Login</Link>
                                 </button>
                                 <hr className='--color-white'/>
+                                <button className='--btn --btn-success'>
+                                    <Link to='/register'>Register</Link>
+                                </button>
+                                <hr className='--color-white'/>
+                            
                             </ShowOnLogout>
 
                             <ShowOnLogin>

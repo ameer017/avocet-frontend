@@ -10,7 +10,6 @@
         
         p {
             margin: 1.2rem 0;
-            // letter-spacing: .1em;
         }
 
         form {
@@ -52,6 +51,37 @@
                 transition-duration: 500ms;
             }
 
+            @media screen and (max-width: '600px') {
+    
+                .child-3, textarea {
+                    width: 400px;
+                }
+
+                .gap{
+                    flex-direction: column;
+
+                    input {
+
+                        width: 400px;
+                    }
+                }
+            }
+
+            @media screen and (max-width: '460px') {
+    
+                .child-3, textarea {
+                    width: 300px;
+                }
+
+                .gap{
+                    flex-direction: column;
+
+                    input {
+
+                        width: 300px;
+                    }
+                }
+            }
         } 
     }
 
@@ -62,6 +92,16 @@
 
         h1,h3{
             font-weight: lighter;
+        }
+
+        @media screen and (max-width: '600px') {
+            padding: 0;
+            width: 100%;
+
+            h1,h3{
+                font-size: 12px;
+                font-weight: 100;
+            }
         }
 
     }

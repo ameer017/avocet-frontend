@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import './auth.scss'
-import Card from '../../components/card/Card'
+import './new.scss'
 import { BsCheck2All } from 'react-icons/bs'
 import { FaTimes } from 'react-icons/fa'
 import { TiUserAddOutline } from 'react-icons/ti'
@@ -11,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RESET, register, sendVerificationEmail } from '../../redux/features/auth/authSlice';
 import PasswordInput from '../../components/PasswordInput/PasswordInput'
 import Loading from '../../components/loading/Loading'
+import Card from '../../components/card/Card'
 
 const initialState = {
     name: '',
@@ -116,35 +116,48 @@ const Register = () => {
   }, [isLoggedIn, isSuccess, dispatch, navigate])
   
   return (
-    <div className='container auth'>
+    <>
+      
       {isLoading && <Loading/>}
-        <Card>
-        <div className='form'>
+      <section className="container__form">
           <div className='--flex-center'>
-            <TiUserAddOutline size={35} color='#999'/>
+              <TiUserAddOutline size={35} color='#999'/>
           </div>
 
-          <h2>Register</h2>
+          <h2 style={{textAlign: 'center'}}>Register X User</h2>
           
-          <form onSubmit={registerUser}>
-            <input type='text' placeholder='Name' required name='name' value={name} onChange={handleInputChange}/>
-            
-            <input type='email' placeholder='Email' required name='email' value={email} onChange={handleInputChange}/>
 
-            <input type='text' placeholder='Address' required name='address' value={address} onChange={handleInputChange}/>
+          <form onSubmit={registerUser} className="form">
+            <div className="input-box">
+            <label>Full Name:</label>
+              <input type="text" value={name} placeholder="John Doe" required onChange={handleInputChange}/>
+            </div>
+    
+            <div className="input-box">
+            <label>Email:</label>
+              <input type="email" value={email} onChange={handleInputChange} placeholder="yourname@gmail.com" required />
+            </div>
+    
+            <div className="input-box">
+            <label>Address:</label>
+              <input type="text" value={address} onChange={handleInputChange} placeholder="No 5, Ibadan str. Ebute Meta" required />
+            </div>
 
-            <PasswordInput placeholder='Password' name='password' value={password} onChange={handleInputChange} />
-            
-            <PasswordInput placeholder='confirm Password' name='password2' value={password2} onChange={handleInputChange} onPaste={(e) => {
-              e.preventDefault()
-              toast.error('cannot paste into input field')
-              return false
-            }}/>
+            <div className='input-box'>
+            <label>Password</label>
+              <PasswordInput placeholder='Password' name='password' value={password} onChange={handleInputChange} />
 
-            
-            
-            {/* password strength */}
-              <Card cardClass='group'>
+            </div>
+            <div className='input-box'>
+            <label>Confirm Password</label>
+              <PasswordInput placeholder='confirm password' name='password' value={password2} onChange={handleInputChange} onPaste={(e) => {
+                  e.preventDefault()
+                  toast.error('cannot paste into input field')
+                  return false
+                }}/>
+            </div>
+
+            <Card cardClass='group --mt --mb'>
                   <ul className='form-list'>
                       <li>
                         <span className='indicator'> 
@@ -178,17 +191,17 @@ const Register = () => {
             <button className='--btn --btn-success --btn-block' type='submit'>Register</button>
           </form>
 
-
-          <span className='register'>
+          <span className='flex --mt'>
             <Link to='/' className='bg'>Home</Link>
             <p>&nbsp; Already have an account? &nbsp;</p>
             <Link to='/login' className='bg'>Login</Link>
           </span>
-        </div>
-        </Card>
+        
+      </section>
+
+    </>
 
         
-    </div>
   )
 }
 

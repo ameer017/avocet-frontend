@@ -74,6 +74,10 @@ const fetchNearestCollector = async (sellerAddress) => {
   }
 };
 
+const sendEmailToCollector = async() => {
+  const response = await axios.post(API_URL + 'sendmailtocollector')
+  return response.data.message
+}
 
 
 
@@ -86,7 +90,8 @@ const orderService = {
     verifyOrder,
     confirmOrder,
     fetchNearestCollector,
-    updateOrder
+    updateOrder,
+    sendEmailToCollector
 };
 
 export default orderService;

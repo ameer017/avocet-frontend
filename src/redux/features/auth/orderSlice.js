@@ -134,6 +134,21 @@ export const updateOrder = createAsyncThunk(
   }
 );
 
+export const sendEmailToCollector = createAsyncThunk(
+  "order/sendmailtocollector",
+  async(_, thunkAPI) => {
+    try {
+      return await orderService.sendEmailToCollector()
+    } catch (error) {
+      const message = 
+      (error.response && error.response.data 
+        && error.response.data.message) ||
+        error.message ||
+        error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
 
 const orderSlice = createSlice({
   name: 'order',
@@ -225,6 +240,23 @@ const orderSlice = createSlice({
         state.order = action.payload;
       })
       .addCase(getOrder.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        toast.error(action.payload);
+      })
+
+      // Get Order
+      .addCase(sendEmailToCollector.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(sendEmailToCollector.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = true;
+        state.order = action.payload;
+      })
+      .addCase(sendEmailToCollector.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

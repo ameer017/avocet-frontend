@@ -4,7 +4,7 @@ import PageMenu from '../../components/pageMenu/PageMenu';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { RESET, createOrder } from '../../redux/features/auth/orderSlice';
+import { RESET, createOrder, sendEmailToCollector } from '../../redux/features/auth/orderSlice';
 import { toast } from 'react-toastify';
 import { fetchCollectorsAsync } from '../../redux/features/auth/collectorService';
 
@@ -83,6 +83,7 @@ const Sell = () => {
     
     
     await dispatch(createOrder(orderData));  
+    await dispatch(sendEmailToCollector())
   };
   
   const fetchData = async (e) => {

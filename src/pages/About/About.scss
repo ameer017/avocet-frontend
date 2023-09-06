@@ -16,10 +16,6 @@
         }
 
         button{
-            background-image: url('../../assets/food.webp');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
             color: greenyellow;
             letter-spacing: .1em;
         }
@@ -30,6 +26,10 @@
 
         img{
             width: 250px;
+
+            @media screen and (max-width: '800px') {
+                display: none;
+            }
         }
     }
 

@@ -49,7 +49,7 @@ const PaymentRequestComponent = () => {
     
 
   return (
-    <section className='container auth'>
+    <section className='container auth top'>
       <Card>
         <div className='form'>
           <form>

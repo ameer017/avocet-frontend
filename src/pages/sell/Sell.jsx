@@ -83,7 +83,6 @@ const Sell = () => {
     
     
     await dispatch(createOrder(orderData));  
-    // await dispatch(sendEmailToCollector())
   };
   
   const fetchData = async (e) => {

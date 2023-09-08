@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import { FILTER_ORDERS, selectOrders } from '../../redux/features/auth/filterSlice'
 import SearchOrder from '../../components/search/SearchOrder'
 import ChangeStatus from '../../components/changeRole/ChangeStatus'
+import { AdminLink } from '../../components/protect/hiddenLink'
 
 
 const Order = () => {
@@ -98,7 +99,7 @@ const Order = () => {
 
                                 <tbody>
                                    {filteredOrders?.map((order, index) => {
-                                    const {_id, type, email, status, amount} = order;
+                                    const {_id, type, status, amount} = order;
                                     return(
                                         <tr key={_id}>
                                                 <td>{index + 1}</td>
@@ -115,11 +116,12 @@ const Order = () => {
                                                     <span>
                                                         <FaTrashAlt size={28} color='red' onClick= {() => confirmDelete(_id)}/> 
                                                     </span>
-                                                    
-                                                    <span>
-                                                        <Link to='/pay'
-                                                        >&nbsp;| <FaMoneyCheck size={28} color='green' onClick={() => handleMoneyCheckClick(order)}/></Link>        
-                                                    </span>
+                                                    <AdminLink>
+                                                        <span>
+                                                            <Link to='/pay'
+                                                            >&nbsp;| <FaMoneyCheck size={28} color='green' onClick={() => handleMoneyCheckClick(order)}/></Link>        
+                                                        </span>
+                                                    </AdminLink>
                                                 </td>
                                         </tr>
                                     )

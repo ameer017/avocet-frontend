@@ -53,7 +53,7 @@ const Forgot = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
 
-            <button type="submit" className="--btn --btn-primary --btn-block">
+            <button type="submit" className="--btn --btn-primary --btn-block --mb">
               Get Reset Email
             </button>
             <div className='links flex --mt'>

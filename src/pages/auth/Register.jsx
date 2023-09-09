@@ -130,17 +130,17 @@ const Register = () => {
           <form onSubmit={registerUser} className="form">
             <div className="input-box">
             <label>Full Name:</label>
-              <input type="text" value={name} placeholder="John Doe" required onChange={handleInputChange}/>
+              <input type="text" name='name' value={name} placeholder="John Doe" required onChange={handleInputChange}/>
             </div>
     
             <div className="input-box">
             <label>Email:</label>
-              <input type="email" value={email} onChange={handleInputChange} placeholder="yourname@gmail.com" required />
+              <input type="email" value={email} name='email' onChange={handleInputChange} placeholder="yourname@gmail.com" required />
             </div>
     
             <div className="input-box">
             <label>Address:</label>
-              <input type="text" value={address} onChange={handleInputChange} placeholder="No 5, Ibadan str. Ebute Meta" required />
+              <input type="text" value={address} name='address' onChange={handleInputChange} placeholder="No 5, Ibadan str. Ebute Meta" required />
             </div>
 
             <div className='input-box'>
@@ -150,7 +150,7 @@ const Register = () => {
             </div>
             <div className='input-box'>
             <label>Confirm Password</label>
-              <PasswordInput placeholder='confirm password' name='password' value={password2} onChange={handleInputChange} onPaste={(e) => {
+              <PasswordInput placeholder='confirm password' name='password2' value={password2} onChange={handleInputChange} onPaste={(e) => {
                   e.preventDefault()
                   toast.error('cannot paste into input field')
                   return false

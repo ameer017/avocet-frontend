@@ -5,8 +5,16 @@ const Partner = () => {
   return (
     <section className='container'>
         <div>
-            <p style={{display: 'flex', alignItems: 'center', gap: '2rem', justifyContent: 'center', color: 'white'}}>Built on 
-            
+            <p style={{display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white'}}>Built on 
+
+            <div className='partnerIcon'>
+             <span></span>
+             <span></span>
+             <span></span>
+             <span></span>
+            </div>
+
+
             <img src='https://altcoinsbox.com/wp-content/uploads/2023/03/full-celo-logo-1536x349.webp' width={100} />
             </p>
         </div>

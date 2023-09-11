@@ -226,7 +226,7 @@ const orderSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.order = null
-        toast.error(action.payload);
+        // toast.error(action.payload);
       })
 
       // Get Order
@@ -271,7 +271,7 @@ const orderSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload;
-        toast.success(action.payload);
+        // toast.success(action.payload);
       })
       .addCase(verifyOrder.rejected, (state, action) => {
         state.isLoading = false;
@@ -307,7 +307,7 @@ const orderSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload;
-        toast.success(action.payload);
+        // toast.success(action.payload);
       })
       .addCase(deleteOrder.rejected, (state, action) => {
         state.isLoading = false;
@@ -324,7 +324,7 @@ const orderSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload;
-        toast.success(action.payload);
+        // toast.success(action.payload);
       })
       .addCase(upgradeOrder.rejected, (state, action) => {
         state.isLoading = false;
@@ -340,7 +340,7 @@ const orderSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload;
-        toast.success(action.payload);
+        // toast.success(action.payload);
       })
       .addCase(updateOrder.rejected, (state, action) => {
         state.isLoading = false;

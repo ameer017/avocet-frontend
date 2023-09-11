@@ -485,7 +485,7 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.isLoggedIn = true;
         state.user = action.payload;
-        toast.success("Login Successful");
+        // toast.success("Login Successful");
         console.log(action.payload);
       })
       .addCase(login.rejected, (state, action) => {
@@ -508,7 +508,7 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.isLoggedIn = false;
         state.user = null;
-        toast.success(action.payload);
+        // toast.success(action.payload);
       })
       .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
@@ -560,7 +560,7 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.isLoggedIn = true;
         state.user = action.payload;
-        toast.success("User Updated");
+        // toast.success("User Updated");
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -594,7 +594,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload;
-        toast.success('user verified');
+        // toast.success('user verified');
       })
       .addCase(verifyUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -611,7 +611,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload;
-        toast.success(action.payload);
+        // toast.success(action.payload);
       })
       .addCase(changePassword.rejected, (state, action) => {
         state.isLoading = false;
@@ -628,7 +628,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload;
-        toast.success(action.payload);
+        // toast.success(action.payload);
       })
       .addCase(forgotPassword.rejected, (state, action) => {
         state.isLoading = false;
@@ -678,7 +678,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload;
-        toast.success(action.payload);
+        // toast.success(action.payload);
       })
       .addCase(deleteUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -695,7 +695,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload;
-        toast.success(action.payload);
+        // toast.success(action.payload);
       })
       .addCase(upgradeUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -712,7 +712,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload;
-        toast.success(action.payload);
+        // toast.success(action.payload);
       })
       .addCase(sendLoginCode.rejected, (state, action) => {
         state.isLoading = false;
@@ -731,7 +731,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.twoFactor = false;
         state.user = action.payload;
-        toast.success(action.payload);
+        // toast.success(action.payload);
       })
       .addCase(loginWithCode.rejected, (state, action) => {
         state.isLoading = false;
@@ -750,7 +750,7 @@ const authSlice = createSlice({
         state.isSuccess = true;
         state.isLoggedIn = true;
         state.user = action.payload;
-        toast.success("Login Successful");
+        // toast.success("Login Successful");
       })
       .addCase(loginWithGoogle.rejected, (state, action) => {
         state.isLoading = false;

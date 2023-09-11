@@ -34,12 +34,12 @@ const AppInner = () => {
           </ShowOnLogout>
           <button className='--btn --btn-success' onClick={registerCollector}>Click here</button>
 
-          <ShowOnLogin>
-            <AdminAuthorLink>
+          <hr className='color-dark'/>
+          <ShowOnLogout>
               <p className='--mt'>Already a collector? Login instead.</p> 
               <Link className='--btn --btn-danger' to='/login'>Login</Link> 
-            </AdminAuthorLink>
-          </ShowOnLogin>
+            
+          </ShowOnLogout>
 
         </div>
     </section>

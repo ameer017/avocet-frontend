@@ -11,6 +11,7 @@ const initialState = {
   bank: '',
   account: ''
 }
+import './Pay.css'
 
 
 const PaymentRequestComponent = () => {
@@ -21,7 +22,7 @@ const PaymentRequestComponent = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const {success, pending} = useSelector((state) => state.payment)
+  const {success, loading, paymentRequestStatus, error, status} = useSelector((state) => state.payment)
 
   const handleInputChange = async (e) => {
     const {name, value} = e.target
@@ -35,24 +36,27 @@ const PaymentRequestComponent = () => {
   
     console.log(requestData)
     await dispatch(requestPayment(requestData));
+
+      setTimeout(() => {
+        navigate('/success');
+      }, 5000);
   };
   
 
 
   useEffect(() =>
     {
-       if(success || pending) {
+       if(success && status) {
           navigate('/success')
-          setIsLoading(false)
         }
-    }, [success, pending, navigate])
+    }, [success, status, navigate])
     
 
   return (
     <section className='container auth top'>
       <Card>
         <div className='form'>
-          <form>
+          <form onSubmit={handlePaymentRequest}>
           <h2>Payment Request Page.</h2>
             <hr/>
 
@@ -96,7 +100,9 @@ const PaymentRequestComponent = () => {
               placeholder="Account Number"
             />
 
-            <button className='--btn --btn-block' onClick={handlePaymentRequest}>Initiate Payment</button>
+              <button className='--btn --btn-success --btn-block' disabled={success}>
+                  {success ? <div className="loaded"></div> : 'Request Payment'}
+                </button>
           </form>
         </div>
       </Card>

@@ -124,8 +124,8 @@ const Sell = () => {
                   <label>Specify type:</label>
                   <select name='type' value={type} onChange={handleInputChange}>
                     <option value=''>-- Select --</option>
-                    <option value='Bigi plastic bottles'>Bigi plastic bottles</option>
-                    <option value='Mr V'>Mr V</option>
+                    <option value='plastic bottle'>plastic bottle</option>
+                    {/* <option value='Mr V'>Mr V</option> */}
                     <option value='Others'>Others</option>
                   </select>
                 </p>
@@ -146,7 +146,7 @@ const Sell = () => {
 
                   <p>
                     <label>Weight (kg):</label>
-                    <input type='text' name='weight' value={weight || 1} onChange={handleInputChange} placeholder='enter total weight' />
+                    <input type='text' name='weight' value={weight} onChange={handleInputChange} placeholder='1kg = #150' />
                   </p>
 
                   {formData.amount !== '' && (

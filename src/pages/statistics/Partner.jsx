@@ -5,14 +5,14 @@ const Partner = () => {
   return (
     <section className='container'>
         <div>
-            <p style={{display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white'}}>Built on 
+            <p style={{display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white'}}>Built on  &nbsp;
 
-            <div className='partnerIcon'>
+            {/* <div className='partnerIcon'>
              <span></span>
              <span></span>
              <span></span>
              <span></span>
-            </div>
+            </div> */}
 
 
             <img src='https://altcoinsbox.com/wp-content/uploads/2023/03/full-celo-logo-1536x349.webp' width={100} />

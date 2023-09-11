@@ -7,7 +7,8 @@ const initialState = {
   error: null,
   paymentRequestStatus: 'idle',
   message: "",
-  pending: false
+  loading: false,
+  status: false
 };
 
 export const requestPayment = createAsyncThunk(
@@ -33,15 +34,16 @@ const paymentSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(requestPayment.pending, (state) => {
-        console.log('Payment request pending...');
-        state.paymentRequestStatus = 'loading';
-        state.pending = true
-      })
-      .addCase(requestPayment.fulfilled, (state, action) => {
+      // .addCase(requestPayment.pending, (state) => {
+      //   console.log('Payment request pending...');
+      //   state.paymentRequestStatus = 'loading';
+      // })
+      .addCase(requestPayment.pending, (state, action) => {
+        // state.loading = true
         console.log('Payment request fulfilled');
         state.paymentRequestStatus = 'succeeded';
         state.success = true;
+        state.status = true;
         state.error = null;
       })
       .addCase(requestPayment.rejected, (state, action) => {

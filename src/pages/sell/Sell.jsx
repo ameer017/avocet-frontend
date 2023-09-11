@@ -4,7 +4,7 @@ import PageMenu from '../../components/pageMenu/PageMenu';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { RESET, createOrder, sendEmailToCollector } from '../../redux/features/auth/orderSlice';
+import { RESET, createOrder } from '../../redux/features/auth/orderSlice';
 import { toast } from 'react-toastify';
 import { fetchCollectorsAsync } from '../../redux/features/auth/collectorService';
 
@@ -20,10 +20,31 @@ const initialState = {
 };
 
 const Sell = () => {
-  const { isLoading, isSuccess} = useSelector((state) => state.order);
+  const { isLoading, isSuccess, orders} = useSelector((state) => state.order);
   const { collectors, isError } = useSelector((state) => state.collector);
   
-  const {user} = useSelector((state) => state.auth)
+  const countCollectorOrders = (orders) => {
+    const collectorOrdersCount = {};
+
+    orders.forEach((order) => {
+      const { collectorId, status } = order;
+
+      if (status === 'processed') {
+        collectorOrdersCount[collectorId] = (collectorOrdersCount[collectorId] || 0) + 1;
+      }
+    });
+
+    return collectorOrdersCount;
+  };
+
+  const collectorOrdersCount = countCollectorOrders(orders);
+
+  const sortedCollectors = collectors.slice().sort((a, b) => {
+    const ordersA = collectorOrdersCount[a.id] || 0;
+    const ordersB = collectorOrdersCount[b.id] || 0;
+
+    return ordersB - ordersA;
+  });
 
 
   const [formData, setFormData] = useState(initialState);
@@ -65,7 +86,6 @@ const Sell = () => {
       setFormData({ ...formData, [name]: value });
     }
   };
-  
 
   const orderGo = async (e) => {
     e.preventDefault();
@@ -96,8 +116,6 @@ const Sell = () => {
     }
     await dispatch(fetchCollectorsAsync());
   }
-
- 
 
   useEffect(() => {
     if (isSuccess) {
@@ -200,19 +218,19 @@ const Sell = () => {
                 ) : isError ? (
                   <p>Error fetching collectors.</p>
                 ) : (
-                    <p className='--mt'>
-                      {collectors.map((collector) => (
-                      <>
-                        Name: {collector.name}<br/>
-                        Email: {collector.email}<br/>
-                        Phone: {collector.phone}<br/>
-                        Address: {collector.address}<br/>
-                        <button className='--btn --btn-primary' onClick={orderGo}>Create Order</button>
-                            
-                        <hr/>
-                      </>
-                      ))}
-                      </p>
+                      <div>
+                        {sortedCollectors.map((collector) => (
+                          <div key={collector.id}>
+                            Name: {collector.name}<br />
+                            Email: {collector.email}<br />
+                            Phone: {collector.phone}<br />
+                            Address: {collector.address}<br />
+                            Orders Processed: {collectorOrdersCount[collector.id] || 0}<br />
+                            <button className='--btn --btn-primary' onClick={orderGo}>Create Order</button>
+                            <hr />
+                          </div>
+                        ))}
+                      </div>
                     
                   )}
               </Card>

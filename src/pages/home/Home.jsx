@@ -41,7 +41,7 @@ const Home = () => {
 
                 <div className='hero-buttons --flex-start'>
                 
-                  <button className='--btn --btn-primary center'>
+                  <button className='--btn --btn-secondary center'>
                     <Link to='/register'>Register</Link>
                     
                   </button>

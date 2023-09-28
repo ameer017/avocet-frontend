@@ -22,7 +22,7 @@ const PaymentRequestComponent = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const {success, loading, paymentRequestStatus, error, status} = useSelector((state) => state.payment)
+  const {success, payment} = useSelector((state) => state.payment)
 
   const handleInputChange = async (e) => {
     const {name, value} = e.target
@@ -39,17 +39,16 @@ const PaymentRequestComponent = () => {
 
       setTimeout(() => {
         navigate('/success');
-      }, 5000);
+      }, 10000);
   };
   
 
-
   useEffect(() =>
     {
-       if(success && status) {
+       if(payment && success ) {
           navigate('/success')
         }
-    }, [success, status, navigate])
+    }, [success, navigate])
     
 
   return (

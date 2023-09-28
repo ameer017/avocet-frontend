@@ -29,7 +29,7 @@ const filterSlice = createSlice({
       state.filteredOrders = tempOrders;
     },
     FILTER_ADDRESS(state, action) {
-      const { users, search } = action.payload;
+      const { orders, search } = action.payload;
       const tempOrders = orders.filter(
         (order) =>
           order.type.toLowerCase().includes(search.toLowerCase())

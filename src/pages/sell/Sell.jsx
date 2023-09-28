@@ -30,7 +30,7 @@ const Sell = () => {
       const { collectorId, status } = order;
 
       if (status === 'processed') {
-        collectorOrdersCount[collectorId] = (collectorOrdersCount[collectorId] || 0) + 1;
+        collectorOrdersCount[collectorId] = (collectorOrdersCount[collectorId] || 0) + 2;
       }
     });
 
@@ -221,11 +221,21 @@ const Sell = () => {
                       <div>
                         {sortedCollectors.map((collector) => (
                           <div key={collector.id}>
-                            Name: {collector.name}<br />
-                            Email: {collector.email}<br />
-                            Phone: {collector.phone}<br />
-                            Address: {collector.address}<br />
-                            Orders Processed: {collectorOrdersCount[collector.id] || 0}<br />
+                            <p>
+                              Name: {collector.name}
+                            </p>
+                            <p>
+                              Email: {collector.email}
+                            </p>
+                            <p>
+                              Phone: {collector.phone}
+                            </p>
+                            <p>
+                              Address: {collector.address}
+                            </p>
+                            <p>
+                              {/* Orders Processed: {collectorOrdersCount[collector.id] || 0} */}
+                            </p>
                             <button className='--btn --btn-primary' onClick={orderGo}>Create Order</button>
                             <hr />
                           </div>

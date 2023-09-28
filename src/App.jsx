@@ -30,6 +30,7 @@ import Privacy from './components/terms/Privacy'
 import Kyc from './pages/auth/kyc'
 import PaymentRequestComponent from './pages/sell/pay'
 import Success from './pages/success/Success'
+import PaymentList from './pages/userList/PaymentList'
 
 axios.defaults.withCredentials = true;
 
@@ -102,6 +103,12 @@ function App() {
             <Route path='/users' element={
               <Layout>
                 <UserList/>
+              </Layout>
+            }/>
+
+            <Route path='/payment' element={
+              <Layout>
+                <PaymentList/>
               </Layout>
             }/>
 

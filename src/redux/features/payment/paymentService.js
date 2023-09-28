@@ -2,6 +2,7 @@ import axios from 'axios';
 
 
 const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL;
+// const BACKEND_URL = 'http://localhost:5000';
 export const API_URL = `${BACKEND_URL}/api/payment/`;
 
 const requestPayment = async (requestData) => {
@@ -14,8 +15,15 @@ const requestPayment = async (requestData) => {
   }
 };
 
+const getPaymentDetails = async () => {
+  const response = await axios.get(API_URL + "get-payments");
+
+  return response.data;
+};
+
 const paymentService = {
-  requestPayment
+  requestPayment,
+  getPaymentDetails
 };
 
 export default paymentService;

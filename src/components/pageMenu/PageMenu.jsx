@@ -26,6 +26,9 @@ const PageMenu = () => {
             <li>
               <NavLink to="/order">Orders</NavLink>
             </li>
+            <li>
+              <NavLink to="/payment">Payments</NavLink>
+            </li>
           </AdminAuthorLink>
           
           <SellerLink>

@@ -28,7 +28,7 @@ const ChangeRole = ({_id, email }) => {
     const emailData = {
       subject: "Account Role Changed - AVOCET",
       send_to: email,
-      reply_to: "noreply@ameer",
+      reply_to: "noreply@avocet.com",
       template: "changeRole",
       url: "/login",
     };
@@ -48,7 +48,7 @@ const ChangeRole = ({_id, email }) => {
         <select value={userRole} onChange={(e) => setUserRole(e.target.value)}>
           <option value="">-- select --</option>
           <option value="admin">Admin</option>
-          <option value="collector">Collector</option>
+          <option value="Collector">Collector</option>
           <option value="seller">Seller</option>
           <option value="suspended">Suspended</option>
         </select>

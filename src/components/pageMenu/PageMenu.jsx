@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { AdminAuthorLink,  Collector,  SellerLink, Verified } from "../protect/hiddenLink";
+import { AdminAuthorLink,  AdminLink,  Collector,  SellerLink, Verified } from "../protect/hiddenLink";
 
 const PageMenu = () => {
   return (
@@ -26,10 +26,12 @@ const PageMenu = () => {
             <li>
               <NavLink to="/order">Orders</NavLink>
             </li>
+          </AdminAuthorLink>
+          <AdminLink>
             <li>
               <NavLink to="/payment">Payments</NavLink>
             </li>
-          </AdminAuthorLink>
+          </AdminLink>
           
           <SellerLink>
             <li>

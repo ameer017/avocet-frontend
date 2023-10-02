@@ -45,6 +45,23 @@ export const getPaymentDetails = createAsyncThunk(
   }
 );
 
+export const upgradePayment = createAsyncThunk(
+  "payment/upgradePayment",
+  async (requestData, thunkAPI) => {
+    try {
+      return await paymentService.upgradePayment(requestData);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const paymentSlice = createSlice({
   name: 'payment',
   initialState,
@@ -76,6 +93,20 @@ const paymentSlice = createSlice({
         state.payments = action.payload;
       })
       .addCase(getPaymentDetails.rejected, (state, action) => {
+        state.loading = false;
+        state.error = true;
+        state.message = action.payload;
+      })
+
+      .addCase(upgradePayment.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(upgradePayment.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.message = action.payload;
+      })
+      .addCase(upgradePayment.rejected, (state, action) => {
         state.loading = false;
         state.error = true;
         state.message = action.payload;

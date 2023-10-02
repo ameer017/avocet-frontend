@@ -31,6 +31,7 @@ import Kyc from './pages/auth/kyc'
 import PaymentRequestComponent from './pages/sell/pay'
 import Success from './pages/success/Success'
 import PaymentList from './pages/userList/PaymentList'
+import OrderCreationSuccess from './pages/success/orderCreationSuccess'
 
 axios.defaults.withCredentials = true;
 
@@ -65,6 +66,7 @@ function App() {
             <Route path='/collector' element={<Collector/>}/>
             <Route path='/forgot' element={<Forgot/>}/>
             <Route path='/success' element={<Success/>}/>
+            <Route path='/order-creation-success' element={<OrderCreationSuccess/>}/>
             <Route path='/resetPassword/:resetToken' element={<Reset/>}/>
             <Route path='/loginWithCode/:email' element={<CodedLogin/>}/>
             <Route path='/verify/:verificationToken' element={

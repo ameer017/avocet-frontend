@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { requestPayment } from '../../redux/features/payment/paymentSlice';
+import { requestPayment, upgradePayment } from '../../redux/features/payment/paymentSlice';
 import Card from '../../components/card/Card';
 const initialState = {
   name:  '',
@@ -36,6 +36,7 @@ const PaymentRequestComponent = () => {
   
     console.log(requestData)
     await dispatch(requestPayment(requestData));
+    await dispatch(upgradePayment(requestData))
 
       setTimeout(() => {
         navigate('/success');
@@ -56,7 +57,7 @@ const PaymentRequestComponent = () => {
       <Card>
         <div className='form'>
           <form onSubmit={handlePaymentRequest}>
-          <h2>Payment Request Page.</h2>
+          <h2>Payment Processing Page.</h2>
             <hr/>
 
             <input
@@ -100,7 +101,7 @@ const PaymentRequestComponent = () => {
             />
 
               <button className='--btn --btn-success --btn-block' disabled={success}>
-                  {success ? <div className="loaded"></div> : 'Request Payment'}
+                  {success ? <div className="loaded"></div> : 'Process Payment'}
                 </button>
           </form>
         </div>

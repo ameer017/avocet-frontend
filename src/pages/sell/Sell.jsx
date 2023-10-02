@@ -119,7 +119,7 @@ const Sell = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      navigate('/profile');
+      navigate('/order-creation-success');
     }
     dispatch(RESET());
   }, [isSuccess, dispatch, navigate]);

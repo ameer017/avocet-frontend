@@ -2,11 +2,11 @@
     width: 40%;
     max-width: 35.5rem;
     padding: 2rem ;
-    background: #7ea97e;
+    background: #000000;
     border-radius: 15px;
     box-shadow: 1px 5px 60px 0px #100a886b;
     background-image: url('../../assets/avocet.webp');
-    background-position: top left;
+    background-position: center;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
@@ -29,16 +29,16 @@
         text-align: center;
         display: block;
         padding-top: 10px;
-        font-size: 16px;
+        font-size: 25px;
         }
         
         .job {
-        font-weight: 400;
+        font-weight: 600;
         color: white;
         display: block;
         text-align: center;
         padding-top: 3px;
-        font-size: 12px;
+        font-size: 15px;
         }
 
         a:hover{

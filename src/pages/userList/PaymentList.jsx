@@ -46,23 +46,25 @@ const PaymentList = () => {
                                         <th>Transaction ID</th>
                                         <th>Name</th>
                                         <th>Amount</th>
-                                        <th>narration</th>
+                                        <th>Narration</th>
+                                        <th>Type</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     {payments?.map((data, index) => {
 
-                                        const {_id, name, amount, referenceId, narration} = data;
+                                        const {_id, name, amount, referenceId, narration, type} = data;
 
                                         return (
 
                                             <tr key={_id}>
                                                 <td>{index + 1}</td>
                                                 <td>{referenceId}</td>
-                                                <td>{shortenText(name, 8)}</td>
-                                                <td>{amount}</td>
+                                                <td>{name}</td>
+                                                <td>#{amount}</td>
                                                 <td>{narration}</td>
+                                                <td>{shortenText(type, 8)}</td>
                                             </tr>
                                         )
                                     })}

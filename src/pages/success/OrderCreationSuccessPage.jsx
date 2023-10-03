@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import {FaCheckCircle} from 'react-icons/fa'
 
 
-const OrderCreationSuccess = () => {
+const OrderCreationSuccessPage = () => {
   return (
     <section className='container top --flex-center'>
             <div className="success">
@@ -23,4 +23,4 @@ const OrderCreationSuccess = () => {
   )
 }
 
-export default OrderCreationSuccess
+export default OrderCreationSuccessPage

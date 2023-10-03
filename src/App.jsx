@@ -27,11 +27,10 @@ import UpdateProfile from './pages/profile/UpdateProfile'
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Terms from './components/terms/Terms'
 import Privacy from './components/terms/Privacy'
-import Kyc from './pages/auth/kyc'
 import PaymentRequestComponent from './pages/sell/pay'
 import Success from './pages/success/Success'
 import PaymentList from './pages/userList/PaymentList'
-import OrderCreationSuccess from './pages/success/orderCreationSuccess'
+import OrderCreationSuccessPage from './pages/success/OrderCreationSuccessPage'
 
 axios.defaults.withCredentials = true;
 
@@ -66,7 +65,7 @@ function App() {
             <Route path='/collector' element={<Collector/>}/>
             <Route path='/forgot' element={<Forgot/>}/>
             <Route path='/success' element={<Success/>}/>
-            <Route path='/order-creation-success' element={<OrderCreationSuccess/>}/>
+            <Route path='/order-creation-success' element={<OrderCreationSuccessPage/>}/>
             <Route path='/resetPassword/:resetToken' element={<Reset/>}/>
             <Route path='/loginWithCode/:email' element={<CodedLogin/>}/>
             <Route path='/verify/:verificationToken' element={

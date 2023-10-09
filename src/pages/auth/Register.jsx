@@ -22,8 +22,13 @@ const initialState = {
 
 const Register = () => {
   const [formData, setFormData] = useState(initialState)
-
+  const [passwordClicked, setPasswordClicked] = useState(false); 
+  
   const {name, email, password, password2, address} = formData
+
+  const handlePasswordClick = () => {
+    setPasswordClicked(true); 
+  };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -145,10 +150,10 @@ const Register = () => {
 
             <div className='input-box'>
             <label>Password</label>
-              <PasswordInput placeholder='Password' name='password' value={password} onChange={handleInputChange} />
+              <PasswordInput placeholder='Password' name='password' value={password} onChange={handleInputChange} onClick={handlePasswordClick} />
 
             </div>
-            <div className='input-box'>
+            <div className='input-box --mb'>
             <label>Confirm Password</label>
               <PasswordInput placeholder='confirm password' name='password2' value={password2} onChange={handleInputChange} onPaste={(e) => {
                   e.preventDefault()
@@ -157,38 +162,41 @@ const Register = () => {
                 }}/>
             </div>
 
-            <Card cardClass='group --mt --mb'>
-                  <ul className='form-list'>
-                      <li>
-                        <span className='indicator'> 
-                          {switchIcon(upperCase)}
-                          &nbsp; Lowercase & upperCase
-                        </span>
-                      </li>
+            {passwordClicked && (
 
-                      <li>
-                        <span className='indicator'>
-                          {switchIcon(num)}
-                          &nbsp; Number (0 - 9)
-                        </span>
-                      </li>
+              <Card cardClass='group --mt --mb'>
+                    <ul className='form-list'>
+                        <li>
+                          <span className='indicator'> 
+                            {switchIcon(upperCase)}
+                            &nbsp; Lowercase & upperCase
+                          </span>
+                        </li>
 
-                      <li>
-                        <span className='indicator'>
-                          {switchIcon(specialChar)}
-                          &nbsp; Special Character (!@#$%^&*-_)
-                        </span>
-                      </li>
+                        <li>
+                          <span className='indicator'>
+                            {switchIcon(num)}
+                            &nbsp; Number (0 - 9)
+                          </span>
+                        </li>
 
-                      <li>
-                        <span className='indicator'>
-                          {switchIcon(passLength)}
-                          &nbsp; At least 6 characters
-                        </span>
-                      </li>
-                  </ul>
+                        <li>
+                          <span className='indicator'>
+                            {switchIcon(specialChar)}
+                            &nbsp; Special Character (!@#$%^&*-_)
+                          </span>
+                        </li>
+
+                        <li>
+                          <span className='indicator'>
+                            {switchIcon(passLength)}
+                            &nbsp; At least 6 characters
+                          </span>
+                        </li>
+                    </ul>
               </Card>
-            <button className='--btn --btn-success --btn-block' type='submit'>Register</button>
+            )}
+            <button className='--btn --btn-success --btn-block ' type='submit'>Register</button>
           </form>
 
           <span className='flex --mt'>

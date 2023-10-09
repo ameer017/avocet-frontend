@@ -78,7 +78,7 @@ const Sell = () => {
     }
   
     if (name === 'weight') {
-      setFormData({ ...formData, [name]: value, amount: calculateAmount(value) });
+      setFormData({ ...formData, [name]: value, amount: calculateAmount(value)});
     } else if (name === 'type' && value === 'Others') {
       setCustomType('');
       setFormData({ ...formData, [name]: value });
@@ -126,41 +126,22 @@ const Sell = () => {
 
   return (
     <>
-      <section className='top'>
+      <section className='top '>
         <div className='container'>
-          <PageMenu />
+          {/* <PageMenu /> */}
           
           <div>
-            <h2>Sell</h2>
+            <h2>Sell Plastic</h2>
 
-            <div className='--flex-start profile'>
+            <div className=' profile'>
               
 
               <Card cardClass={'card'}>
                 <form onSubmit={fetchData}>
                 <p>
                   <label>Specify type:</label>
-                  <select name='type' value={type} onChange={handleInputChange}>
-                    <option value=''>-- Select --</option>
-                    <option value='plastic bottle'>plastic bottle</option>
-                    {/* <option value='Mr V'>Mr V</option> */}
-                    <option value='Others'>Others</option>
-                  </select>
+                  <input type='text' name='type' value={type} onChange={handleInputChange} placeholder='e.g 75cl bottle'/>
                 </p>
-
-                {/* Render the input field if customType has a value */}
-                {type === 'Others' && (
-                    <p>
-                      <label>Other Type:</label>
-                      <input
-                        type='text'
-                        name='customType'
-                        value={customType}
-                        onChange={(e) => setCustomType(e.target.value)}
-                        placeholder='Enter custom type'
-                      />
-                    </p>
-                  )}
 
                   <p>
                     <label>Weight (kg):</label>
@@ -185,7 +166,7 @@ const Sell = () => {
 
                   <p>
                     <label>Address:</label>
-                    <input type='text' name='address' value={address} onChange={handleInputChange}/>
+                    <input type='text' name='address' value={address} onChange={handleInputChange} placeholder='No 3, Ibadan Street Ebute Metta, Lagos'/>
                   </p>
 
                   {showAccountFields && (
@@ -232,9 +213,6 @@ const Sell = () => {
                             </p>
                             <p>
                               Address: {collector.address}
-                            </p>
-                            <p>
-                              {/* Orders Processed: {collectorOrdersCount[collector.id] || 0} */}
                             </p>
                             <button className='--btn --btn-primary' onClick={orderGo}>Create Order</button>
                             <hr />

@@ -48,7 +48,7 @@ const Home = () => {
               
                 </div>
               
-                <Partner/>
+                {/* <Partner/> */}
               </div>
 
             </section>

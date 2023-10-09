@@ -6,7 +6,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { RESET, logout } from '../../redux/features/auth/authSlice'
-import { ShowOnLogin, ShowOnLogout } from '../protect/hiddenLink'
+import { SellerLink, ShowOnLogin, ShowOnLogout, Verified } from '../protect/hiddenLink'
 import { UserName } from '../../pages/profile/UpdateProfile'
 import { ImTwitter } from 'react-icons/im'
 
@@ -49,9 +49,14 @@ const Header = () => {
 
             <div className='--flex-center gap'>
                 <nav>
-                    <Link to='/about' className='bg'>Company &nbsp;</Link>
-                    <Link to='/contact' className='bg'>Contact &nbsp;</Link>
+                    <Link to='/about' className='bg'>Company</Link>
+                    <Link to='/contact' className='bg'>Contact</Link>
                     <Link to='/faq' className='bg'>FAQ</Link>
+                    <Verified>
+                        <SellerLink>
+                            <Link to='/faq' className='bg'>Sell Plastic</Link>
+                        </SellerLink>
+                    </Verified>
                 </nav>
             </div>
 
@@ -115,9 +120,14 @@ const Header = () => {
                             </ShowOnLogout>
 
                             <ShowOnLogin>
-                                
+                                <Verified>
+                                    <SellerLink>
+                                        <NavLink to='/faq' className='bg'>Sell Plastic</NavLink>
+                                    </SellerLink>
+                                </Verified>
+                                <br/>
+
                                 <NavLink to='/profile' className='bg'>Profile</NavLink>
-                                
                                 <br/>
                                 
                                 <button className='--btn --btn-danger' onClick={logoutUser}>

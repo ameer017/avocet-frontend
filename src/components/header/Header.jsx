@@ -49,12 +49,12 @@ const Header = () => {
 
             <div className='--flex-center gap'>
                 <nav>
-                    <Link to='/about' className='bg'>Company</Link>
-                    <Link to='/contact' className='bg'>Contact</Link>
-                    <Link to='/faq' className='bg'>FAQ</Link>
+                    <Link to='/about' className='bg'>Company &nbsp;</Link>
+                    <Link to='/contact' className='bg'>Contact &nbsp;</Link>
+                    <Link to='/faq' className='bg'>FAQ &nbsp;</Link>
                     <Verified>
                         <SellerLink>
-                            <Link to='/faq' className='bg'>Sell Plastic</Link>
+                            <Link to='/sell' className='bg'>Sell-Plastic</Link>
                         </SellerLink>
                     </Verified>
                 </nav>
@@ -122,7 +122,7 @@ const Header = () => {
                             <ShowOnLogin>
                                 <Verified>
                                     <SellerLink>
-                                        <NavLink to='/faq' className='bg'>Sell Plastic</NavLink>
+                                        <NavLink to='/sell' className='bg'>Sell Plastic</NavLink>
                                     </SellerLink>
                                 </Verified>
                                 <br/>

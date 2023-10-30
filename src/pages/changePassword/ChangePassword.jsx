@@ -13,6 +13,7 @@ import {
 } from "../../redux/features/auth/authSlice";
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedoutUser";
 import { sendAutomatedEmail } from "../../redux/features/email/emailSlice";
+import Load from "../../components/load/Load";
 
 const initialState = {
   oldPassword: "",
@@ -108,13 +109,17 @@ const ChangePassword = () => {
                         }}
                     />
                   </p>
-                    {isLoading}
-                    <button
-                      type="submit"
-                      className="--btn --btn-danger --btn-block"
-                    >
-                      Change Password
-                    </button>
+                    {isLoading ? (
+                      <Load/>
+                    ) : (
+
+                      <button
+                        type="submit"
+                        className="--btn --btn-danger --btn-block"
+                      >
+                        Change Password
+                      </button>
+                    )}
                   
                 </form>
               </>

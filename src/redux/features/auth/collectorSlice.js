@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const initialState = {
   collectors: [],
-  isLoading: false,
+  loading: false,
   isError: false,
   isSuccess: false
 };
@@ -13,17 +13,17 @@ const collectorSlice = createSlice({
   initialState,
   reducers: {
     fetchCollectorsStart: (state) => {
-      state.isLoading = true;
+      state.loading = true;
       state.isError = false;
     },
     fetchCollectorsSuccess: (state, action) => {
-      state.isLoading = false;
+      state.loading = false;
       state.isError = false;
       state.isSuccess = true;
       state.collectors = action.payload;
     },
     fetchCollectorsFailure: (state) => {
-      state.isLoading = false;
+      state.loading = false;
       state.isError = true;
     },
   },

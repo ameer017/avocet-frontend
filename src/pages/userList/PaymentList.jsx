@@ -12,7 +12,7 @@ const PaymentList = () => {
     useRedirectLoggedOutUser('/login')
     const dispatch = useDispatch()
 
-    const {payment, payments, loading, succes, error} = useSelector((state) => state.payment)
+    const {payment, payments, loading, error} = useSelector((state) => state.payment)
 
 
     useEffect(() => {
@@ -63,8 +63,8 @@ const PaymentList = () => {
                                                 <td>{referenceId}</td>
                                                 <td>{name}</td>
                                                 <td>#{amount}</td>
-                                                <td>{narration}</td>
-                                                <td>{shortenText(type, 8)}</td>
+                                                <td>{shortenText(narration, 8)}</td>
+                                                <td>{type}</td>
                                             </tr>
                                         )
                                     })}

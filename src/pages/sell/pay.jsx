@@ -1,64 +1,78 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { requestPayment, upgradePayment } from '../../redux/features/payment/paymentSlice';
-import Card from '../../components/card/Card';
-const initialState = {
-  name:  '',
-  email:  '',
-  amount: '',
-  bank: '',
-  account: ''
-}
-import './Pay.css'
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { requestPayment, upgradePayment } from "../../redux/features/payment/paymentSlice";
+import Card from "../../components/card/Card";
+import Load from "../../components/load/Load";
+import Error from "../success/Error";
+import Success from "../success/Success";
+import { toast } from "react-toastify";
 
+const initialState = {
+  name: "",
+  email: "",
+  amount: "",
+  bank: "",
+  account: "",
+};
 
 const PaymentRequestComponent = () => {
   const [paymentData, setPaymentData] = useState(initialState);
-  const {name, email, amount, bank, account} = paymentData;
-  const [isLoading, setIsLoading] = useState(true)
+  const { name, email, amount, bank, account } = paymentData;
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const {success, payment} = useSelector((state) => state.payment)
+  const { success, loading, error, payment } = useSelector((state) => state.payment);
 
-  const handleInputChange = async (e) => {
-    const {name, value} = e.target
-    setPaymentData({...paymentData, [name]: value})
-  }
-
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setPaymentData({ ...paymentData, [name]: value });
+  };
 
   const handlePaymentRequest = async (e) => {
     e.preventDefault();
-    const requestData = {name, email, amount, bank, account} 
-  
-    console.log(requestData)
+
+    // Check if any of the required fields are empty
+    if (!name || !email || !amount || !bank || !account) {
+      return toast.error("All fields are required");
+      
+    }
+
+    const requestData = { name, email, amount, bank, account };
+
+    console.log(requestData);
     await dispatch(requestPayment(requestData));
-    await dispatch(upgradePayment(requestData))
-
-      setTimeout(() => {
-        navigate('/success');
-      }, 10000);
   };
-  
 
-  useEffect(() =>
-    {
-       if(payment && success ) {
-          navigate('/success')
-        }
-    }, [success, navigate])
-    
+  useEffect(() => {
+    if (success) {
+      navigate("/success");
+    }
+  }, [success, navigate]);
+
+  useEffect(() => {
+    if (error) {
+      navigate("/error");
+    }
+  }, [error, navigate]);
+
+  useEffect(() => {
+    if (error) {
+      dispatch({ type: 'payment/requestPayment/rejected', payload: "Please fill in all the required fields." });
+      navigate('/error');
+      return;
+
+    }
+  }, [error, dispatch, navigate]);
 
   return (
-    <section className='container auth top'>
+    <section className="container auth top">
       <Card>
-        <div className='form'>
+        <div className="form">
           <form onSubmit={handlePaymentRequest}>
-          <h2>Payment Processing Page.</h2>
-            <hr/>
+            <h2>Payment Processing Page.</h2>
+            <hr />
 
             <input
               type="text"
@@ -98,11 +112,19 @@ const PaymentRequestComponent = () => {
               value={account}
               onChange={handleInputChange}
               placeholder="Account Number"
+              className="--mb"
             />
 
-              <button className='--btn --btn-success --btn-block' disabled={success}>
-                  {success ? <div className="loaded"></div> : 'Process Payment'}
-                </button>
+            {loading ? (
+              <Load />
+            ) : (
+              <button
+                className="--btn --btn-success --btn-block"
+                disabled={loading}
+              >
+                {loading ? <div className="loaded"></div> : "Process Payment"}
+              </button>
+            )}
           </form>
         </div>
       </Card>

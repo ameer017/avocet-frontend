@@ -1,6 +1,5 @@
-import axios from 'axios'
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import paymentService from './paymentService';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import paymentService from "./paymentService";
 
 const initialState = {
   success: false,
@@ -8,22 +7,18 @@ const initialState = {
   payment: null,
   payments: [],
   message: "",
-  loading: false
+  loading: false,
 };
 
 export const requestPayment = createAsyncThunk(
-  'payment/initiatePayment',
+  "payment/initiatePayment",
   async (requestData, thunkAPI) => {
     try {
-      return await paymentService.requestPayment(requestData)
+      const response = await paymentService.requestPayment(requestData);
+      return response.data;
     } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
+      const errorMessage = response?.data?.status || error.message || error.toString();
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );
@@ -49,39 +44,35 @@ export const upgradePayment = createAsyncThunk(
   "payment/upgradePayment",
   async (requestData, thunkAPI) => {
     try {
-      return await paymentService.upgradePayment(requestData);
+      const response = await paymentService.upgradePayment(requestData);
+      return response.data; // Assuming response has a "data" property.
     } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
+      const errorMessage = response?.status || error.message || error.toString();
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );
 
 const paymentSlice = createSlice({
-  name: 'payment',
+  name: "payment",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(requestPayment.pending, (state) => {
-        state.payment = true;
-        state.loading = true
+        state.loading = true;
       })
       .addCase(requestPayment.fulfilled, (state, action) => {
-        state.payment = action.payload;
+        state.loading = false;
         state.success = true;
-        state.error = null;
+        state.payment = action.payload;
+        state.error = false;
       })
       .addCase(requestPayment.rejected, (state, action) => {
-        console.log('Payment request rejected:', action.error.message);
-        state.payment = false;
+        state.loading = false;
         state.success = false;
-        state.error = action.error.message;
+        state.error = true;
+        state.message = action.payload;
       })
 
       .addCase(getPaymentDetails.pending, (state) => {
@@ -91,9 +82,11 @@ const paymentSlice = createSlice({
         state.loading = false;
         state.success = true;
         state.payments = action.payload;
+        state.error = false;
       })
       .addCase(getPaymentDetails.rejected, (state, action) => {
         state.loading = false;
+        state.success = false;
         state.error = true;
         state.message = action.payload;
       })
@@ -105,15 +98,15 @@ const paymentSlice = createSlice({
         state.loading = false;
         state.success = true;
         state.message = action.payload;
+        state.error = false;
       })
       .addCase(upgradePayment.rejected, (state, action) => {
         state.loading = false;
+        state.success = false;
         state.error = true;
         state.message = action.payload;
-      })
+      });
   },
 });
-
-// export const selectPayment = (state) => state.payment
 
 export default paymentSlice.reducer;

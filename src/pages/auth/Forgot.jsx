@@ -7,6 +7,7 @@ import { validateEmail } from "../../redux/features/auth/authService";
 import { forgotPassword, RESET } from "../../redux/features/auth/authSlice";
 import "./new.scss";
 import Loading from "../../components/loading/Loading";
+import Load from "../../components/load/Load";
 
 const Forgot = () => {
   const [email, setEmail] = useState("");
@@ -34,39 +35,48 @@ const Forgot = () => {
   };
 
   return (
-    <div className='container__form'>
-      {isLoading && <Loading/>}
-      
-        <div className='form'>
-          <div className="--flex-center">
-            <AiOutlineMail size={35} color="#999" />
-          </div>
-          <h2>Forgot Password</h2>
+    <div className="container__form">
+      {isLoading && <Loading />}
 
-          <form onSubmit={forgot}>
-            <input
-              type="email"
-              placeholder="Email"
-              required
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+      <div className="form">
+        <div className="--flex-center">
+          <AiOutlineMail size={35} color="#999" />
+        </div>
+        <h2>Forgot Password</h2>
 
-            <button type="submit" className="--btn --btn-primary --btn-block --mb">
+        <form onSubmit={forgot}>
+          <input
+            type="email"
+            placeholder="Email"
+            required
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="--mb"
+          />
+
+          {isLoading ? (
+            <Load />
+          ) : (
+            <button
+              type="submit"
+              className="--btn --btn-primary --btn-block --mb"
+            >
               Get Reset Email
             </button>
-            <div className='links flex --mt'>
-              <p>
-                <Link to="/">- Home</Link>
-              </p>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <p>
-                <Link to="/login">- Login</Link>
-              </p>
-            </div>
-          </form>
-        </div>
+          )}
+          <div className="links flex --mt">
+            <p>
+              <Link to="/">- Home</Link>
+            </p>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <p>
+              <Link to="/login">- Login</Link>
+            </p>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

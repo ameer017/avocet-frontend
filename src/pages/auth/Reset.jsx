@@ -5,7 +5,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
 import { RESET, resetPassword } from "../../redux/features/auth/authSlice";
-import  "./new.scss";
+import "./new.scss";
+import Load from "../../components/load/Load";
 
 const initialState = {
   password: "",
@@ -55,42 +56,46 @@ const Reset = () => {
   }, [dispatch, navigate, message, isSuccess]);
 
   return (
-    <div className='container__form'>
+    <div className="container__form">
       {isLoading}
-        <div className='form'>
-          <div className="--flex-center">
-            <MdPassword size={35} color="#999" />
-          </div>
-          <h2 className="flex">Reset Password</h2>
+      <div className="form">
+        <div className="--flex-center">
+          <MdPassword size={35} color="#999" />
+        </div>
+        <h2 className="flex">Reset Password</h2>
 
-          <form onSubmit={reset}>
-            <PasswordInput
-              placeholder="Password"
-              name="password"
-              value={password}
-              onChange={handleInputChange}
-            />
-            <PasswordInput
-              placeholder="Confirm Password"
-              name="password2"
-              value={password2}
-              onChange={handleInputChange}
-            />
+        <form onSubmit={reset}>
+          <PasswordInput
+            placeholder="Password"
+            name="password"
+            value={password}
+            onChange={handleInputChange}
+          />
+          <PasswordInput
+            placeholder="Confirm Password"
+            name="password2"
+            value={password2}
+            onChange={handleInputChange}
+          />
 
+          {isLoading ? (
+            <Load />
+          ) : (
             <button type="submit" className="--btn --btn-primary --btn-block">
               Reset Password
             </button>
-            <div className='links flex --mt'>
-              <p>
-                <Link to="/">- Home</Link>
-              </p>
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-              <p>
-                <Link to="/login">- Login</Link>
-              </p>
-            </div>
-          </form>
-        </div>
+          )}
+          <div className="links flex --mt">
+            <p>
+              <Link to="/">- Home</Link>
+            </p>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <p>
+              <Link to="/login">- Login</Link>
+            </p>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

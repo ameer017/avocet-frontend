@@ -73,13 +73,14 @@ const CodedLogin = () => {
             name="loginCode"
             value={loginCode}
             onChange={(e) => setLoginCode(e.target.value)}
+            className="--mb"
           />
 
           {isLoading ? (
             <Load />
           ) : (
             <button
-              className="--btn --btn-primary --btn-block --mt"
+              className="--btn --btn-primary --btn-block --mb"
               type="submit"
             >
               Proceed To Login

@@ -14,7 +14,7 @@ const OrderCreationSuccessPage = () => {
                     <FaCheckCircle size={50} color='#fff'/>
                 </div>
                 <span> Congratulations!!</span>
-                <p className="job">Your Order has been created and sent to the collector you picked successfully.</p>
+                <p className="job">Your Order has been created and sent to the collector successfully.</p>
                 <p className="job">please, wait patiently while we finalize your order processing.</p>
                 
                 <Link to='/profile' className='--btn --btn-block --btn-secondary'>Dismiss</Link>

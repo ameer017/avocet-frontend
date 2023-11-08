@@ -231,7 +231,7 @@ const Sell = () => {
               <h3>Collectors</h3>
               <hr />
               {isLoading ? (
-                <p>Loading...</p>
+                <Load />
               ) : isError ? (
                 <p>Error fetching collectors.</p>
               ) : (

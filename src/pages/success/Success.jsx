@@ -13,8 +13,8 @@ const Success = () => {
                 <div className="img">
                     <FaCheckCircle size={50} color='#fff'/>
                 </div>
-                <span> Congratulations!!</span>
-                <p className="job">Your payment has been processed successfully.</p>
+                <span> Success!!</span>
+                <p className="job">Payment Processed.</p>
                 
                 <Link to='/' className='--btn --btn-block --btn-secondary'>Done</Link>
             </div>

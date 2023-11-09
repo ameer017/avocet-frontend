@@ -2,12 +2,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import paymentService from "./paymentService";
 
 const initialState = {
-  success: false,
-  error: false,
+  isSuccess: false,
+  isError: false,
   payment: null,
   payments: [],
   message: "",
-  loading: false,
+  isLoading: false,
 };
 
 export const requestPayment = createAsyncThunk(
@@ -60,50 +60,50 @@ const paymentSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(requestPayment.pending, (state) => {
-        state.loading = true;
+        state.isLoading = true;
       })
       .addCase(requestPayment.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
+        state.isLoading = false;
+        state.isSuccess = true;
         state.payment = action.payload;
-        state.error = false;
+        state.isError = false;
       })
       .addCase(requestPayment.rejected, (state, action) => {
-        state.loading = false;
-        state.success = false;
-        state.error = true;
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
         state.message = action.payload;
       })
 
       .addCase(getPaymentDetails.pending, (state) => {
-        state.loading = true;
+        state.isLoading = true;
       })
       .addCase(getPaymentDetails.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
+        state.isLoading = false;
+        state.isSuccess = true;
         state.payments = action.payload;
-        state.error = false;
+        state.isError = false;
       })
       .addCase(getPaymentDetails.rejected, (state, action) => {
-        state.loading = false;
-        state.success = false;
-        state.error = true;
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
         state.message = action.payload;
       })
 
       .addCase(upgradePayment.pending, (state) => {
-        state.loading = true;
+        state.isLoading = true;
       })
       .addCase(upgradePayment.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
+        state.isLoading = false;
+        state.isSuccess = true;
         state.message = action.payload;
-        state.error = false;
+        state.isError = false;
       })
       .addCase(upgradePayment.rejected, (state, action) => {
-        state.loading = false;
-        state.success = false;
-        state.error = true;
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
         state.message = action.payload;
       });
   },

@@ -23,7 +23,7 @@ const PaymentRequestComponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { success, loading, error, payment } = useSelector((state) => state.payment);
+  const { isSuccess, isLoading, isError, payment } = useSelector((state) => state.payment);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -46,25 +46,25 @@ const PaymentRequestComponent = () => {
   };
 
   useEffect(() => {
-    if (success) {
+    if (isSuccess) {
       navigate("/success");
     }
-  }, [success, navigate]);
+  }, [isSuccess, navigate]);
 
   useEffect(() => {
-    if (error) {
+    if (isError) {
       navigate("/error");
     }
-  }, [error, navigate]);
+  }, [isError, navigate]);
 
   useEffect(() => {
-    if (error) {
+    if (isError) {
       dispatch({ type: 'payment/requestPayment/rejected', payload: "Please fill in all the required fields." });
       navigate('/error');
       return;
 
     }
-  }, [error, dispatch, navigate]);
+  }, [isError, dispatch, navigate]);
 
   return (
     <section className="container auth top">
@@ -120,7 +120,7 @@ const PaymentRequestComponent = () => {
             ) : (
               <button
                 className="--btn --btn-success --btn-block"
-                disabled={loading}
+                disabled={isLoading}
               >
                 {loading ? <div className="loaded"></div> : "Process Payment"}
               </button>

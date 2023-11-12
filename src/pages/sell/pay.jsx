@@ -115,7 +115,7 @@ const PaymentRequestComponent = () => {
               className="--mb"
             />
 
-            {loading ? (
+            {isLoading ? (
               <Load />
             ) : (
               <button

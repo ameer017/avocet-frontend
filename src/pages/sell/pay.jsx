@@ -122,7 +122,7 @@ const PaymentRequestComponent = () => {
                 className="--btn --btn-success --btn-block"
                 disabled={isLoading}
               >
-                {loading ? <div className="loaded"></div> : "Process Payment"}
+                {isLoading ? <div className="loaded"></div> : "Process Payment"}
               </button>
             )}
           </form>

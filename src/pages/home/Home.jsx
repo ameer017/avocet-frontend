@@ -46,7 +46,7 @@ const Home = () => {
               <div className="hero-buttons --flex-start">
                 <ShowOnLogout>
                   <button className="--btn --btn-secondary center">
-                    <Link to="/register">Register</Link>
+                    <Link to="/get-started">Get Started</Link>
                   </button>
                 </ShowOnLogout>
               </div>

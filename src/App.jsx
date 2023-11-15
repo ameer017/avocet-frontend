@@ -40,6 +40,7 @@ import PaymentList from './pages/userList/PaymentList';
 import OrderCreationSuccessPage from './pages/success/OrderCreationSuccessPage';
 import UpdateProfile from './pages/profile/UpdateProfile';
 import Error from './pages/success/Error';
+import GetStarted from './pages/GetStarted/GetStarted';
 
 axios.defaults.withCredentials = true;
 
@@ -88,6 +89,14 @@ function App() {
                 element={
                   <Layout>
                     <Profile />
+                  </Layout>
+                }
+              />
+              <Route
+                path="/get-started"
+                element={
+                  <Layout>
+                    <GetStarted />
                   </Layout>
                 }
               />

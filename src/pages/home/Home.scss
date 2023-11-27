@@ -38,17 +38,19 @@
     font-size: 4.5rem;
     font-weight: 900;
   }
-}
 
-@media screen and (max-width: 800px) {
-  .hero-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    margin: auto;
-    text-align: center;
-    padding: 0 2.5rem;
+
+  @media screen and (max-width: 800px) {
+    
+      display: flex;
+      // justify-content: center;
+      // align-items: center;
+      flex-direction: column;
+      width: 100%;
+      // margin: auto;
+      // text-align: center;
+      padding: 0 2.5rem;
+    
   }
 }
+

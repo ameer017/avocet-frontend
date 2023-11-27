@@ -37,10 +37,7 @@ const Home = () => {
               <p>
                 Avocet is your gateway to a sustainable future. We are a
                 waste-to-wealth platform committed to revolutionizing the way we
-                handle waste and turning it into valuable resources. Join us on
-                this exciting journey as we make a positive impact on the
-                environment and create opportunities for a greener and more
-                prosperous world..
+                handle waste and turning it into valuable resources. 
               </p>
 
               <div className="hero-buttons --flex-start">

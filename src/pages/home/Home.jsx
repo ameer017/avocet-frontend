@@ -65,10 +65,10 @@ const Home = () => {
           <Statistics />
           <hr />
 
-          {/* <Product /> */}
-          {/* <AppInner /> */}
+          <Product />
+          <AppInner />
 
-          {/* <Footer /> */}
+          <Footer />
         </>
       )}
     </>

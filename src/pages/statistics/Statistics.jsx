@@ -9,7 +9,7 @@ const list = [
 
   {
     id: "How It Works.",
-    info: "1. Collection and Sorting: We have established a robust waste collection and sorting system that efficiently gathers different types of waste materials.",
+    info: "1. Collection and Sorting: We have established a robust waste collection and sorting system that efficiently gathers plastic waste materials.",
   },
 
   {

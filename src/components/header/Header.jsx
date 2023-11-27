@@ -60,15 +60,19 @@ const Header = () => {
             <Link to="/about" className="bg">
               Company &nbsp;
             </Link>
-            <Link to="/contact" className="bg">
+            {/* <Link to="/contact" className="bg">
               Contact &nbsp;
-            </Link>
+            </Link> */}
             <Link to="/faq" className="bg">
               FAQ &nbsp;
             </Link>
             <Link to="/privacy" className="bg">
               Privacy Policy
             </Link>
+            <Link to="/terms" className="bg">
+              Terms and Conditions
+            </Link>
+
             <Verified>
               <SellerLink>
                 <Link to="/sell" className="bg">

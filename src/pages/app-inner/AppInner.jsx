@@ -13,6 +13,9 @@ const AppInner = () => {
   const registerCollector = () => {
     navigate("/collector");
   };
+  const loginCollector = () => {
+    navigate("/login");
+  };
 
   return (
     <section className="container inner">
@@ -54,9 +57,10 @@ const AppInner = () => {
         <hr className="color-dark" />
         <ShowOnLogout>
           <p className="--mt">Already a collector? Login instead.</p>
-          <Link className="--btn --btn-danger" to="/login">
-            Login
-          </Link>
+          
+          <button className="--btn --btn-danger" onClick={loginCollector}>
+          Login
+        </button>
         </ShowOnLogout>
       </div>
     </section>

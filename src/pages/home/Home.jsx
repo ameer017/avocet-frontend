@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Home.scss";
 import Loader from "../../components/loader/Loader";
 import { CiTwitter } from "react-icons/ci";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaWhatsapp } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import Statistics from "../statistics/Statistics";
 import Product from "../product/Product";
@@ -56,6 +56,9 @@ const Home = () => {
                 </a>
                 <a href="https://github.com/ameer017/avocet-frontend" target="_blank">
                   <FaGithub size={30} color="#fff"/>
+                </a>
+                <a href="https://github.com/ameer017/avocet-frontend" target="_blank">
+                  <FaWhatsapp size={30} color="#fff"/>
                 </a>
               </div>
 

@@ -65,13 +65,13 @@ const Home = () => {
               {/* <Partner/> */}
             </div>
           </section>
-          <Statistics />
+          {/* <Statistics /> */}
           <hr />
 
-          <Product />
-          <AppInner />
+          {/* <Product /> */}
+          {/* <AppInner /> */}
 
-          <Footer />
+          {/* <Footer /> */}
         </>
       )}
     </>

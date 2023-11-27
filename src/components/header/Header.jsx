@@ -14,7 +14,7 @@ const activeLink = ({isActive}) => (isActive ? 'active' : '')
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [isIconShowing, setisIconShowing] = useState(false);  
+    const [isIconShowing, setIsIconShowing] = useState(false);  
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -92,7 +92,7 @@ const Header = () => {
             </ul>
 
             <div className="dropdown">
-                <div onClick={() => {setisIconShowing((prev) => !prev)}}>
+                <div onClick={() => {setIsIconShowing((prev) => !prev)}}>
                     
                     <FaBars size={25} color='white' className="dropdown-toggle" onClick={toggleDropdown}/>
                         
@@ -136,7 +136,6 @@ const Header = () => {
                                 
                                 <hr className='--color-white'/>
                             </ShowOnLogin>
-                            <a href='https://twitter.com/avocet816589'><ImTwitter/></a>
                         </nav>
                         )}
 

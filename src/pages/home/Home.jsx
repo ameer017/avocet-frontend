@@ -30,7 +30,7 @@ const Home = () => {
 
           <section className=" hero">
             <div className="hero-text">
-              <h1>Welcome to Avocet.</h1>
+              <h1>AVOCET <span className="headingBig">SOLUTIONS</span>.</h1>
 
               {/* <small>...Tokenizing Waste through Web3</small> */}
 

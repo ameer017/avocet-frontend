@@ -1,55 +1,54 @@
 .hero {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    color: #fff;
-    background-color: #142914;
-    background-image: url('https://images.pexels.com/photos/802221/pexels-photo-802221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
-    background-blend-mode: multiply; 
-    height: 100vh;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    margin-top: 6rem;
-  }
-  
-  
-  .hero-text {
-    width: 50%;  
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  color: #fff;
+  background-color: #3a5f0b;
+  background-image: url("https://images.pexels.com/photos/802221/pexels-photo-802221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-blend-mode: multiply;
+  height: 100vh;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-top: 6rem;
+}
+
+.hero-text {
+  width: 50%;
   padding: 3rem 3.5rem;
 
-
-    & > * {
-      color: #fff;
-      margin-bottom: 2rem;
-    }
-    & > small {
-      display: block;
-      margin-top: -2em;
-    }
-    & > p {
-      line-height: 1.5em;
-    }
-    & .hero-buttons a {
-      color: #fff;
-    }
+  & > * {
+    color: #fff;
+    margin-bottom: 2rem;
   }
-  
-  @media screen and (max-width: 800px) {
-   
-  
-    .hero-text {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      width: 100%;
-      margin: auto;
-      text-align: center; 
-      padding: 0 2.5rem;
-    }
-    
+  & > small {
+    display: block;
+    margin-top: -2em;
+  }
+  & > p {
+    line-height: 1.5em;
+  }
+  & .hero-buttons a {
+    color: #fff;
   }
 
+  .headingBig {
+    font-size: 4.5rem;
+    font-weight: 900;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .hero-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding: 0 2.5rem;
+  }
+}

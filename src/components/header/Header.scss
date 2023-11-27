@@ -9,14 +9,14 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    padding: 10px 20px;
+    padding: 10px 30px;
     border-bottom: 1px solid #2d452d;
     background-color: #3A5F0B;
 
   
     & nav {
       width: 100%;
-      max-width: 1000px;
+      // max-width: 1000px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -28,6 +28,17 @@
         align-items: center;
         font-size: 3rem;
         cursor: pointer;
+
+        >div {
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+          align-items: center;
+
+          span {
+            font-size: 12px;
+          }
+        }
       }
 
       .dropdown {

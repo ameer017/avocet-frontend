@@ -39,9 +39,7 @@ const Home = () => {
               {/* <small>...Tokenizing Waste through Web3</small> */}
 
               <p>
-                Avocet is your gateway to a sustainable future. We are a
-                waste-to-wealth platform committed to revolutionizing the way we
-                handle waste and turning it into valuable resources.
+                Your gateway to a sustainable future. We are a waste-to-wealth platform committed to revolutionizing the way we handle waste and turning it into valuable resources.
               </p>
 
               <div className="hero-buttons --flex-start">

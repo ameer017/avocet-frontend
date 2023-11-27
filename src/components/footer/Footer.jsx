@@ -8,12 +8,14 @@ const Footer = () => {
   return (
     <>
         <hr className='--color-dark'/>
-        <div className=' --py2 footer container'>
+        <div className=' --py2 footer '>
           <div className='title --flex-between'>
             <h1>AVOCET</h1>
 
-            <div className='footer-links'>  
-              <a href='https://twitter.com/avocet816589' className='bg' target='_blank'><ImTwitter/></a>
+            <div>
+              <p>Become a client today!</p>
+              <input type='email' placeholder='yourname@gmail.com' className='--mb'/>
+              <button className='--mt --btn --btn-primary'>Submit</button>
             </div>
 
           </div>

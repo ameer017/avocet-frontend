@@ -66,6 +66,9 @@ const Header = () => {
             <Link to="/faq" className="bg">
               FAQ &nbsp;
             </Link>
+            <Link to="/privacy" className="bg">
+              Privacy Policy
+            </Link>
             <Verified>
               <SellerLink>
                 <Link to="/sell" className="bg">

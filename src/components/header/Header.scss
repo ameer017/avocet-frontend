@@ -12,10 +12,7 @@
     padding: 10px 20px;
     border-bottom: 1px solid #2d452d;
     background-color: #3A5F0B;
-    @media screen and (max-width: 992px) {
-      background-image: unset;
-      background-color: #70ad70;
-    }
+
   
     & nav {
       width: 100%;
@@ -48,8 +45,8 @@
         .dropdown-content {
           display: block;
           position: absolute;
-          background-color:#70ad70;
-          min-width: 300px;
+          background:transparent;
+          min-width: 400px;
           z-index: 1;
           top: 4.5em;
           right: -2em;

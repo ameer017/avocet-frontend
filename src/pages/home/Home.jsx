@@ -58,7 +58,7 @@ const Home = () => {
                   <FaGithub size={30} color="#fff" className="color-changeOne"/>
                 </a>
                 <a href="https://wa.link/whld03" target="_blank">
-                  <FaWhatsapp size={30} color="#fff"/>
+                  <FaWhatsapp size={30} color="#fff" className="color-changeTwo"/>
                 </a>
               </div>
 

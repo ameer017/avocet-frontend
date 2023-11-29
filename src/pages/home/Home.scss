@@ -39,14 +39,24 @@
     font-weight: 900;
   }
 
-
   @media screen and (max-width: 800px) {
-    
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      padding: 0 2.5rem;
-    
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 2.5rem;
+  }
+
+  .color-change {
+    color: blue;
+    animation: colorAnimation 3s infinite alternate;
+  }
+
+  @keyframes colorAnimation {
+    0% {
+      color: #1da1f2;
+    }
+    100% {
+      color: #fff;
+    }
   }
 }
-

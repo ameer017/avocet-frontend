@@ -55,7 +55,7 @@ const Home = () => {
                   <CiTwitter size={30} color="#fff" className="color-change"/>
                 </a>
                 <a href="https://github.com/ameer017/avocet-frontend" target="_blank">
-                  <FaGithub size={30} color="#fff"/>
+                  <FaGithub size={30} color="#fff" className="color-changeOne"/>
                 </a>
                 <a href="https://wa.link/whld03" target="_blank">
                   <FaWhatsapp size={30} color="#fff"/>

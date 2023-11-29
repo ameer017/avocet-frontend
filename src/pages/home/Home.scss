@@ -59,4 +59,34 @@
       color: #fff;
     }
   }
+
+  .color-changeOne {
+    color: blue;
+    animation: colorAnimationOne 3s infinite alternate;
+    -webkit-animation: colorAnimationOne 3s infinite alternate;
+}
+
+  @keyframes colorAnimationOne {
+    0% {
+      color: #171515;
+    }
+    100% {
+      color: #918c91;
+    }
+  }
+
+  .color-changeTwo {
+    color: blue;
+    animation: colorAnimationTwo 3s infinite alternate;
+    -webkit-animation: colorAnimationTwo 3s infinite alternate;
+}
+
+  @keyframes colorAnimationTwo {
+    0% {
+      color: #1da1f2;
+    }
+    100% {
+      color: #fff;
+    }
+  }
 }

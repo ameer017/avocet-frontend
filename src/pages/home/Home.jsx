@@ -11,6 +11,7 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Partner from "../statistics/Partner";
 import { ShowOnLogout } from "../../components/protect/hiddenLink";
+import Navbar from "../../components/Navbar/Navbar";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,6 +29,7 @@ const Home = () => {
       ) : (
         <>
           <Header />
+          {/* <Navbar/> */}
           {/* hero section */}
 
           <section className=" hero">
@@ -65,13 +67,13 @@ const Home = () => {
               {/* <Partner/> */}
             </div>
           </section>
-          {/* <Statistics /> */}
+          <Statistics />
           <hr />
 
-          {/* <Product /> */}
-          {/* <AppInner /> */}
+          <Product />
+          <AppInner />
 
-          {/* <Footer /> */}
+          <Footer />
         </>
       )}
     </>

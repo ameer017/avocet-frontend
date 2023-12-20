@@ -9,6 +9,7 @@
   --shadow-light-color: #fff;
   --main-bg-color: #ecf0f3;
 
+
   --box-shadow: 1rem 1rem 1rem var(--shadow-dark-color),
   -1rem -1rem 1rem var(--shadow-light-color);
 
@@ -27,37 +28,8 @@ body {
   color: var(--icons-color);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
 
-* {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: none;
-}
-
-::selection{
-  color: var(--shadow-dark-color);
-  background: var(--icons-color);
-}
-
-::-webkit-scrollbar{
-  width: 1rem;
-  border: 1px solid var(--main-bg-color);
-}
-
-::-webkit-scrollbar-track{
-  border-radius: 0;
-  background-color: var(--main-bg-color);
-}
-
-::-webkit-scrollbar-thumb{
-  border-radius: 2rem;
-  background:  var(--icons-color);
-  width: .5rem;
-}
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -65,4 +37,4 @@ a {
     color: white;
     background: black;
   }
-}
+} */

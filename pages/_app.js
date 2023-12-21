@@ -1,9 +1,13 @@
-import "../styles/globals.css";
 
-const MyApp = ({ Component, pageProps }) => (
-  <div>
-    <Component {...pageProps} />
-  </div>
-);
+import "../styles/globals.css"
 
-export default MyApp;
+// INETRNAL COMPONENTS
+
+
+const myApp = ({ Component, pageProps }) => (
+    <div>
+        <Component {...pageProps} />
+    </div>
+)
+
+export default myApp;

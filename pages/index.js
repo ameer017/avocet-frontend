@@ -1,8 +1,9 @@
-import { Service } from "../components/componentIndex";
+import { Service, Slider } from "../components/componentIndex";
 
 const Home = () => {
   return <div>
     <Service/>
+    {/* <Slider/> */}
   </div>;
 };
 

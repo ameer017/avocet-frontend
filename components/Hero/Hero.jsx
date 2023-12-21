@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Style from "./Hero.module.css"
-// import Button from '../Button/Button'
+import Button from '../Button/Button'
 import images from "../../img"
 
 const Hero = () => {
@@ -14,7 +14,7 @@ const Hero = () => {
                     your NFTs and sell them
                 </p>
 
-                 {/* <Button btnName="Start Your search"/>  */}
+                 <Button btnName="Start Your search"/> 
             </div>
             <div className={Style.heroSection_box_right}>
                 <Image src={images.hero} alt="Hero section" width={600} height={600}/>

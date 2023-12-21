@@ -1,3 +1,8 @@
+import React from 'react'
+
+// INTERNAL IMPORT
+import Style from "./Footer.module.css"
+
 import React from "react";
 import {
   TiSocialTwitter,

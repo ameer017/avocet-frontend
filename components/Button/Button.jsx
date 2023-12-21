@@ -1,20 +1,16 @@
 import React from 'react'
 
-const Button = ({btnName, onClick}) => {
+// INTERNAL IMPORT
+import Style from "./Button.module.css"
+
+const Button = ({btnName, handleClick}) => {
   return (
-    <button
-      type="button"
-      style={{
-        margin: "10px",
-        borderRadius: "15px",
-        width: "150px",
-        
-       
-      }}
-      onClick={onClick}
-    >
-      {btnName}
-    </button>
+    <div className={Style.box}>
+        <button className={Style.button} onClick={() => handleClick()}>
+          {btnName}
+        </button>
+    </div>
+
   )
 }
 

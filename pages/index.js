@@ -2,10 +2,10 @@
 //Internally
 
 import Style from "../styles/index.module.css"
-import {Hero} from "../components/index"
+// import {Hero} from "../components/index"
 const Home = () => {
   return <div className={Style.homepage}>
-    <Hero />
+    {/* <Hero /> */}
   </div>;
 };
 

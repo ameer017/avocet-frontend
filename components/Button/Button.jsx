@@ -10,6 +10,7 @@ const Button = ({btnName, handleClick}) => {
           {btnName}
         </button>
     </div>
+
   )
 }
 

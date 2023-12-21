@@ -1,13 +1,13 @@
 
-import "../styles/globals.css"
+import { Footer } from "../components/componentIndex";
+import "../styles/globals.css";
 
-// INETRNAL COMPONENTS
+const MyApp = ({ Component, pageProps }) => (
+  <div>
+    <Component {...pageProps} />
+    <Footer/>
+  </div>
+);
 
-
-const myApp = ({ Component, pageProps }) => (
-    <div>
-        <Component {...pageProps} />
-    </div>
-)
 
 export default myApp;

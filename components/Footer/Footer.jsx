@@ -33,7 +33,7 @@ const Footer = () => {
         </div>
 
         <div className={Style.subscribe}>
-          <h3>Follow us</h3>
+          <h3>Follow us:</h3>
 
           <div className={Style.footer_social}>
             <a href="#">

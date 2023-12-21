@@ -1,10 +1,13 @@
-import { Service, Slider } from "../components/componentIndex";
+import { Service, Slider, Subscribe } from "../components/componentIndex";
 
 const Home = () => {
-  return <div>
-    <Service/>
-    {/* <Slider/> */}
-  </div>;
+  return (
+    <div>
+      <Service />
+      {/* <Slider/> */}
+      <Subscribe />
+    </div>
+  );
 };
 
 export default Home;

@@ -1,9 +1,3 @@
-import React from 'react'
-
-// INTERNAL IMPORT
-import Style from "./Footer.module.css"
-
-import React from "react";
 import {
   TiSocialTwitter,
 } from "react-icons/ti";
@@ -12,6 +6,8 @@ import { GrInstagram } from "react-icons/gr";
 
 //INTERNAL IMPORT
 import Style from "./Footer.module.css";
+import Discover from "../Navbar/Discover/Discover";
+import HelpCenter from "../Navbar/HelpCenter/HelpCenter";
 
 const Footer = () => {
   return (
@@ -29,12 +25,12 @@ const Footer = () => {
 
         <div className={Style.footer_box_discover}>
           <h3>Discover</h3>
-          {/* <Discover /> */}
+          <Discover />
         </div>
 
         <div className={Style.footer_box_help}>
           <h3>Help Center</h3>
-          {/* <HelpCenter /> */}
+          <HelpCenter />
         </div>
 
         <div className={Style.subscribe}>

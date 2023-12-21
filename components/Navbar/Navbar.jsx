@@ -80,12 +80,13 @@ const Navbar = () => {
       <div className={Style.navbar_container}>
         <div className={Style.navbar_container_left}>
           <div className={Style.logo}>
-            <Image
+            {/* <Image
               src={images.logo}
               alt="NFT MARKET PLACE"
               width={100}
               height={100}
-            />
+            /> */}
+            <h1>AVOCET.</h1>
           </div>
           <div className={Style.navbar_container_left_box_input}>
             <div className={Style.navbar_container_left_box_input_box}>

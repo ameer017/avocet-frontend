@@ -1,15 +1,13 @@
-import React from 'react'
-import { Service, Slider, Subscribe } from "../components/componentIndex";
+import React from "react";
+import { Hero, Service, Slider, Subscribe } from "../components/componentIndex";
 
 //Internally
 
-import Style from "../styles/index.module.css"
+import Style from "../styles/index.module.css";
 const Home = () => {
-
-  
-
   return (
     <div>
+      <Hero />
       <Service />
       {/* <Slider/> */}
       <Subscribe />
@@ -17,4 +15,4 @@ const Home = () => {
   );
 };
 
-export default Home
+export default Home;

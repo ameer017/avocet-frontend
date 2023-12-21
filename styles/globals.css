@@ -8,7 +8,6 @@
   --shadow-light-color: #fff;
   --main-bg-color: #ecf0f3;
 
-
   --box-shadow: 1rem 1rem 1rem var(--shadow-dark-color),
     -1rem -1rem 1rem var(--shadow-light-color);
 
@@ -25,7 +24,6 @@ body {
   background-color: var(--main-bg-color);
   color: var(--icons-color);
 }
-
 
 ::selection {
   color: var(--shadow-dark-color);
@@ -48,9 +46,8 @@ body {
   width: 0.5rem;
 }
 
-
- @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   html {
-     color-scheme: dark;
-  
-} 
+    color-scheme: dark;
+  }
+}

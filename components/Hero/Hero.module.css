@@ -1,26 +1,39 @@
-.heroSection {
-    width: 80%;
-    margin: 3rem auto;
+/* .heroSection {
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid;
+    padding: 0;
+    background-image: url('https://images.pexels.com/photos/7767754/pexels-photo-7767754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-color: rgba(3, 76, 3, 0.762);
+    color: #fff;
 }
 
-.heroSection_box {
+/* .heroSection_box {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
-}
+    padding: 0 8em;
+} 
 
 
 .heroSection_box_left {
-    padding-right: 6rem;
+    padding: 3rem 7.5rem;
+    width: 70%;
 }
 
 .heroSection_box_left h1{
     font-size: 5rem;
     line-height: 1;
+    width: 100%;
 }
 
 .heroSection_box_left p{
-    margin-bottom: 2rem;
+    margin: -2em 0 2rem 0;
 }
 
 
@@ -47,4 +60,36 @@
         grid-template-columns: 1fr;
         gap: 4rem;
     } 
+} */
+
+.heroSection {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    color: #fff;
+    background-color: #3a5f0b;
+    background-image: url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1440,fit=crop/meP33pOkvJFe3rGO/recycle-5591472_1920-AE0qPzzxzQHwKbzL.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top left;
+    background-blend-mode: multiply;
+    height: 100vh;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
+
+.heroSection_box {
+    width: 70%;
+    padding: 3rem 1.2rem 3rem 10em;
+}
+
+.head {
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+ .headingBig {
+    font-size: 3rem;
+    font-weight: 900;
+ }

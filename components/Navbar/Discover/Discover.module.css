@@ -5,7 +5,7 @@
 }
 
 .discover:hover{
-    background-color: var(--icons-color);
+    transform: translateY(-2px);
     color: var(--shadow-dark-color);
     border-radius: .3rem;
 }

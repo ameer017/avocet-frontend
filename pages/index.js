@@ -1,5 +1,8 @@
 import React from "react";
 import {
+  Card,
+  Category,
+  Filter,
   Hero,
   Service,
   Slider,
@@ -16,10 +19,13 @@ const Home = () => {
       <Hero />
       <Service />
       {/* <Slider/> */}
-      <Title
+      {/* <Title
         heading="Browse by category."
         paragraph="Explore the listed Plastics in the most featured categories."
       />
+      <Category /> */}
+      <Filter />
+      <Card/>
       <Subscribe />
     </div>
   );

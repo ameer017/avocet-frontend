@@ -24,9 +24,16 @@ const Hero = () => {
 
         <Button btnName="Get Started" />
       </div>
-        <div className={Style.leaf}>
-          <FaCanadianMapleLeaf color="white" size={40} />
-        </div>
+      <div className={Style.leaf}>
+        <FaCanadianMapleLeaf color="white" size={40} />
+      </div>
+      <div className={Style.waterDroplets}>
+        <div className={Style.drop}></div>
+        <div className={Style.drop}></div>
+        <div className={Style.drop}></div>
+        <div className={Style.drop}></div>
+        <div className={Style.drop}></div>
+      </div>
     </div>
   );
 };

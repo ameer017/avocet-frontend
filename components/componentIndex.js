@@ -5,5 +5,6 @@ import Subscribe from "./Subscribe/Subscribe";
 import Navbar from "./Navbar/Navbar";
 import Hero from "./Hero/Hero";
 import Button from "./Button/Button";
+import Title from "./Title/Title";
 
-export { Footer, Service, Slider, Subscribe, Navbar, Hero, Button };
+export { Footer, Service, Slider, Subscribe, Navbar, Hero, Button, Title };

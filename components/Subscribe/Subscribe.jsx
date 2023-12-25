@@ -11,7 +11,7 @@ const Subscribe = () => {
     <div className={Style.subscribe}>
       <div className={Style.subscribe_box}>
         <div className={Style.subscribe_box_left}>
-          <h2>A chance not to miss?</h2>
+          <h2>Stay Updated!</h2>
           <p>
             Subscribe! Be the first to discover new orders, ensuring you never miss a chance to contribute to transforming waste into valuable resources.
           </p>

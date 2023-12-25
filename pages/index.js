@@ -1,5 +1,11 @@
 import React from "react";
-import { Hero, Service, Slider, Subscribe } from "../components/componentIndex";
+import {
+  Hero,
+  Service,
+  Slider,
+  Subscribe,
+  Title,
+} from "../components/componentIndex";
 
 //Internally
 
@@ -10,6 +16,10 @@ const Home = () => {
       <Hero />
       <Service />
       {/* <Slider/> */}
+      <Title
+        heading="Browse by category."
+        paragraph="Explore the listed Plastics in the most featured categories."
+      />
       <Subscribe />
     </div>
   );

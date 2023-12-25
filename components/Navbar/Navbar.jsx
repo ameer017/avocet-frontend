@@ -6,7 +6,7 @@ import Link from "next/link";
 import { MdNotifications } from "react-icons/md";
 import { BsSearch } from "react-icons/bs";
 import { CgMenuLeft, CgMenuRight } from "react-icons/cg";
-import { TbBottle } from "react-icons/tb";
+import { RiRecycleFill } from "react-icons/ri";
 
 //INTERNAL IMPORT
 import Style from "./Navbar.module.css";
@@ -81,7 +81,7 @@ const Navbar = () => {
       <div className={Style.navbar_container}>
         <div className={Style.navbar_container_left}>
           <div className={Style.logo}>
-            <TbBottle />
+            <RiRecycleFill />{" "}
             <div>
               <span>AVOCET</span>
               <span>SOLUTIONS</span>
@@ -119,13 +119,13 @@ const Navbar = () => {
           </div>
 
           {/* NOTIFICATION */}
-          {/* <div className={Style.navbar_container_right_notify}>
+          <div className={Style.navbar_container_right_notify}>
             <MdNotifications
               className={Style.notify}
               onClick={() => openNotification()}
             />
             {notification && <Notification />}
-          </div> */}
+          </div>
 
           {/* CREATE BUTTON SECTION */}
           <div className={Style.navbar_container_right_button}>

@@ -52,7 +52,6 @@
   }
 }
 
-/* Apply animation to leaves */
 .leaf:nth-child(1) {
   animation: floatAnimation 10s ease-in-out infinite 2s;
   -webkit-animation: floatAnimation 10s ease-in-out infinite 2s;
@@ -64,7 +63,53 @@
 }
 
 .leaf:nth-child(3) {
-  animation: floatAnimation 10s ease-in-out infinite 4s; /* Change delay as needed */
+  animation: floatAnimation 10s ease-in-out infinite 4s; 
 }
 
-/* Add more nth-child() rules for additional leaves */
+.waterDroplets {
+  display: flex;
+}
+.drop {
+  width: 1.2px;
+  height: 35px;
+  background-color: #ece8e8; 
+  position: absolute;
+  opacity: 0; 
+  top: 2rem;
+}
+
+@keyframes fallAnimation {
+  0% {
+    transform: translateY(-50px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+}
+
+.drop:nth-child(1) {
+  animation: fallAnimation 5s ease-in-out infinite 2s;
+  -webkit-animation: fallAnimation 5s ease-in-out infinite 2s;
+}
+
+.drop:nth-child(2) {
+  animation: fallAnimation 5s ease-in-out infinite 4s;
+  -webkit-animation: fallAnimation 5s ease-in-out infinite 4s;
+}
+
+.drop:nth-child(3) {
+  animation: fallAnimation 5s ease-in-out infinite 6s;
+  -webkit-animation: fallAnimation 5s ease-in-out infinite 6s;
+}
+
+.drop:nth-child(4) {
+  animation: fallAnimation 5s ease-in-out infinite 8s;
+  -webkit-animation: fallAnimation 5s ease-in-out infinite 8s;
+}
+
+.drop:nth-child(5) {
+  animation: fallAnimation 5s ease-in-out infinite 10s;
+  -webkit-animation: fallAnimation 5s ease-in-out infinite 10s;
+}

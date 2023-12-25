@@ -6,5 +6,11 @@ import Navbar from "./Navbar/Navbar";
 import Hero from "./Hero/Hero";
 import Button from "./Button/Button";
 import Title from "./Title/Title";
+import Category from "./Category/Category";
+import Filter from "./Filter/Filter";
+import Card from "./Card/Card";
 
-export { Footer, Service, Slider, Subscribe, Navbar, Hero, Button, Title };
+
+
+
+export { Footer, Service, Slider, Subscribe, Navbar, Hero, Button, Title, Category, Filter, Card };

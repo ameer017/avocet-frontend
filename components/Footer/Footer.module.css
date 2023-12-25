@@ -17,6 +17,11 @@
     gap: 3rem;
 }
 
+.footer_box_discover a, .footer_box_help a {
+    color: #fff;
+}
+
+
 /* //SOCIAL */
 .footer_social{
     display: flex;
@@ -27,7 +32,7 @@
 }
 
 .footer_social a{
-    color: #17280a;
+    color: #fff;
     padding: .5rem;
     border-radius: 50%;
     transition:  all .3s ease-in;
@@ -36,6 +41,8 @@
 
 .footer_social a:hover{
     color:  var(--shadow-dark-color);
+    transform: translateY(-2px);
+
 }
 
 /* //MEDIA QUERY */

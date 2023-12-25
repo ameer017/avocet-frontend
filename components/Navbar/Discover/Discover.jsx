@@ -12,24 +12,12 @@ const Discover = () => {
       link: "collection"
     },
     {
-      name: "Search",
-      link: "search"
-    },
-    {
       name: "Author Profile",
       link: "author-profile"
     },
     {
-      name: "Avocet Details",
-      link: "Avocet-details"
-    },
-    {
       name: "Account Setting",
       link: "account-setting"
-    },
-    {
-      name: "Connect-Wallet",
-      link: "connect-wallet"
     },
     {
       name: "Blog",

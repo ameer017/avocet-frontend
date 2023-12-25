@@ -24,56 +24,41 @@ const SideBar = ({ setOpenSideMenu }) => {
   const discover = [
     {
       name: "Collection",
-      link: "collection",
-    },
-    {
-      name: "Search",
-      link: "search",
+      link: "collection"
     },
     {
       name: "Author Profile",
-      link: "author-profile",
-    },
-    {
-      name: "Avocet Details",
-      link: "Avocet-details",
+      link: "author-profile"
     },
     {
       name: "Account Setting",
-      link: "account-setting",
-    },
-    {
-      name: "Connect-Wallet",
-      link: "connect-wallet",
+      link: "account-setting"
     },
     {
       name: "Blog",
-      link: "blog",
+      link: "blog"
     },
   ];
+
 
   const helpCenter = [
     {
       name: "About",
-      link: "about",
+      link: "about"
     },
     {
       name: "Contact Us",
-      link: "contact-us",
+      link: "contact-us"
     },
     {
       name: "Sign Up",
-      link: "sign-up",
+      link: "sign-up"
     },
     {
       name: "Sign In",
-      link: "sign-in",
-    },
-    {
-      name: "Subscription",
-      link: "subscription",
-    },
-  ];
+      link: "sign-in"
+    }
+  ]
 
   const openDiscoverMenu = () => {
     if (!openDiscover) {
@@ -103,20 +88,12 @@ const SideBar = ({ setOpenSideMenu }) => {
       />
 
       <div className={Style.sideBar_box}>
-        <Image src={images.logo} alt="logo" width={150} height={150} />
-        <p>Discover the most outstanding articles on all topics Plastic </p>
+        <h1>AVOCET</h1>
+        <br/>
+        <p>Discover the most outstanding articles on all Plastic Wastes.</p>
         <div className={Style.sideBar_social}>
           <a href="#">
-            <TiSocialFacebook />
-          </a>
-          <a href="#">
-            <TiSocialLinkedin />
-          </a>
-          <a href="#">
             <TiSocialTwitter />
-          </a>
-          <a href="#">
-            <TiSocialYoutube />
           </a>
           <a href="#">
             <TiSocialInstagram />

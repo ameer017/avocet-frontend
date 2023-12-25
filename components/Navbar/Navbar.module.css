@@ -3,7 +3,8 @@
     padding-block: .2rem;
     position: relative;
     z-index: 111111111;
-    position: fixed;
+    position: sticky;
+    top: 0;
     color: #4b8221;
     background: #fff;
 }
@@ -66,6 +67,9 @@
     outline: none;
     background-color: transparent;
     font-size: 15px;
+}
+.navbar_container_left_box_input_box input::placeholder {
+    color: #4b8221;
 }
 
 .search_icon {

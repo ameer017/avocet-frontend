@@ -2,6 +2,7 @@ import React from "react";
 import {
   Card,
   Category,
+  Collection,
   Filter,
   Hero,
   Service,
@@ -24,6 +25,7 @@ const Home = () => {
         paragraph="Explore the listed Plastics in the most featured categories."
       />
       <Category /> */}
+      <Collection/>
       <Filter />
       <Card/>
       <Subscribe />

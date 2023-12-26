@@ -16,7 +16,7 @@ body {
   font-family: "Nunito", Courier;
   font-size: 14px;
   background-color: var(--main-bg-color);
-  color: var(--icons-color);
+  color: #000;
 }
 
 a{
@@ -52,5 +52,11 @@ a{
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+@media screen and (max-width:768px){
+  body {
+    max-width: 100%;
   }
 }

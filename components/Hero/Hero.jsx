@@ -4,6 +4,7 @@ import Style from "./Hero.module.css";
 import Button from "../Button/Button";
 import images from "../../img";
 import { FaCanadianMapleLeaf } from "react-icons/fa";
+import { GiEcology } from "react-icons/gi";
 
 const Hero = () => {
   return (
@@ -28,11 +29,9 @@ const Hero = () => {
         <FaCanadianMapleLeaf color="white" size={40} />
       </div>
       <div className={Style.waterDroplets}>
-        <div className={Style.drop}></div>
-        <div className={Style.drop}></div>
-        <div className={Style.drop}></div>
-        <div className={Style.drop}></div>
-        <div className={Style.drop}></div>
+        <div className={Style.drop}>
+          <GiEcology color="white" size={25} />
+        </div>
       </div>
     </div>
   );

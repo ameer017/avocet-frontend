@@ -63,35 +63,33 @@
 }
 
 .leaf:nth-child(3) {
-  animation: floatAnimation 10s ease-in-out infinite 4s; 
+  animation: floatAnimation 10s ease-in-out infinite 4s;
 }
 
 .waterDroplets {
   display: flex;
 }
 .drop {
-  width: 1.2px;
-  height: 35px;
-  background-color: #ece8e8; 
   position: absolute;
-  opacity: 0; 
+  opacity: 0;
   top: 2rem;
+  
 }
 
 @keyframes fallAnimation {
   0% {
-    transform: translateY(-50px);
+    transform: translate(0, 0);
     opacity: 1;
   }
   100% {
-    transform: translateY(200px);
+    transform: translate(calc(-100vw + 5px), calc(100vh - 5px)); /* Adjust the values as needed */
     opacity: 0;
   }
 }
 
 .drop:nth-child(1) {
-  animation: fallAnimation 5s ease-in-out infinite 2s;
-  -webkit-animation: fallAnimation 5s ease-in-out infinite 2s;
+  animation: fallAnimation 35s ease-in-out infinite 2s;
+  -webkit-animation: fallAnimation 35s ease-in-out infinite 2s;
 }
 
 .drop:nth-child(2) {
@@ -112,4 +110,13 @@
 .drop:nth-child(5) {
   animation: fallAnimation 5s ease-in-out infinite 10s;
   -webkit-animation: fallAnimation 5s ease-in-out infinite 10s;
+}
+
+@media screen and (max-width: 768px) {
+  .heroSection {
+    overflow: hidden;
+  }
+  .heroSection_box {
+    padding-left: 5em;
+  }
 }

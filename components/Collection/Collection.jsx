@@ -15,8 +15,8 @@ const Collection = () => {
   const [news, setNews] = useState(false);
 
   const CardArray = [1, 2, 3, 4, 5, 6];
-  const followingArray = [1, 2, 3, 4];
-  const newsArray = [1, 2, 3, 4, 5, 6];
+  const followingArray = [1, 2, 3];
+  const newsArray = [1, 2, 3, 4];
 
   const openPopular = () => {
     if (!popular) {
@@ -44,7 +44,7 @@ const Collection = () => {
   return (
     <div className={Style.collection}>
       <div className={Style.collection_title}>
-        <h2>Top List Sellers</h2>
+        <h2>Top Sellers</h2>
         <div className={Style.collection_collections}>
           <div className={Style.collection_collections_btn}>
             <button onClick={() => openPopular()}>

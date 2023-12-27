@@ -6,10 +6,11 @@
     border: 1px;
     position: relative;
     padding-bottom: 13rem;
+    /* padding: 0 2rem 13rem 2rem; */
   }
   
   .followerTab_title{
-      width: 30rem;
+      /* width: 30rem; */
       margin: 0 auto;
       padding: 0 0 6rem 0;
       text-align: center;
@@ -49,7 +50,7 @@
   }
   
   .followerTab_box{
-      width: 80%;
+      width: 90%;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);

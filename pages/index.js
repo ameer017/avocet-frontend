@@ -26,7 +26,7 @@ const Home = () => {
         paragraph="Explore the listed Plastics in the most featured categories."
       />
       <Category /> */}
-      <FollowerTab /> {/*  route is inside Discover__Navbar */}
+      {/* <FollowerTab />  route is inside Discover__Navbar */}
       <Collection />
       <Filter />
       <Card />

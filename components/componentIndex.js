@@ -10,8 +10,9 @@ import Category from "./Category/Category";
 import Filter from "./Filter/Filter";
 import Card from "./Card/Card";
 import Collection from "./Collection/Collection"
+import FollowerTab from "./FollowerTab/FollowerTab";
 
 
 
 
-export { Footer, Service, Slider, Subscribe, Navbar, Hero, Button, Title, Category, Filter, Card, Collection };
+export { Footer, Service, Slider, Subscribe, Navbar, Hero, Button, Title, Category, Filter, Card, Collection, FollowerTab };

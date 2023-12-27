@@ -4,6 +4,7 @@ import {
   Category,
   Collection,
   Filter,
+  FollowerTab,
   Hero,
   Service,
   Slider,
@@ -25,9 +26,10 @@ const Home = () => {
         paragraph="Explore the listed Plastics in the most featured categories."
       />
       <Category /> */}
-      <Collection/>
+      <FollowerTab /> {/*  route is inside Discover__Navbar */}
+      <Collection />
       <Filter />
-      <Card/>
+      <Card />
       <Subscribe />
     </div>
   );

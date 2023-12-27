@@ -28,11 +28,6 @@ const Hero = () => {
       <div className={Style.leaf}>
         <FaCanadianMapleLeaf color="white" size={40} />
       </div>
-      <div className={Style.waterDroplets}>
-        <div className={Style.drop}>
-          <GiEcology color="white" size={25} />
-        </div>
-      </div>
     </div>
   );
 };

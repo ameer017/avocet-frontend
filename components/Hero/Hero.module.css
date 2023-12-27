@@ -52,7 +52,6 @@
   }
 }
 
-/* Apply animation to leaves */
 .leaf:nth-child(1) {
   animation: floatAnimation 10s ease-in-out infinite 2s;
   -webkit-animation: floatAnimation 10s ease-in-out infinite 2s;
@@ -64,7 +63,15 @@
 }
 
 .leaf:nth-child(3) {
-  animation: floatAnimation 10s ease-in-out infinite 4s; /* Change delay as needed */
+  animation: floatAnimation 10s ease-in-out infinite 4s;
 }
 
-/* Add more nth-child() rules for additional leaves */
+
+@media screen and (max-width: 768px) {
+  .heroSection {
+    overflow: hidden;
+  }
+  .heroSection_box {
+    padding-left: 5em;
+  }
+}

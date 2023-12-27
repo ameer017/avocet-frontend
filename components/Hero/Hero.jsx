@@ -4,6 +4,7 @@ import Style from "./Hero.module.css";
 import Button from "../Button/Button";
 import images from "../../img";
 import { FaCanadianMapleLeaf } from "react-icons/fa";
+import { GiEcology } from "react-icons/gi";
 
 const Hero = () => {
   return (
@@ -24,9 +25,9 @@ const Hero = () => {
 
         <Button btnName="Get Started" />
       </div>
-        <div className={Style.leaf}>
-          <FaCanadianMapleLeaf color="white" size={40} />
-        </div>
+      <div className={Style.leaf}>
+        <FaCanadianMapleLeaf color="white" size={40} />
+      </div>
     </div>
   );
 };

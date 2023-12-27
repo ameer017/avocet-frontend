@@ -23,6 +23,10 @@ const Discover = () => {
       name: "Blog",
       link: "blog"
     },
+    {
+      name: "Seller's Page",
+      link: "seller" //This will be linked to FollowerTab
+    }
   ];
 
   return (

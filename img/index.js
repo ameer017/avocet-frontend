@@ -41,9 +41,13 @@ import nft_image_2 from "./nft-image-2.png";
 import nft_image_3 from "./nft-image-3.png";
 import musiceWave from "./musicwave.png";
 import update from "./update.png";
+import avocet from "./avocet.png"
+import envelope from "./envelope.jpg"
 
 export default {
+  avocet,
   collection,
+  envelope,
   update,
   musiceWave,
   nft_image_1,

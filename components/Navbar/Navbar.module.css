@@ -67,6 +67,7 @@
     outline: none;
     background-color: transparent;
     font-size: 15px;
+    color: black;
 }
 .navbar_container_left_box_input_box input::placeholder {
     color: #4b8221;

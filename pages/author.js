@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 import Style from "../styles/author.module.css";
-import { Banner, NFTCardTwo } from "../collectionPage/collectionIndex";
-import { Brand, Title } from "../components/componentsindex";
-import FollowerTabCard from "../components/FollowerTab/FollowerTabCard/FollowerTabCard";
+import { Banner } from "../collectionPage/collectionIndex";
+import { Title } from "../components/componentIndex";
 import images from "../img";
 import {
   AuthorProfileCard,
   AuthorTaps,
-  AuthorNFTCardBox,
+  AuthorCardBox,
 } from "../authorPage/componentIndex";
+import FollowerTabCard from "../sellerPage/FollowerTab/FollowerTabCard/FollowerTabCard";
 
 const author = () => {
   const followerArray = [
@@ -39,7 +39,7 @@ const author = () => {
     },
   ];
 
-  const [collectiables, setCollectiables] = useState(true);
+  const [collectibles, setCollectibles] = useState(true);
   const [created, setCreated] = useState(false);
   const [like, setLike] = useState(false);
   const [follower, setFollower] = useState(false);
@@ -50,15 +50,15 @@ const author = () => {
       <Banner bannerImage={images.creatorbackground2} />
       <AuthorProfileCard />
       <AuthorTaps
-        setCollectiables={setCollectiables}
+        setCollectibles={setCollectibles}
         setCreated={setCreated}
         setLike={setLike}
         setFollower={setFollower}
         setFollowing={setFollowing}
       />
 
-      <AuthorNFTCardBox
-        collectiables={collectiables}
+      <AuthorCardBox
+        collectibles={collectibles}
         created={created}
         like={like}
         follower={follower}
@@ -75,7 +75,7 @@ const author = () => {
         ))}
       </div>
 
-      <Brand />
+      {/* <Brand /> */}
     </div>
   );
 };

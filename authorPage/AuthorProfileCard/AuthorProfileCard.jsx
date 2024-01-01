@@ -8,16 +8,15 @@ import {
 import { FiCopy } from "react-icons/fi";
 import {
   TiSocialFacebook,
-  TiSocialLinkedin,
-  TiSocialYoutube,
   TiSocialInstagram,
+  TiSocialTwitter,
 } from "react-icons/ti";
 import { BsThreeDots } from "react-icons/bs";
 
 //INTERNAL IMPORT
 import Style from "./AuthorProfileCard.module.css";
 import images from "../../img";
-import { Button } from "../../components/componentsindex.js";
+import { Button } from "../../components/Button/Button";
 
 const AuthorProfileCard = () => {
   const [share, setShare] = useState(false);
@@ -83,7 +82,8 @@ const AuthorProfileCard = () => {
           </div>
 
           <p>
-            Punk #001 / An OG plastic waste Collector, hoarder of tokenized wastes.
+            Punk #001 / An OG plastic waste Collector, hoarder of tokenized
+            wastes.
           </p>
 
           <div className={Style.AuthorProfileCard_box_info_social}>
@@ -94,7 +94,7 @@ const AuthorProfileCard = () => {
               <TiSocialInstagram />
             </a>
             <a href="#">
-              <TiSocialInstagram />
+              <TiSocialTwitter />{" "}
             </a>
           </div>
         </div>
@@ -124,10 +124,9 @@ const AuthorProfileCard = () => {
               </p>
               <p>
                 <span>
-                  <TiSocialInstagram />
+                  <TiSocialTwitter />{" "}
                 </span>{" "}
-                {""}
-                X (formerly Twitter)
+                {""}X (formerly Twitter)
               </p>
             </div>
           )}

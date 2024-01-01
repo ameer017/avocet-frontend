@@ -13,7 +13,7 @@ const Discover = () => {
     },
     {
       name: "Author Profile",
-      link: "author-profile"
+      link: "author"
     },
     {
       name: "Account Setting",

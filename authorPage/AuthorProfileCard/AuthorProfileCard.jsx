@@ -10,19 +10,22 @@ import {
   TiSocialFacebook,
   TiSocialInstagram,
   TiSocialTwitter,
+  TiSocialYoutube,
+  TiSocialLinkedin,
 } from "react-icons/ti";
 import { BsThreeDots } from "react-icons/bs";
 
 //INTERNAL IMPORT
 import Style from "./AuthorProfileCard.module.css";
 import images from "../../img";
-import { Button } from "../../components/Button/Button";
+import { Button } from "../../components/componentIndex";
 
 const AuthorProfileCard = () => {
   const [share, setShare] = useState(false);
   const [report, setReport] = useState(false);
 
-  //copyAddress function
+  //   //copyAddress function
+
   const copyAddress = () => {
     const copyText = document.getElementById("myInput");
 
@@ -68,7 +71,6 @@ const AuthorProfileCard = () => {
               <MdVerified />
             </span>{" "}
           </h2>
-
           <div className={Style.AuthorProfileCard_box_info_address}>
             <input
               type="text"
@@ -80,7 +82,6 @@ const AuthorProfileCard = () => {
               className={Style.AuthorProfileCard_box_info_address_icon}
             />
           </div>
-
           <p>
             Punk #001 / An OG plastic waste Collector, hoarder of tokenized
             wastes.
@@ -96,11 +97,15 @@ const AuthorProfileCard = () => {
             <a href="#">
               <TiSocialTwitter />{" "}
             </a>
+            <a href="#">
+              <TiSocialYoutube />{" "}
+            </a>
           </div>
         </div>
 
         <div className={Style.AuthorProfileCard_box_share}>
           <Button btnName="Follow" handleClick={() => {}} />
+
           <MdCloudUpload
             onClick={() => openShare()}
             className={Style.AuthorProfileCard_box_share_icon}
@@ -124,7 +129,7 @@ const AuthorProfileCard = () => {
               </p>
               <p>
                 <span>
-                  <TiSocialTwitter />{" "}
+                  <TiSocialTwitter />
                 </span>{" "}
                 {""}X (formerly Twitter)
               </p>
@@ -142,7 +147,7 @@ const AuthorProfileCard = () => {
                 <MdOutlineReportProblem />
               </span>{" "}
               {""}
-              Report abuse
+              {""} Report Abuse
             </p>
           )}
         </div>

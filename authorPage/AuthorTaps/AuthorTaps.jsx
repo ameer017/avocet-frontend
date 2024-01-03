@@ -1,8 +1,9 @@
+// export default AuthorTaps;
 import React, { useState } from "react";
 import Image from "next/image";
 import { TiArrowSortedDown, TiArrowSortedUp, TiTick } from "react-icons/ti";
 
-//INTERNAL IMPORT
+// //INTERNAL IMPORT
 import Style from "./AuthorTaps.module.css";
 
 const AuthorTaps = ({

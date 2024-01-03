@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+// INTERNAL IMPORT
 import Style from "../styles/author.module.css";
-import { Banner } from "../collectionPage/collectionIndex";
+import { Banner, CardTwo } from "../collectionPage/collectionIndex";
 import { Title } from "../components/componentIndex";
 import images from "../img";
 import {
@@ -46,7 +47,7 @@ const author = () => {
   const [following, setFollowing] = useState(false);
 
   return (
-    <div className={Style.author}>
+    <div className={Style.Banner}>
       <Banner bannerImage={images.creatorbackground2} />
       <AuthorProfileCard />
       <AuthorTaps
@@ -64,18 +65,16 @@ const author = () => {
         follower={follower}
         following={following}
       />
+
       <Title
         heading="Popular Creators"
-        paragraph="Click on music icon and enjoy NTF music or audio
-"
+        paragraph="Click on music icon and enjoy NTF music or audio"
       />
       <div className={Style.author_box}>
         {followerArray.map((el, i) => (
           <FollowerTabCard i={i} el={el} />
         ))}
       </div>
-
-      {/* <Brand /> */}
     </div>
   );
 };

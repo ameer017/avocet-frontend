@@ -43,7 +43,7 @@ const FollowerTab = () => {
   return (
     <div className={Style.followerTab}>
       <div className={Style.followerTab_title}>
-        <h2> Top Seller's List..</h2>
+        <h2> Top Seller's List.</h2>
         <div className={Style.followerTab_tabs}>
           <div className={Style.followerTab_tabs_btn}>
             <button onClick={() => openPopular()}>

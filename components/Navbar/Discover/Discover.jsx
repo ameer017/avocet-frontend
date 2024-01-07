@@ -20,6 +20,10 @@ const Discover = () => {
       link: "account-setting"
     },
     {
+      name: "Search",
+      link: "searchPage"
+    },
+    {
       name: "Blog",
       link: "blog"
     },

@@ -43,9 +43,11 @@ import musiceWave from "./musicwave.png";
 import update from "./update.png";
 import avocet from "./avocet.png"
 import envelope from "./envelope.jpg"
+import upload from "./upload.png"
 
 export default {
   avocet,
+  upload,
   collection,
   envelope,
   update,
@@ -90,4 +92,5 @@ export default {
   vimeo,
   youtube,
   zgcmq,
+
 };

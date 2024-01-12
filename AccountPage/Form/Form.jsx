@@ -10,7 +10,7 @@ import {
 // INTERNAL IMPORTS
 import Style from "./Form.module.css";
 import { Button } from "../../components/componentIndex.js";
-import { ST } from "next/dist/shared/lib/utils";
+// import { ST } from "next/dist/shared/lib/utils";
 
 const Form = () => {
   return (
@@ -64,7 +64,7 @@ const Form = () => {
                 <div className={Style.Form_box_input_box_icon}>
                   <TiSocialFacebook />
                 </div>
-                <input type="text" placeholder="https://facebook" />
+                <input type="text" placeholder="https://" />
               </div>
             </div>
             <div className={Style.Form_box_input}>
@@ -73,7 +73,7 @@ const Form = () => {
                 <div className={Style.Form_box_input_box_icon}>
                   <TiSocialTwitter />
                 </div>
-                <input type="text" placeholder="https://www.twitter.com" />
+                <input type="text" placeholder="https://" />
               </div>
             </div>
             <div className={Style.Form_box_input}>
@@ -82,7 +82,7 @@ const Form = () => {
                 <div className={Style.Form_box_input_box_icon}>
                   <TiSocialInstagram />
                 </div>
-                <input type="text" placeholder="https://www.instagram.com" />
+                <input type="text" placeholder="https://" />
               </div>
             </div>
           </div>

@@ -9,7 +9,7 @@ const HelpCenter = () => {
   const helpCenter = [
     {
       name: "About",
-      link: "about"
+      link: "aboutus"
     },
     {
       name: "Contact Us",
@@ -22,6 +22,10 @@ const HelpCenter = () => {
     {
       name: "Sign In",
       link: "sign-in"
+    },
+    {
+      name: "Subscription",
+      link: "subscription"
     }
   ]
 

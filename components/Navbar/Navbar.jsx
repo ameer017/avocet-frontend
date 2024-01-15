@@ -80,13 +80,21 @@ const Navbar = () => {
     <div className={Style.navbar}>
       <div className={Style.navbar_container}>
         <div className={Style.navbar_container_left}>
-          <div className={Style.logo}>
-            <RiRecycleFill />{" "}
-            <div>
-              <span>AVOCET</span>
-              <span>SOLUTIONS</span>
-            </div>
+          <div>
+            <Link href="/">
+              <a>
+                <div className={Style.logo}>
+                  <RiRecycleFill />{" "}
+                  <div>
+                    <span>AVOCET</span>
+                    <span>SOLUTIONS</span>
+                  </div>
+                </div>
+              </a>
+            </Link>
           </div>
+
+          
 
           <div className={Style.navbar_container_left_box_input}>
             <div className={Style.navbar_container_left_box_input_box}>

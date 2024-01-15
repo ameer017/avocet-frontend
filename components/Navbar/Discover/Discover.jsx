@@ -25,7 +25,7 @@ const Discover = () => {
       link: "account",
     },
     {
-      name: "Upload NFT",
+      name: "Upload",
       link: "upload",
     },
     {
@@ -33,10 +33,10 @@ const Discover = () => {
       link: "connectWallet",
     },
 
-    {
-      name: "Blog",
-      link: "blog",
-    },
+    // {
+    //   name: "Blog",
+    //   link: "blog",
+    // },
     {
       name: "Seller's Page",
       link: "seller", //This will be linked to FollowerTab

@@ -7,14 +7,13 @@ import Image from "next/image";
 
 // INTERNAL IMPORTS
 import Style from "./Upload.module.css";
-import formStyle from "../AccountPage/Form/Form.module.css"
+import formStyle from "../AccountPage/Form/Form.module.css";
 import images from "../img";
 import { Button } from "../components/componentIndex";
-import {DropZone} from "../Upload/uploadIndex"
+import { DropZone } from "../Upload/uploadIndex";
 import { AiTwotonePropertySafety } from "react-icons/ai";
 
 const Upload = () => {
-
   const [active, setActive] = useState(0);
   const [itemName, setItemName] = useState("");
   const [website, setWebsite] = useState("");
@@ -49,7 +48,7 @@ const Upload = () => {
 
   return (
     <div className={Style.upload}>
-     <DropZone
+      <DropZone
         title=" JPG, PNG , WEBM, MAX 100MB"
         heading="Drag & Drop file"
         subHeading="or Browse media on your device"
@@ -88,8 +87,7 @@ const Upload = () => {
 
           <p className={Style.upload_box_input_para}>
             Avocet will include a link to this URL on this item's details, so
-            that iusers can click to learn more about it.You are welcome to link
-            to your own webpage with more details
+            that users can click to learn more about it.
           </p>
         </div>
 
@@ -102,7 +100,6 @@ const Upload = () => {
             rows="6"
             placeholder="Something about yourself in few words"
             onChange={(e) => setDescription(e.target.value)}
-
           ></textarea>
           <p>
             The description will be included on the item's detail page
@@ -175,8 +172,7 @@ const Upload = () => {
             <label htmlFor="Properties">Properties</label>
             <div className={formStyle.Form_box_input_box}>
               <div className={formStyle.Form_box_input_box_icon}>
-                
-                <AiTwotonePropertySafety/>
+                <AiTwotonePropertySafety />
               </div>
               <input
                 type="text"
@@ -203,5 +199,4 @@ const Upload = () => {
   );
 };
 
-
-export default Upload
+export default Upload;

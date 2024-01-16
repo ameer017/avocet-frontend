@@ -109,5 +109,6 @@ export default {
   founder2,
   founder3,
   founder4,
-  hero2
+  hero2,
+  upload
 };

@@ -15,23 +15,23 @@ const Discover = () => {
       name: "Search",
       link: "searchPage",
     },
-    {
-      name: "Author Profile",
-      link: "author",
-    },
+    // {
+    //   name: "Author Profile",
+    //   link: "author",
+    // },
 
     {
       name: "Account Setting",
       link: "account",
     },
     {
-      name: "Upload",
+      name: "Upload/Create",
       link: "upload",
     },
-    {
-      name: "Connect Wallet",
-      link: "connectWallet",
-    },
+    // {
+    //   name: "Connect Wallet",
+    //   link: "connectWallet",
+    // },
 
     // {
     //   name: "Blog",

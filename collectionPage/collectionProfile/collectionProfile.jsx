@@ -1,9 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import {
-  TiSocialTwitter,
-  TiSocialInstagram,
-} from "react-icons/ti";
+import { TiSocialTwitter, TiSocialInstagram } from "react-icons/ti";
+import { FaBottleWater } from "react-icons/fa";
+
 
 //INTERNAL IMPORT
 import Style from "./collectionProfile.module.css";
@@ -15,13 +14,14 @@ const collectionProfile = () => {
     <div className={Style.collectionProfile}>
       <div className={Style.collectionProfile_box}>
         <div className={Style.collectionProfile_box_left}>
-          <Image
-            src={images.nft_image_1}
+        
+          <img
+            src="https://images.pexels.com/photos/10566514/pexels-photo-10566514.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="nft image"
-            width={800}
-            height={800}
+            width={250}
             className={Style.collectionProfile_box_left_img}
           />
+
 
           <div className={Style.collectionProfile_box_left_social}>
             <a href="#">

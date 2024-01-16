@@ -40,14 +40,14 @@ const CardTwo = ({ NFTData }) => {
           </div>
 
           <div className={Style.NFTCardTwo_box_img}>
-            <Image
+            {/* <Image
               src={el}
               alt="NFT"
               width={500}
               height={500}
               objectFit="cover"
               className={Style.NFTCardTwo_box_img_img}
-            />
+            /> */}
           </div>
 
           <div className={Style.NFTCardTwo_box_info}>
@@ -55,13 +55,13 @@ const CardTwo = ({ NFTData }) => {
               {/* <LikeProfile /> */}
               <p>id: #{i + 1}</p>
             </div>
-            <small>4{i + 2}</small>
+            <small>{i + 1}</small>
           </div>
 
           <div className={Style.NFTCardTwo_box_price}>
             <div className={Style.NFTCardTwo_box_price_box}>
               <small>Current Bid</small>
-              <p>1{i + 5}.000 ETH</p>
+              <p>{i + 1}.000 ETH</p>
             </div>
             <p className={Style.NFTCardTwo_box_price_stock}>
               <MdTimer /> <span>{i + 1}hours left</span>

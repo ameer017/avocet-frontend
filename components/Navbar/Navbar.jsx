@@ -137,7 +137,7 @@ const Navbar = () => {
           <div className={Style.navbar_container_right_profile_box}>
             <div className={Style.navbar_container_right_profile}>
               <Image
-                src={images.user1}
+                src={images.avatar}
                 alt="Profile"
                 width={40}
                 height={40}

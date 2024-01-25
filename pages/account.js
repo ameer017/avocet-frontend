@@ -34,7 +34,7 @@ const account = () => {
         <div className={Style.account_box_img} {...getRootProps()}>
           <input {...getInputProps()}/>
           <Image
-            src={images.user1}
+            src={images.avatar}
             alt="account upload"
             width={150}
             height={150}

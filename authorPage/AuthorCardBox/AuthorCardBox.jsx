@@ -42,50 +42,50 @@ const AuthorCardBox = ({
   const followerArray = [
     {
       background: images.creatorbackground1,
-      user: images.user1,
+      user: images.avatar,
     },
     {
       background: images.creatorbackground2,
-      user: images.user2,
+      user: images.avatar,
     },
     {
       background: images.creatorbackground3,
-      user: images.user3,
+      user: images.avatar,
     },
     {
       background: images.creatorbackground4,
-      user: images.user4,
+      user: images.avatar,
     },
     {
       background: images.creatorbackground5,
-      user: images.user5,
+      user: images.avatar,
     },
     {
       background: images.creatorbackground6,
-      user: images.user6,
+      user: images.avatar,
     },
   ];
 
   const followingArray = [
     {
       background: images.creatorbackground3,
-      user: images.user3,
+      user: images.avatar,
     },
     {
       background: images.creatorbackground4,
-      user: images.user4,
+      user: images.avatar,
     },
     {
       background: images.creatorbackground5,
-      user: images.user5,
+      user: images.avatar,
     },
     {
       background: images.creatorbackground6,
-      user: images.user6,
+      user: images.avatar,
     },
     {
       background: images.creatorbackground1,
-      user: images.user1,
+      user: images.avatar,
     },
   ];
   return (

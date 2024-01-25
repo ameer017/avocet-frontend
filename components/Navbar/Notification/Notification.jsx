@@ -11,7 +11,7 @@ const Notification = () => {
       <p>Notification</p>
         <div className={Style.notification_box}>
           <div className={Style.notification_box_img}>
-            <Image src={images.user1} alt='Profile Image' width={50} height={50} className={Style.notification_box_img}/>
+            <Image src={images.avatar} alt='Profile Image' width={50} height={50} className={Style.notification_box_img}/>
           </div>
           <div className={Style.notification_box_info}>
             <h4>John Doe</h4>

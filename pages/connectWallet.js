@@ -22,10 +22,10 @@ const connectWallet = () => {
       provider: images.provider3,
       name: "walletlink",
     },
-    {
-      provider: images.provider1,
-      name: "Formatic",
-    },
+    // {
+    //   provider: images.provider1,
+    //   name: "Formatic",
+    // },
   ];
 
   return (

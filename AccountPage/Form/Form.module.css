@@ -56,12 +56,12 @@
     cursor: pointer;
 }
 
-.Form_box_input_box input {
+.Form_box_input_box input, .Form_box_input_userName {
     width: 90%;
     border: 0;
     background-color: transparent;
     outline: none;
-
+    font-size: 14px;
 }
 
 .Form_box_input textarea {

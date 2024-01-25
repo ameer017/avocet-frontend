@@ -53,10 +53,12 @@ import founder2 from "./founder2.jpg"
 import founder3 from "./founder3.jpg"
 import founder4 from "./founder4.jpg"
 import hero2 from "./hero2.png"
+import avatar from "./avatar.jpeg"
 
 export default {
   avocet,
   upload,
+  avatar,
   collection,
   envelope,
   update,

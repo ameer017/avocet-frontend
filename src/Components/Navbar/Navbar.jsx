@@ -48,10 +48,12 @@ const Navbar = () => {
       <div className={`menu-panel text-center ${menuVisible ? "show" : ""}`}>
         <div className="menu-links">
           <Link to="/">HOME</Link>
-          <Link to="/">ABOUT</Link>
+          <Link to="/about">ABOUT</Link>
           <Link to="/">API</Link>
-          <Link to="/">DOCs</Link>
-          <Link to="/">TEAM</Link>
+          <Link to="/documentation">DOCs</Link>
+          <Link to="/team">TEAM</Link>
+          <Link to="/profile">PROFILE</Link>
+          <Link to="/create-order">CREATE ORDER</Link>
           <button className="--btn --btn-secondary" onClick={handleDownload}>WHITE PAPER</button>
           <button className="--btn --btn-secondary">CONNECT WALLET</button>
           <hr />

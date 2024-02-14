@@ -11,6 +11,14 @@ const Navbar = () => {
     setMenuVisible(!menuVisible);
   };
 
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/public/whitepaper.pdf'; 
+    link.download = 'whitepaper.pdf';
+    link.click();
+  };
+
+ 
   return (
     <>
       <div className="top-nav">
@@ -44,7 +52,7 @@ const Navbar = () => {
           <Link to="/">API</Link>
           <Link to="/">DOCs</Link>
           <Link to="/">TEAM</Link>
-          <button className="--btn --btn-secondary">WHITE PAPER</button>
+          <button className="--btn --btn-secondary" onClick={handleDownload}>WHITE PAPER</button>
           <button className="--btn --btn-secondary">CONNECT WALLET</button>
           <hr />
           <hr />

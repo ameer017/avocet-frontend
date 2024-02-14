@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./Home.scss";
 // import loginImg from "../../assets/login.svg";
 import { Link } from "react-router-dom";
+import Info from "../Components/Info/Info";
 
-const WORDS = ['Re-Fi', 'Recycling', 'Collecting', 'Processing'];
+const WORDS = ["Re-Fi", "Recycling", "Collecting", "Processing"];
 
 const Swapper = () => {
   const [count, setCount] = useState(0);
@@ -20,16 +21,13 @@ const Swapper = () => {
 };
 
 const Home = () => {
-
-  
-
   return (
     <div>
       <section className="hero">
         <div className="hero-text --pad">
           <p>
             <span>AVOCET </span> &nbsp; &nbsp;
-            <Swapper/> &nbsp; &nbsp;
+            <Swapper /> &nbsp; &nbsp;
           </p>
 
           <p>Explore the world of plastic recycling with ease.</p>
@@ -47,6 +45,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <Info/>
     </div>
   );
 };

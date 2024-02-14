@@ -1,18 +1,12 @@
 {
-  "name": "avocet",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "^12.2.5",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-dropzone": "^14.2.3",
-    "react-icons": "^4.4.0"
+  "name": "frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ameer017/avocet-frontend.git",
+  "author": "ameer017 <rajiabdullahi907@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.19.5"
   }
 }

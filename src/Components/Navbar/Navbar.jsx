@@ -43,8 +43,9 @@ const Navbar = () => {
           <Link to="/">ABOUT</Link>
           <Link to="/">API</Link>
           <Link to="/">DOCs</Link>
-          <Link to="/">WHITE PAPER</Link>
-          <Link to="/">CONNECT WALLET</Link>
+          <Link to="/">TEAM</Link>
+          <button className="--btn --btn-secondary">WHITE PAPER</button>
+          <button className="--btn --btn-secondary">CONNECT WALLET</button>
           <hr />
           <hr />
 

@@ -3,25 +3,39 @@ import "./Home.scss";
 // import loginImg from "../../assets/login.svg";
 import { Link } from "react-router-dom";
 
-const Home = () => {
-    const [isLoading, setIsLoading] = useState(true)
+const WORDS = ['Re-Fi', 'Recycling', 'Collecting', 'Processing'];
+
+const Swapper = () => {
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-      setTimeout(() => {
-        setIsLoading(false)
-      }, 5000)
-  }, [])
+    const interval = setInterval(() => {
+      setCount((prevCount) => (prevCount + 1) % WORDS.length);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return <span>{WORDS[count]}.</span>;
+};
+
+const Home = () => {
+
+  
 
   return (
     <div>
       <section className="hero">
         <div className="hero-text --pad">
-          <h2>AVOCET - <span>ReFi</span></h2>
           <p>
-            Explore the world of plastic recycling with ease.
+            <span>AVOCET </span> &nbsp; &nbsp;
+            <Swapper/> &nbsp; &nbsp;
           </p>
+
+          <p>Explore the world of plastic recycling with ease.</p>
           <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
           <div className="hero-buttons --flex-start">
             <button className="--btn --btn-success">

@@ -3,72 +3,62 @@ import "./Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { BsTwitterX, BsInstagram } from "react-icons/bs";
 
+const lists = [
+  // { tag: "Color Mode", id: "#color-mode", isColorMode: true },
+  { tag: "About", id: "#about" },
+  { tag: "API", id: "#projects" },
+  { tag: "Subscribe", id: "#services" },
+  { tag: "Avocoin", id: "#contact" },
+  { tag: "Profile", id: "#contact" },
+];
+
 const Navbar = () => {
-  const [menuVisible, setMenuVisible] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  const toggleMenu = () => {
-    setMenuVisible(!menuVisible);
+  const home = () => {
+    navigate("/");
+  };
+  const toggleNavbar = () => {
+    setIsOpen(!isOpen);
   };
 
   const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = '/public/whitepaper.pdf'; 
-    link.download = 'whitepaper.pdf';
+    const link = document.createElement("a");
+    link.href = "/public/whitepaper.pdf";
+    link.download = "whitepaper.pdf";
     link.click();
   };
 
- 
   return (
     <>
-      <div className="top-nav">
-        <div>
-          <Link to="/">
+      <nav className="navbar">
+        <div className="navbar-container">
+          <div className="navbar-logo" onClick={home}>
             <img src="/avocet-high-resolution-logo.png" />
-          </Link>
-        </div>
+          </div>
 
-        <div className="menu" onClick={toggleMenu}>
-          <div className="menu-line"></div>
-          <div className="menu-line"></div>
-          <div className="menu-line"></div>
-        </div>
-        <div
-          className={`menu-close ${menuVisible ? "visible" : ""}`}
-          onClick={toggleMenu}
-        >
-          <div className="menu-line"></div>
-          <div className="menu-line"></div>
-        </div>
-      </div>
-      <div
-        className={`menu-background ${menuVisible ? "visible" : ""}`}
-        onClick={toggleMenu}
-      ></div>
-      <div className={`menu-panel text-center ${menuVisible ? "show" : ""}`}>
-        <div className="menu-links">
-          <Link to="/">HOME</Link>
-          <Link to="/about">ABOUT</Link>
-          <Link to="/">API</Link>
-          <Link to="/documentation">DOCs</Link>
-          <Link to="/team">TEAM</Link>
-          <Link to="/profile">PROFILE</Link>
-          <Link to="/create-order">CREATE ORDER</Link>
-          <button className="--btn --btn-secondary" onClick={handleDownload}>WHITE PAPER</button>
-          <button className="--btn --btn-secondary">CONNECT WALLET</button>
-          <hr />
-          <hr />
+          <div className={`navbar-links ${isOpen ? "active" : ""}`}>
+            {lists.map(({ tag, id }) => (
+              <a href={id}>{tag}</a>
+            ))}
+          </div>
 
-          <div>
-            <Link to="/">
-              <BsTwitterX />
-            </Link>
-            <Link to="/">
-              <BsInstagram />
-            </Link>
+          <button
+            onClick={handleDownload}
+            className="--btn --btn-success btn"
+            target="_blank"
+          >
+            whitepaper
+          </button>
+
+          <div className="navbar-toggle" onClick={toggleNavbar}>
+            <span className={`bar ${isOpen ? "open" : ""}`}></span>
+            <span className={`bar ${isOpen ? "open" : ""}`}></span>
+            <span className={`bar ${isOpen ? "open" : ""}`}></span>
           </div>
         </div>
-      </div>
+      </nav>
     </>
   );
 };

@@ -3,6 +3,7 @@ import "./Home.scss";
 // import loginImg from "../../assets/login.svg";
 import { Link } from "react-router-dom";
 import Info from "../Components/Info/Info";
+import Partner from "../Components/Partners/Partner";
 
 const WORDS = ["Re-Fi", "Recycling", "Collecting", "Processing"];
 
@@ -45,7 +46,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-
+      <Partner/>
       <Info />
     </div>
   );

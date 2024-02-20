@@ -4,6 +4,7 @@ import "./Home.scss";
 import { Link } from "react-router-dom";
 import Info from "../Components/Info/Info";
 import Partner from "../Components/Partners/Partner";
+import Impact from "../Components/Impact/Impact";
 
 const WORDS = ["Re-Fi", "Recycling", "Collecting", "Processing"];
 
@@ -46,8 +47,9 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <Partner/>
       <Info />
+      <Impact/>
+      <Partner/>
     </div>
   );
 };

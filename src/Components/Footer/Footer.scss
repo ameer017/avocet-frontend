@@ -1,67 +1,77 @@
 footer {
-  padding: 3rem 6rem;
-  flex-wrap: wrap;
+  padding: 3em 4em;
+  color: green;
 
-  @media screen and (max-width: 600px) {
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid;
-  }
-
-  .--wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    padding: 3rem 0;
-
-    > img {
-      width: 150px;
-      cursor: pointer;
-    }
-    .socials {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-  }
-
-  .footer-items {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 3rem 0;
-  }
-
-  a {
-    color: green;
-    cursor: pointer;
-
-    :hover {
-      transition-duration: 900ms;
-      transform: translateY(-2px);
-      -webkit-transform: translateY(-2px);
-      -moz-transform: translateY(-2px);
-      -ms-transform: translateY(-2px);
-      -o-transform: translateY(-2px);
-    }
-  }
-
-  .--wrapper-two {
-    display: flex;
-    justify-content: space-evenly;
+  > div:nth-child(1) {
     flex-wrap: wrap;
-    width: 70%;
+
+    @media screen and (max-width: 660px) {
+      gap: 20px;
+    }
+    @media screen and (max-width: 460px) {
+      flex-direction: column;
+    }
+    .f__logo {
+      color: green;
+      font-weight: 500;
+      
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+
+      p {
+        color: green;
+        font-size: 20px;
+      }
+
+      a {
+        color: green;
+      }
+    }
+    .__socials {
+      @media screen and (max-width: 600px) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      p {
+        @media screen and (max-width: 600px) {
+          display: none;
+        }
+      
+      }
+    }
+  }
+
+  > div:nth-child(2) {
+    padding: 10em 0 2em 0;
 
     @media screen and (max-width: 600px) {
+      padding: 2em 0;
       flex-direction: column;
+    }
+
+    p {
+      @media screen and (max-width: 600px) {
+        text-align: center;
+        margin-bottom: 1.2em;
+      }
+    }
+    > div {
+      display: flex;
       justify-content: center;
-      width: 100%;
-      border: 2px solid;
+      align-items: center;
+      gap: 10px;
+
+      a {
+        color: green;
+      }
     }
   }
 }

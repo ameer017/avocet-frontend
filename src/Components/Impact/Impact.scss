@@ -1,0 +1,71 @@
+.impact {
+  padding: 4em;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 993px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  > .__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4em;
+
+    img {
+      width: 450px;
+      border-radius: 15px;
+
+      @media screen and (max-width: 990px) {
+        width: 360px;
+      }
+    }
+  }
+
+  .--wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media screen and (max-width: 990px) {
+      margin-top: 5em;
+    }
+
+    div {
+      padding: 4em 2em;
+      border-radius: 15px;
+
+      p {
+        font-size: 25px;
+
+        @media screen and (max-width: 990px) {
+          font-size: 20px;
+        }
+      }
+
+      ul > li {
+        font-size: 18px;
+
+        @media screen and (max-width: 990px) {
+          font-size: 15px;
+        }
+      }
+      &:nth-child(1) {
+        background-color: burlywood;
+        rotate: -5deg;
+      }
+      &:nth-child(2) {
+        background-color: teal;
+        rotate: 5deg;
+      }
+      &:nth-child(3) {
+        background-color: rgba(0, 128, 0, 0.59);
+        rotate: -5deg;
+      }
+    }
+  }
+}

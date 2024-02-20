@@ -9,9 +9,11 @@
     overflow: hidden;
     img {
       width: 100px;
-      animation: slideRightToLeft 10s infinite; 
-      transform: translateX(100%);
-
+      animation: slideRightToLeft 10s linear infinite;
+      -webkit-animation: slideRightToLeft 10s linear infinite;
+      transform: translateX(0);
+      
+      
       &:nth-child(2) {
         animation-delay: 2s;
       }
@@ -28,8 +30,16 @@
 @keyframes slideRightToLeft {
   0% {
     transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
   }
   100% {
-    transform: translateX(-100%); 
-  }
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+}
 }

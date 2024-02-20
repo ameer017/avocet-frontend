@@ -6,52 +6,64 @@ import {
   BsEnvelopeOpen,
   BsTelephone,
 } from "react-icons/bs";
+import { SlSocialLinkedin } from "react-icons/sl";
+
 import { FaGooglePlusG } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentTime = new Date().getFullYear();
+
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/public/whitepaper.pdf";
+    link.download = "whitepaper.pdf";
+    link.click();
+  };
   return (
     <>
       <hr style={{ width: "100%" }} />
-      <footer className="--flex-between">
-        <div className="--wrapper">
-          <img src="/avocet-high-resolution-logo.png" />
+      <footer>
+        <div className="--flex-between">
+          <h1 className="f__logo">AVOCET</h1>
 
-          <div className="socials">
-            <Link to="/">
-              <BsEnvelopeOpen size={25} />
+          <div>
+            <p>Resources</p>
+
+            <Link to="/documentation">DOCs</Link>
+            <button onClick={handleDownload} className="--btn">Whitepaper</button>
+          </div>
+          <div>
+            <p>Company</p>
+            <Link to="/about">About Us</Link>
+            <Link to="/contact">Contact Us</Link>
+            <Link to="/service">Services</Link>
+            <Link to="/team">Team</Link>
+          </div>
+          <div className="__socials">
+            <p>Socials</p>
+            <Link to="mailto:avocet907@gmail.com">
+              <BsEnvelopeOpen />
             </Link>
-            <Link to="/">
-              <BsInstagram size={25} />
+            <Link>
+              <BsInstagram />
             </Link>
-            <Link to="/">
-              <BsTwitterX size={25} />
+            <Link>
+              <BsTwitterX />
+            </Link>
+            <Link>
+              <SlSocialLinkedin />
             </Link>
           </div>
         </div>
 
-        <div className="--wrapper-two">
-          <div className="footer-items">
-            <h3>AVOCET</h3>
-            <Link>About</Link>
-            <Link>Contact</Link>
-            <Link>Privacy Policy</Link>
-            <Link>Team</Link>
-            <Link>Terms And Conditions</Link>
-          </div>
+        <div className="--flex-between --pad">
+          <p>&copy; {currentTime} All Rights Reserved</p>
 
-          <div className="footer-items">
-            <h3>Support</h3>
-            <Link>Contact Us</Link>
-            <Link>Report An Issue</Link>
-          </div>
-
-          <div className="footer-items">
-            <h3>Developers</h3>
-            <Link>API</Link>
-            <Link>Documentation</Link>
+          <div>
+            <Link to="/">Terms Of Use</Link>
+            <Link to="/">Privacy Policy</Link>
           </div>
         </div>
       </footer>

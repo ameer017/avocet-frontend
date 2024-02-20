@@ -14,6 +14,13 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentTime = new Date().getFullYear();
+
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/public/whitepaper.pdf";
+    link.download = "whitepaper.pdf";
+    link.click();
+  };
   return (
     <>
       <hr style={{ width: "100%" }} />
@@ -24,19 +31,19 @@ const Footer = () => {
           <div>
             <p>Resources</p>
 
-            <Link>DOCs</Link>
-            <Link>Whitepaper</Link>
+            <Link to="/documentation">DOCs</Link>
+            <button onClick={handleDownload} className="--btn">Whitepaper</button>
           </div>
           <div>
             <p>Company</p>
-            <Link>About Us</Link>
-            <Link>Contact Us</Link>
-            <Link>Services</Link>
-            <Link>Team</Link>
+            <Link to="/about">About Us</Link>
+            <Link to="/contact">Contact Us</Link>
+            <Link to="/service">Services</Link>
+            <Link to="/team">Team</Link>
           </div>
           <div className="__socials">
             <p>Socials</p>
-            <Link>
+            <Link to="mailto:avocet907@gmail.com">
               <BsEnvelopeOpen />
             </Link>
             <Link>

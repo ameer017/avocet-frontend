@@ -4,12 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { BsTwitterX, BsInstagram } from "react-icons/bs";
 
 const lists = [
-  // { tag: "Color Mode", id: "#color-mode", isColorMode: true },
-  { tag: "About", id: "#about" },
-  { tag: "API", id: "#projects" },
-  { tag: "Subscribe", id: "#services" },
-  { tag: "Avocoin", id: "#contact" },
-  { tag: "Profile", id: "#contact" },
+  { tag: "About", path: "/about" },
+  { tag: "API", path: "/api" },
+  { tag: "Avocoin", path: "/token" },
+  { tag: "Profile", path: "/profile" },
+  { tag: "Create", path: "/order-creation" },
 ];
 
 const Navbar = () => {
@@ -39,8 +38,8 @@ const Navbar = () => {
           </div>
 
           <div className={`navbar-links ${isOpen ? "active" : ""}`}>
-            {lists.map(({ tag, id }) => (
-              <a href={id}>{tag}</a>
+            {lists.map(({ tag, path }) => (
+              <Link to={path}>{tag}</Link>
             ))}
           </div>
 

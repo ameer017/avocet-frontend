@@ -1,0 +1,35 @@
+.partner {
+  background-color: #8080802b;
+  text-align: center;
+  padding: 5em;
+
+  > div {
+    padding: 3em;
+    margin-top: 5em;
+    overflow: hidden;
+    img {
+      width: 100px;
+      animation: slideRightToLeft 10s infinite; 
+      transform: translateX(100%);
+
+      &:nth-child(2) {
+        animation-delay: 2s;
+      }
+      &:nth-child(3) {
+        animation-delay: 4s;
+      }
+      &:nth-child(4) {
+        animation-delay: 6s;
+      }
+    }
+  }
+}
+
+@keyframes slideRightToLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%); 
+  }
+}

@@ -13,6 +13,8 @@ import Token from "./Pages/Token/Token";
 import Api from "./Pages/Api/Api";
 import Contact from "./Pages/Contact/Contact";
 import Service from "./Pages/Service/Service";
+import ScrollToTop from "react-scroll-to-top";
+import ScrollToTopOnMount from "./Components/ScrollToTop";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,12 +25,16 @@ function App() {
     }, 5000);
   }, []);
 
+
+
+
   return (
     <div>
       {isLoading ? (
         <Loader />
       ) : (
         <>
+          <ScrollToTopOnMount/>
           <Routes>
             <Route
               path="/"
@@ -96,7 +102,7 @@ function App() {
                 </Layout>
               }
             />
-            
+
             <Route
               path="/contact"
               element={
@@ -105,7 +111,7 @@ function App() {
                 </Layout>
               }
             />
-            
+
             <Route
               path="/service"
               element={
@@ -115,6 +121,8 @@ function App() {
               }
             />
           </Routes>
+          <ScrollToTop smooth />
+
         </>
       )}
     </div>

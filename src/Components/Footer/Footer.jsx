@@ -31,6 +31,7 @@ const Footer = () => {
           <div>
             <p>Resources</p>
 
+            <Link to="/api">API</Link>
             <Link to="/documentation">DOCs</Link>
             <button onClick={handleDownload} className="--btn">
               Whitepaper

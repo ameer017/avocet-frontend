@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Info from "../Components/Info/Info";
 import Partner from "../Components/Partners/Partner";
 import Impact from "../Components/Impact/Impact";
+import Restore from "../Components/Restore/Restore";
 
 const WORDS = ["Re-Fi", "Recycling", "Collecting", "Processing"];
 
@@ -22,8 +23,6 @@ const Swapper = () => {
   return <span>{WORDS[count]}.</span>;
 };
 
-
-
 const Home = () => {
   return (
     <div>
@@ -35,10 +34,7 @@ const Home = () => {
           </p>
 
           <p>Explore the world of plastic recycling with ease.</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
+
           <div className="hero-buttons --flex-start">
             <button className="--btn --btn-success">
               <Link to="/register">Get Started</Link>
@@ -49,9 +45,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <Restore />
       <Info />
-      <Impact/>
-      <Partner/>
+      <Impact />
+      <Partner />
     </div>
   );
 };

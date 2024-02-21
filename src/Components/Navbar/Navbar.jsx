@@ -5,7 +5,6 @@ import { BsTwitterX, BsInstagram } from "react-icons/bs";
 
 const lists = [
   { tag: "About", path: "/about" },
-  { tag: "API", path: "/api" },
   { tag: "Avocoin", path: "/token" },
   { tag: "Profile", path: "/profile" },
   { tag: "Create", path: "/order-creation" },

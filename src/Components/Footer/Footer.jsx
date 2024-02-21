@@ -32,7 +32,9 @@ const Footer = () => {
             <p>Resources</p>
 
             <Link to="/documentation">DOCs</Link>
-            <button onClick={handleDownload} className="--btn">Whitepaper</button>
+            <button onClick={handleDownload} className="--btn">
+              Whitepaper
+            </button>
           </div>
           <div>
             <p>Company</p>
@@ -43,18 +45,16 @@ const Footer = () => {
           </div>
           <div className="__socials">
             <p>Socials</p>
-            <Link to="mailto:avocet907@gmail.com">
+            <a href="mailto:avocet907@gmail.com">
               <BsEnvelopeOpen />
-            </Link>
-            <Link>
-              <BsInstagram />
-            </Link>
-            <Link>
+            </a>
+
+            <a href="https://twitter.com/avocet816589">
               <BsTwitterX />
-            </Link>
-            <Link>
+            </a>
+            <a href="#">
               <SlSocialLinkedin />
-            </Link>
+            </a>
           </div>
         </div>
 

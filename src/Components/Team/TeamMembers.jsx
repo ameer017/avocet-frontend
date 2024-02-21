@@ -1,5 +1,7 @@
+// TeamMembers.js
 import React from "react";
 import { Link } from "react-router-dom";
+import { BsTwitterX, BsInstagram, BsLinkedin } from "react-icons/bs";
 
 const TeamMember = ({ name, role, image, x, insta, linkedin }) => {
   return (
@@ -8,11 +10,17 @@ const TeamMember = ({ name, role, image, x, insta, linkedin }) => {
         <h3>{name}</h3>
         <p>{role}</p>
         <div className="--flex-center">
-          <span>{x}</span> &nbsp; &nbsp;
-          <span>{insta}</span> &nbsp; &nbsp;
-          <span>{linkedin}</span>
+          <Link to={x}>
+            <BsTwitterX />
+          </Link>
+          <Link to={insta}>
+            <BsInstagram />
+          </Link>
+          <Link to={linkedin}>
+            <BsLinkedin />
+          </Link>
         </div>
-        <img src={image} className="--mt" />
+        <img src={image} className="--mt" alt={name} />
       </div>
     </div>
   );

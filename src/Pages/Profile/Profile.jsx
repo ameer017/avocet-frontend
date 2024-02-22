@@ -24,7 +24,7 @@ const Profile = () => {
                 <p>100</p>
               </div>
               <div>
-                <h4>Asset:</h4>
+                <h4>Assets Bought:</h4>
                 <p>30</p>
               </div>
             </div>

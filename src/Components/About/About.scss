@@ -1,0 +1,206 @@
+.hero-home {
+  background-color: #f0f0f0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 6rem;
+
+  .headerText {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 4rem;
+  }
+
+  p {
+    max-width: 100%;
+    margin-top: 10px;
+    font-size: 20px;
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .btn {
+    padding: 15px 20px;
+    background-color: green;
+    color: #000;
+    text-decoration: none;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+}
+
+/* The First and The Third Box*/
+
+.tech-block {
+  background-image: url("https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/meP33pOkvJFe3rGO/recycle-5591472_1920-AE0qPzzxzQHwKbzL.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  margin-top: 6rem;
+  justify-content: center;
+  background-color: #2b5e14;
+  min-height: 100vh;
+  min-width: 100%;
+  background-blend-mode: multiply;
+
+  .tech_card, .tech_card_four {
+    padding: 6rem;
+    margin: 4px;
+  }
+
+  .left-box, .left-box4 {
+    width: 50%;
+    padding: 5rem;
+    background-color: #294f28;
+    border-radius: 20px;
+  }
+
+  .__label, .__label_four {
+    display: inline-block;
+    line-height: 40px;
+    font-size: 18px;
+  }
+
+  h2, h5 {
+    color: #f0f0f0;
+    font-size: 4rem;
+    margin-top: 20px;
+    font-weight: 20px;
+  }
+
+  .btn-group2, .btn-group_four {
+    display: flex-end;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .btn2, .btn4 {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 15px 20px;
+    background: green;
+    text-decoration: none;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+
+  /* The Second Box*/
+
+  .tech_card2 {
+    padding: 6rem;
+    margin: 4px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+  }
+
+  .left-box2 {
+    width: 50%;
+    padding: 5rem;
+    background-color: #294f28;
+    border-radius: 20px;
+  }
+
+  .__label2 {
+    display: inline-block;
+    line-height: 40px;
+    font-size: 18px;
+  }
+
+  h3 {
+    font-size: 4rem;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #f0f0f0;
+  }
+  
+  .btn-group3 {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 40px;
+  }
+  
+  .btn3 {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 15px 20px;
+    background: green;
+    text-decoration: none;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+  
+}
+
+/* The Sign Up*/
+
+.sign-up {
+  background-color: #f0f0f0;
+  margin-top: 6rem;
+  padding: 5rem;
+
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h4 {
+    font-size: 4rem;
+    font-weight: bold;
+  }
+
+  input {
+    margin-bottom: 10px;
+    padding: 1.6rem;
+    width: 50%;
+    border-radius: 15px;
+  }
+
+  p {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 1.6rem;
+    width: 50%;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+}
+
+.__footer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rem;
+  margin-top: 6rem;
+
+  .__footer-btn {
+    padding: 15px 20px;
+    background: green;
+    text-decoration: none;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+}

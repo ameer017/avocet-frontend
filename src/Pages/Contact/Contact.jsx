@@ -1,5 +1,6 @@
 import React from "react";
 import "./Contact.scss";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   return (

@@ -15,6 +15,7 @@ import Contact from "./Pages/Contact/Contact";
 import Service from "./Pages/Service/Service";
 import ScrollToTop from "react-scroll-to-top";
 import ScrollToTopOnMount from "./Components/ScrollToTop";
+import TermsAndCondition from "./Pages/Terms/TermAndCondition";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,16 +26,12 @@ function App() {
     }, 5000);
   }, []);
 
-
-
-
   return (
     <div>
       {isLoading ? (
         <Loader />
       ) : (
         <>
-          <ScrollToTopOnMount/>
           <Routes>
             <Route
               path="/"
@@ -120,9 +117,16 @@ function App() {
                 </Layout>
               }
             />
-          </Routes>
-          <ScrollToTop smooth />
 
+            <Route
+              path="/terms"
+              element={
+                <Layout>
+                  <TermsAndCondition />
+                </Layout>
+              }
+            />
+          </Routes>
         </>
       )}
     </div>

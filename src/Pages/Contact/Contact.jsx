@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Contact = () => {
   return (
-    <section className="__wrapper">
+    <section className="___wrapper">
       <div class="container__one">
         <h1>Get In Touch</h1>
         <form action="" method="post">

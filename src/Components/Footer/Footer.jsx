@@ -41,7 +41,7 @@ const Footer = () => {
             <p>Company</p>
             <Link to="/about">About Us</Link>
             <Link to="/contact">Contact Us</Link>
-            <Link to="/service">Services</Link>
+            {/* <Link to="/service">Services</Link> */}
             <Link to="/team">Team</Link>
           </div>
           <div className="__socials">
@@ -63,7 +63,7 @@ const Footer = () => {
           <p>&copy; {currentTime} All Rights Reserved</p>
 
           <div>
-            <Link to="/">Terms Of Use</Link>
+            <Link to="/terms">Terms Of Use</Link>
             <Link to="/">Privacy Policy</Link>
           </div>
         </div>

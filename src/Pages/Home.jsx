@@ -37,7 +37,7 @@ const Home = () => {
 
           <div className="hero-buttons --flex-start">
             <button className="--btn --btn-success">
-              <Link to="/register">Get Started</Link>
+              <Link to="/get-started">Get Started</Link>
             </button>
             <button className="--btn --btn-primary">
               <Link to="/login">Connect Wallet</Link>

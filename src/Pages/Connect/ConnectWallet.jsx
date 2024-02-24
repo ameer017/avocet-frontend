@@ -1,10 +1,8 @@
-import React from 'react';
-import './ConnectWallet.scss'
+import React from "react";
+import "./ConnectWallet.scss";
 
 const ConnectWallet = () => {
-  return (
-    <div>ConnectWallet</div>
-  )
-}
+  return <section>ConnectWallet</section>;
+};
 
-export default ConnectWallet
+export default ConnectWallet;

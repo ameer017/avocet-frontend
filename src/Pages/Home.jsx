@@ -40,7 +40,7 @@ const Home = () => {
               <Link to="/get-started">Get Started</Link>
             </button>
             <button className="--btn --btn-primary">
-              <Link to="/login">Connect Wallet</Link>
+              <Link to="/wallet-connect">Connect Wallet</Link>
             </button>
           </div>
         </div>

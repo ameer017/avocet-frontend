@@ -14,6 +14,7 @@ import Api from "./Pages/Api/Api";
 import Contact from "./Pages/Contact/Contact";
 import Service from "./Pages/Service/Service";
 import TermsAndCondition from "./Pages/Terms/TermAndCondition";
+import GetStarted from "./Pages/GetStarted/GetStarted";
 // import ScrollToTop from 'react-router-scroll-top'
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
     { path: "/contact", element: <Contact /> },
     { path: "/service", element: <Service /> },
     { path: "/terms", element: <TermsAndCondition /> },
+    { path: "/get-started", element: <GetStarted /> },
   ];
 
   return (

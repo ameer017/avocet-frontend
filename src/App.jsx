@@ -15,7 +15,6 @@ import Contact from "./Pages/Contact/Contact";
 import Service from "./Pages/Service/Service";
 import TermsAndCondition from "./Pages/Terms/TermAndCondition";
 import GetStarted from "./Pages/GetStarted/GetStarted";
-import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import ConnectWallet from "./Pages/Connect/ConnectWallet";
 // import ScrollToTop from 'react-router-scroll-top'
 
@@ -41,7 +40,6 @@ function App() {
     { path: "/service", element: <Service /> },
     { path: "/terms", element: <TermsAndCondition /> },
     { path: "/get-started", element: <GetStarted /> },
-    { path: "/policy", element: <PrivacyPolicy /> },
     { path: "/wallet-connect", element: <ConnectWallet /> },
   ];
 

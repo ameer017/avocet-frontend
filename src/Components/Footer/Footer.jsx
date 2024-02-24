@@ -41,7 +41,6 @@ const Footer = () => {
             <p>Company</p>
             <Link to="/about">About Us</Link>
             <Link to="/contact">Contact Us</Link>
-            {/* <Link to="/service">Services</Link> */}
             <Link to="/team">Team</Link>
           </div>
           <div className="__socials">
@@ -64,7 +63,6 @@ const Footer = () => {
 
           <div>
             <Link to="/terms">Terms Of Use</Link>
-            <Link to="/policy">Privacy Policy</Link>
           </div>
         </div>
       </footer>

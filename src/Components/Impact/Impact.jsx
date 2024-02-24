@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Impact = () => {
   const navigate = useNavigate();
   const about = () => {
-    navigate("/about");
+    navigate("/get-started");
   };
   return (
     <section className="impact --flex-between">

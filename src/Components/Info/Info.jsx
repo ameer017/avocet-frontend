@@ -1,26 +1,28 @@
 import React from "react";
-import './Info.scss'
+import "./Info.scss";
 
 const Info = () => {
   return (
-    <div className="container --center-all">
-      <div id="wifi-loader">
-        <svg class="circle-outer" viewBox="0 0 86 86">
-          <circle class="back" cx="43" cy="43" r="40"></circle>
-          <circle class="front" cx="43" cy="43" r="40"></circle>
-          <circle class="new" cx="43" cy="43" r="40"></circle>
-        </svg>
-        <svg class="circle-middle" viewBox="0 0 60 60">
-          <circle class="back" cx="30" cy="30" r="27"></circle>
-          <circle class="front" cx="30" cy="30" r="27"></circle>
-        </svg>
-        <svg class="circle-inner" viewBox="0 0 34 34">
-          <circle class="back" cx="17" cy="17" r="14"></circle>
-          <circle class="front" cx="17" cy="17" r="14"></circle>
-        </svg>
-        <div class="text" data-text="Launching Soon!!!"></div>
+    <section>
+      <div className="loader">
+        <p className="text">
+          <span className="letter letter1">L</span>
+          <span className="letter letter2">a</span>
+          <span className="letter letter3">u</span>
+          <span className="letter letter4">n</span>
+          <span className="letter letter5">c</span>
+          <span className="letter letter6">h</span>
+          <span className="letter letter7">i</span>
+          <span className="letter letter8">n</span>
+          <span className="letter letter9">g</span>
+          <span className="letter letter10">&nbsp;</span>
+          <span className="letter letter11">s</span>
+          <span className="letter letter12">o</span>
+          <span className="letter letter13">o</span>
+          <span className="letter letter14">n</span>
+        </p>
       </div>
-    </div>
+    </section>
   );
 };
 

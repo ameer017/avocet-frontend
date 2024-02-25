@@ -28,11 +28,9 @@ const Footer = () => {
         <div className="--flex-between">
           <h1 className="f__logo">AVOCET</h1>
 
-          <div>
+          <div className="res">
             <p>Resources</p>
 
-            <Link to="/api">API</Link>
-            <Link to="/documentation">DOCs</Link>
             <button onClick={handleDownload} className="--btn">
               Whitepaper
             </button>

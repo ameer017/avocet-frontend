@@ -1,0 +1,32 @@
+.token {
+  margin-top: 4em;
+  display: flex;
+  flex-direction: column;
+  gap: 16em;
+
+  .token__wrapper__one {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    h1 {
+      font-size: 55px;
+
+      span {
+        color: green;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+    }
+  }
+
+  .token__wrapper__two {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 16em;
+    margin-left: 25rem;
+  }
+}

@@ -24,6 +24,13 @@ const Swapper = () => {
 };
 
 const Home = () => {
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/public/whitepaper.pdf";
+    link.download = "whitepaper.pdf";
+    link.click();
+  };
+
   return (
     <div>
       <section className="hero">
@@ -39,8 +46,13 @@ const Home = () => {
             <button className="--btn --btn-success">
               <Link to="/get-started">Get Started</Link>
             </button>
-            <button className="--btn --btn-primary">
-              <Link to="/wallet-connect">Connect Wallet</Link>
+
+            <button
+              onClick={handleDownload}
+              className="--btn --btn-primary"
+              target="_blank"
+            >
+              whitepaper
             </button>
           </div>
         </div>

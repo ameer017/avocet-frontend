@@ -1,0 +1,55 @@
+.connectWallet {
+  width: 100%;
+  margin-block: 5rem;
+}
+
+.connectWallet_box {
+  width: 50%;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 3rem;
+    line-height: 2;
+  }
+}
+
+.connectWallet_box_para {
+  font-size: 2rem;
+  padding-bottom: 2rem;
+
+  p {
+    font-size: 1.5rem;
+    line-height: 0;
+    margin-bottom: 3rem;
+  }
+}
+
+.connect {
+    margin-block: 5rem;
+
+}
+
+.connect-links {
+cursor: pointer;
+display: grid; /* Use flexbox */
+grid-template-columns: repeat(2, 1fr);
+margin-left: 8rem;
+margin-top: 1.5rem;
+padding: 3px;
+transition: all 0.3s ease-in;
+border-radius: 1rem;
+
+  img {
+    width: 20%;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
+
+  h4 {
+    font-size: 20px;
+    padding-left: 1rem;
+  }
+}

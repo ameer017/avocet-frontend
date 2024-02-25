@@ -1,13 +1,9 @@
-
-
 import React, { useEffect, useState } from "react";
-
 
 import "./ConnectWallet.scss";
 
 const ConnectWallet = () => {
   const [activeBtn, setActiveBtn] = useState(1);
-
 
   return (
     <div className="connectWallet">
@@ -30,11 +26,7 @@ const ConnectWallet = () => {
             <img src="/src/assets/provider-3.png" />
             <h4>Wallet Link</h4>
           </div>
-          <div className="connect-links">
-            <img src="/src/assets/provider-4.png" />
 
-            <h4>Formatic</h4>
-          </div>
           <div className="connect-links">
             <img src="/src/assets/provider-5.png" />
 

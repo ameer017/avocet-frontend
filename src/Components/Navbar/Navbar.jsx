@@ -21,13 +21,6 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/public/whitepaper.pdf";
-    link.download = "whitepaper.pdf";
-    link.click();
-  };
-
   return (
     <>
       <nav className="navbar">
@@ -42,12 +35,8 @@ const Navbar = () => {
             ))}
           </div>
 
-          <button
-            onClick={handleDownload}
-            className="--btn --btn-success btn"
-            target="_blank"
-          >
-            whitepaper
+          <button className="--btn --btn-success">
+            <Link to="/wallet-connect">Connect Wallet</Link>
           </button>
 
           <div className="navbar-toggle" onClick={toggleNavbar}>

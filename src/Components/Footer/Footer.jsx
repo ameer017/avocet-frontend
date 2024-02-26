@@ -39,6 +39,7 @@ const Footer = () => {
             <p>Company</p>
             <Link to="/about">About Us</Link>
             <Link to="/contact">Contact Us</Link>
+            <Link to="/service">Service</Link>
             <Link to="/team">Team</Link>
           </div>
           <div className="__socials">

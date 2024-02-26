@@ -45,17 +45,10 @@ const Service = () => {
                 Arizona,<br></br> Nevada, Texas, and Washington.
               </p>
               <button className="btn btn_primary">
-                <Link to="/">
+                <Link to="/contact">
                   CONTACT US <span className="arrow">&#8594;</span>
                 </Link>
               </button>
-            </div>
-            <div className="image-section">
-              <img
-                className="img_para"
-                src="https://images.pexels.com/photos/5842181/pexels-photo-5842181.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                alt="Your Image"
-              />
             </div>
           </div>
         </div>
@@ -70,7 +63,7 @@ const Service = () => {
           </p>
 
           <button className="btn btn_primary">
-            <Link to="/">
+            <Link to="/contact">
               CONTACT US <span className="arrow">&#8594;</span>
             </Link>
           </button>

@@ -38,7 +38,7 @@ const Token = () => {
         <div>
           <h1>Gain with ethics</h1>
           <p>
-            AVOCOIN incentivizes its certified entities to be truthful in their
+            AVOCOIN incentivize its certified entities to be truthful in their
             reporting and operations. Recovery entities go through a strict
             verification process, and are constantly under audit to provide
             transparent information.
@@ -46,11 +46,6 @@ const Token = () => {
           <p className="--mb">Ready to invest in transparency?</p>
           <button className="--btn --btn-primary">Get Your Token</button>
         </div>
-      </div>
-
-      <div className="token__wrapper__three">
-        <div></div>
-        <div></div>
       </div>
     </section>
   );

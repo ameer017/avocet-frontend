@@ -58,7 +58,7 @@ const Home = () => {
         </div>
       </section>
       <Restore />
-      <Info />
+      {/* <Info /> */} 
       <Impact />
       <Partner />
     </div>

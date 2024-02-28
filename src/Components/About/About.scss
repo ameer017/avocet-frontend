@@ -44,22 +44,23 @@
   min-width: 100%;
   background-blend-mode: multiply;
 
-  .tech_card,
-  .tech_card_four {
+  .tech_card {
     padding: 6rem;
     margin: 4px;
   }
 
-  .left-box,
-  .left-box4 {
+  .left-box {
     width: 50%;
     padding: 5rem;
     background-color: #294f28;
     border-radius: 20px;
+
+    @media screen and (max-width: 900px) {
+      width: unset;
+    }
   }
 
-  .__label,
-  .__label_four {
+  .__label {
     display: inline-block;
     line-height: 40px;
     font-size: 18px;
@@ -80,6 +81,10 @@
     padding: 5rem;
     background-color: #294f28;
     border-radius: 20px;
+
+    @media screen and (max-width: 900px) {
+      width: unset;
+    }
   }
 
   .__label2 {
@@ -95,4 +100,15 @@
   align-items: center;
   padding: 5rem;
   margin-top: 6rem;
+
+  @media screen and (max-width: 900px) {
+    padding: 2rem;
+  }
+
+  h6 {
+    @media screen and (max-width: 900px) {
+      width: 65%;
+      font-weight: lighter;
+    }
+  }
 }

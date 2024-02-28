@@ -45,9 +45,9 @@ const About = () => {
         </div>
 
         {/* The Third Card Sec  */}
-        <div className="tech_card_four">
-          <div className="left-box4">
-            <span className="__label_four">03 / Community Engagement</span>
+        <div className="tech_card">
+          <div className="left-box">
+            <span className="__label">03 / Community Engagement</span>
             <p className="__allPara">
               We engage with local communities to raise awareness about the
               importance of waste reduction and recycling, and to empower
@@ -62,7 +62,9 @@ const About = () => {
         <h6 style={{ fontSize: "4rem" }}>
           Build your nature strategy with Avocet
         </h6>
-        <Link to="/get-started" className="--btn --btn-primary">GET STARTED</Link>
+        <Link to="/get-started" className="--btn --btn-primary">
+          GET STARTED
+        </Link>
       </div>
     </section>
   );

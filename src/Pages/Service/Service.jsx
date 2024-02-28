@@ -10,7 +10,7 @@ const Service = () => {
           <h1>Plastics Recycling</h1>
           <p>
             If your company is generating a large amount of plastic waste, we
-            can help <br></br> ensure it’s recycled.
+            can help <br></br> ensure it&apos;s recycled.
           </p>
         </div>
         <div className="background">
@@ -19,7 +19,7 @@ const Service = () => {
             <p>
               We offer plastics recycling services for a variety of grades of
               materials, including films, HDPE or LDPE, shrink wrap, and
-              <br></br>polycarbonate. For decades we’ve been committed to
+              <br></br>polycarbonate. For decades we&apos;ve been committed to
               finding ways to recycle types of plastic that were previously
               <br></br>landfilled.
             </p>
@@ -35,8 +35,9 @@ const Service = () => {
                 substantially on landfill and transportation costs.
               </p>
               <p className="content_section_description">
-                We&apos;ll work with you to ensure that anything that can be<br></br>{" "}
-                recycled is. If you bring us unsellable beverages or food, we&apos;ll
+                We&apos;ll work with you to ensure that anything that can be
+                <br></br> recycled is. If you bring us unsellable beverages or
+                food, we&apos;ll
                 <br></br> separate the packaging, bio-digest the liquids, and
                 recycle the<br></br> plastic containers.
               </p>
@@ -44,7 +45,7 @@ const Service = () => {
                 We offer plastic recycling services in California, Utah,
                 Arizona,<br></br> Nevada, Texas, and Washington.
               </p>
-              <button className="btn btn_primary">
+              <button className="--btn --btn-secondary">
                 <Link to="/contact">
                   CONTACT US <span className="arrow">&#8594;</span>
                 </Link>
@@ -52,27 +53,9 @@ const Service = () => {
             </div>
           </div>
         </div>
-
-        <div className="__para_title">
-          <h3>
-            Let’s Get your Team<br></br> Closer to Zero Waste
-          </h3>
-          <p className="__para_text">
-            We'll work with your company to maximize what you<br></br> recycle
-            and achieve your sustainability goals.
-          </p>
-
-          <button className="btn btn_primary">
-            <Link to="/contact">
-              CONTACT US <span className="arrow">&#8594;</span>
-            </Link>
-          </button>
-        </div>
       </section>
     </div>
   );
 };
 
 export default Service;
-
-

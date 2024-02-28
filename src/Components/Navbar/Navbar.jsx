@@ -35,7 +35,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          <button className="--btn --btn-success">
+          <button className="--btn --btn-success btn">
             <Link to="/wallet-connect">Connect Wallet</Link>
           </button>
 

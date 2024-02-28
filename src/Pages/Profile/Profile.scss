@@ -33,5 +33,10 @@
     gap: 10rem;
     text-align: center;
     color: white;
+
+    @media screen and (max-width: 660px) {
+      flex-wrap: wrap;
+      padding-inline: 4px;
+    }
   }
 }

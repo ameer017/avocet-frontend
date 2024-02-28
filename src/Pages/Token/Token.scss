@@ -1,10 +1,11 @@
 .token {
-  margin-top: 4em;
   display: flex;
   flex-direction: column;
   gap: 16em;
 
+
   .token__wrapper__one {
+    margin-top: 10em;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -13,6 +14,10 @@
 
     h1 {
       font-size: 55px;
+
+      @media screen and (max-width: 697px) {
+        font-size: 40px;
+      }
 
       span {
         color: green;
@@ -27,6 +32,17 @@
     justify-content: flex-start;
     flex-direction: column;
     gap: 16em;
-    margin-left: 25rem;
+    margin: 0 0 20rem 25rem;
+
+    @media screen and (max-width: 768px) {
+      margin: 0 auto;
+      gap: 8em;
+    }
+
+    @media screen and (max-width: 697px) {
+      margin-bottom: 3rem;
+      gap: 4em;
+      padding: 10px;
+    }
   }
 }

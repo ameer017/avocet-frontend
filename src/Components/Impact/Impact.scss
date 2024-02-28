@@ -16,12 +16,21 @@
     justify-content: center;
     gap: 1.4em;
 
+    h1 {
+      @media screen and (max-width: 560px) {
+        font-size: 25px;
+      }
+    }
+
     img {
       width: 450px;
       border-radius: 15px;
 
       @media screen and (max-width: 990px) {
         width: 360px;
+      }
+      @media screen and (max-width: 460px) {
+        width: 250px;
       }
     }
   }

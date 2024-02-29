@@ -1,0 +1,74 @@
+/* Form.scss */
+
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    width: 100%;
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+
+    input {
+      font-size: 2rem;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+    }
+    input::placeholder {
+        font-size: 10px;
+        /* Add any other styles you want for the placeholder text */
+    }
+  }
+
+  button[type="create"] {
+    margin-left: 12rem;
+    text-align: center;
+    font-size: 2rem;
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #202122;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .form-container {
+      padding: 0 20px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .form-container {
+      max-width: 100%;
+    }
+  }
+}

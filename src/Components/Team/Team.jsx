@@ -35,7 +35,7 @@ const Team = () => {
         <TeamMembers
           name="Rokeebah Olajide"
           role="Marketing Lead"
-          image="https://images.pexels.com/photos/209728/pexels-photo-209728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          image="/src/assets/Rokeebah.jpeg"
           x="https://twitter.com/Olabimpe963"
           insta="https://www.instagram.com/adesola01__/"
           linkedin="https://www.linkedin.com/in/olajide-rokeebat-98507329a/"

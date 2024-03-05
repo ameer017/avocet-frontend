@@ -21,7 +21,7 @@ const Profile = () => {
               </div>
               <div>
                 <h4>Points:</h4>
-                <p>100</p>
+                <p>100 AVC</p>
               </div>
               <div>
                 <h4>Assets Bought:</h4>

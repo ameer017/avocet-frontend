@@ -43,9 +43,9 @@ const OrderCreation = () => {
                     </div>
                     <div className="form-group">
                         <label>Amount</label>
-                        <input type="number" name="amount" value={formData.amount} onChange={handleChange} placeholder='Enter your amount' />
+                        <input type="text" name="amount" value={formData.amount} onChange={handleChange} placeholder='Enter your amount' />
                     </div>
-                    <button type="create">Create</button>
+                    <button type="create" className='--btn --btn-success --btn-block'>Create</button>
                 </form>
             </div>
           </div>

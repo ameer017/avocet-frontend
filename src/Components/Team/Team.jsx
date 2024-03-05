@@ -19,7 +19,7 @@ const Team = () => {
         <TeamMembers
           name="Abdullahi Raji"
           role="Full Stack Dev."
-          image="https://images.pexels.com/photos/209728/pexels-photo-209728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          image="/src/assets/IMG_20220206_143138_235.jpg"
           x="https://twitter.com/alAmeer170"
           insta="https://www.instagram.com/a.rajiabdullahi/"
           linkedin="https://www.linkedin.com/in/raji-abdullahi-a-4598b42a5/"

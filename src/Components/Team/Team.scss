@@ -19,11 +19,12 @@
 
 // TeamMember.scss
 .team-member {
-  flex: 0 1 calc(25% - 20px); 
+  flex: 0 1 calc(25% - 20px);
   margin-bottom: 40px;
 
   img {
     width: 250px;
+    height: 250px;
     border-radius: 10px;
     opacity: 0.7;
     cursor: pointer;

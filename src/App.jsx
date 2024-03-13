@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Layout from "./Components/Layout/Layout";
 import Home from "./Pages/Home";
@@ -16,16 +16,34 @@ import Service from "./Pages/Service/Service";
 import TermsAndCondition from "./Pages/Terms/TermAndCondition";
 import GetStarted from "./Pages/GetStarted/GetStarted";
 import ConnectWallet from "./Pages/Connect/ConnectWallet";
-// import ScrollToTop from 'react-router-scroll-top'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 1000);
   }, []);
+
+  // Smart contract integration
+
+  async function createPlastik() {}
+  async function updateCreatePrice() {}
+  async function updatePlastik() {}
+  async function updatePrice() {}
+  async function buyPlastik() {}
+  async function getAllPlastiks() {}
+  async function getPlastik() {}
+  async function getUserPlastiks() {}
+  async function getListingPrice() {}
+
+  // End
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const routes = [
     { path: "/", element: <Home /> },
@@ -49,8 +67,6 @@ function App() {
         <Loader />
       ) : (
         <>
-          {/* <ScrollToTop/> */}
-
           <Routes>
             {routes.map(({ path, element }, index) => (
               <Route

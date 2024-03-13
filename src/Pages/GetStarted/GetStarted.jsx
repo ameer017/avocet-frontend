@@ -34,8 +34,7 @@ const GetStarted = () => {
             Wallet.
           </p>
           <code>
-            Visit our <Link to="/wallet-connect">connect wallet</Link> page to
-            see the list of wallets.
+            Click on connect wallet button to connect to your metamask wallet
           </code>
         </div>
 
@@ -191,9 +190,8 @@ const GetStarted = () => {
         </div>
 
         <p>
-          Ready to get started?{" "}
-          <Link to="/wallet-connect">connect your wallet</Link> and let's make a
-          difference together!
+          Ready to get started? Connect your wallet and let's make a difference
+          together!
         </p>
       </div>
     </section>

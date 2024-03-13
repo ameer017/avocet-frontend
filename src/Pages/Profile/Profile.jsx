@@ -2,6 +2,8 @@ import React from "react";
 import "./Profile.scss";
 
 const Profile = () => {
+  const account = localStorage.getItem("account") || "0x...";
+
   return (
     <>
       <section className="profile">
@@ -17,15 +19,15 @@ const Profile = () => {
             <div className="stats">
               <div>
                 <h4>Wallet:</h4>
-                <p>0x................</p>
+                <p>{account}</p>
               </div>
               <div>
                 <h4>Points:</h4>
-                <p>100 AVC</p>
+                <p>-- AVC</p>
               </div>
               <div>
                 <h4>Assets Bought:</h4>
-                <p>30</p>
+                <p>--</p>
               </div>
             </div>
           </div>

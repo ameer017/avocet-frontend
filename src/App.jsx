@@ -22,6 +22,7 @@ import { contractAbi, contractAddress } from "./constant/constant";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
+  const [plastiks, setPlastiks] = useState([]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -47,7 +48,7 @@ function App() {
         0.0005,
         10,
         "HDPE Bottle",
-        "IMAGES_URL",
+        "https://www.theplasticbottlescompany.com/uploads/webpage-images/457835-pbc-product-image-template-bottle-3.jpg",
         "Zone A, Garki, Abuja"
       );
 
@@ -61,7 +62,28 @@ function App() {
   async function updatePlastik() {}
   async function updatePrice() {}
   async function buyPlastik(orderId) {}
-  async function getAllPlastiks() {}
+  async function getAllPlastiks() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const contractInstance = new ethers.Contract(
+      contractAbi,
+      contractAddress,
+      signer
+    );
+    const plastiksList = await contractInstance.getAllPlastiks();
+    const formattedPlastiks = plastiksList.map((plastik, index) => {
+      return {
+        index: index,
+        name: plastik._orderTitle,
+        amount: plastik.price.toNumber(),
+        location: plastik._location,
+        image: plastik._images,
+        weight: plastik.weight,
+      };
+    });
+    setPlastiks(formattedPlastiks);
+  }
   async function getPlastik() {}
   async function getUserPlastiks() {}
   async function getListingPrice() {}

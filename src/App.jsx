@@ -27,9 +27,23 @@ function App() {
     }, 1000);
   }, []);
 
+  // Smart contract integration
+
+  async function createPlastik() {}
+  async function updateCreatePrice() {}
+  async function updatePlastik() {}
+  async function updatePrice() {}
+  async function buyPlastik() {}
+  async function getAllPlastiks() {}
+  async function getPlastik() {}
+  async function getUserPlastiks() {}
+  async function getListingPrice() {}
+
+  // End
+
   useEffect(() => {
-    window.scrollTo(0, 0); 
-  }, [location.pathname]); 
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const routes = [
     { path: "/", element: <Home /> },

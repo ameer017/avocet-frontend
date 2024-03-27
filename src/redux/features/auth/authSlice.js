@@ -31,6 +31,23 @@ export const register = createAsyncThunk(
     }
   }
 );
+// Register User
+export const addCollector = createAsyncThunk(
+  "auth/add-collector",
+  async (userData, thunkAPI) => {
+    try {
+      return await authService.addCollector(userData);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 // Login User
 export const login = createAsyncThunk(

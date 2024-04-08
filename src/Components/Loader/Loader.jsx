@@ -4,17 +4,10 @@ import "./Loader.css";
 const Loader = () => {
   return (
     <>
-      <div className="holder">
-        <div className="honeycomb">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
+    <div className="holder">
+      <div class="loader"></div>
+
+    </div>
     </>
   );
 };

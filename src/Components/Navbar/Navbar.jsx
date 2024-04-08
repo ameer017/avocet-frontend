@@ -87,13 +87,10 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* <button className="--btn --btn-success btn" onClick={connectWallet}>
+          <button className="--btn --btn-success btn" onClick={connectWallet}>
             {isConnected ? shortenText(account, 6) : "Connect Wallet"}
-          </button> */}
-          <button className="--btn --btn-success btn" >
-            <Link to="/register">Register</Link>
           </button>
-
+          
           <div className="navbar-toggle" onClick={toggleNavbar}>
             <span className={`bar ${isOpen ? "open" : ""}`}></span>
             <span className={`bar ${isOpen ? "open" : ""}`}></span>

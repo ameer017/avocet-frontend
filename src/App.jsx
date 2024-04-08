@@ -10,7 +10,6 @@ import Docs from "./Components/Docs/Docs";
 import Profile from "./Pages/Profile/Profile";
 import OrderCreation from "./Pages/OrderCreation/OrderCreation";
 import Token from "./Pages/Token/Token";
-import Api from "./Pages/Api/Api";
 import Contact from "./Pages/Contact/Contact";
 import Service from "./Pages/Service/Service";
 import TermsAndCondition from "./Pages/Terms/TermAndCondition";
@@ -18,6 +17,7 @@ import GetStarted from "./Pages/GetStarted/GetStarted";
 import ConnectWallet from "./Pages/Connect/ConnectWallet";
 import { ethers } from "ethers";
 import { contractAbi, contractAddress } from "./constant/constant";
+import Register from "./Pages/Auth/Register";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,7 +27,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 3000);
   }, []);
 
   // Smart contract integration
@@ -105,7 +105,7 @@ function App() {
       element: <OrderCreation createPlastik={createPlastik} />,
     },
     { path: "/token", element: <Token /> },
-    { path: "/api", element: <Api /> },
+    { path: "/register", element: <Register /> },
     { path: "/contact", element: <Contact /> },
     { path: "/service", element: <Service /> },
     { path: "/terms", element: <TermsAndCondition /> },

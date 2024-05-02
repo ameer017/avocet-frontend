@@ -62,7 +62,7 @@ const About = () => {
         <h6 style={{ fontSize: "4rem" }}>
           Build your nature strategy with Avocet
         </h6>
-        <Link to="/get-started" className="--btn --btn-primary">
+        <Link to="/get-started" className="--btn --btn-success">
           GET STARTED
         </Link>
       </div>

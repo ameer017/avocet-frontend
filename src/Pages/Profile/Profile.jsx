@@ -23,7 +23,7 @@ const Profile = () => {
               </div>
               <div>
                 <h4>Points:</h4>
-                <p>-- AVC</p>
+                <p>-- EFC</p>
               </div>
               <div>
                 <h4>Assets Bought:</h4>

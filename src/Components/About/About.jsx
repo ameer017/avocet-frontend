@@ -7,7 +7,7 @@ const About = () => {
     <section className="hero-home">
       <div className="container">
         <div className="row">
-          <h1 className="headerText">Avocet's Tech explained.</h1>
+          <h1 className="headerText">EarthFi's Tech explained.</h1>
           <p>
             How we provide innovative solutions that transform waste materials
             into valuable resources.
@@ -23,7 +23,7 @@ const About = () => {
       <div className="tech-block">
         <div className="tech_card">
           <div className="left-box">
-            <span className="__label">01 / AVOCET'S Resource Recovery</span>
+            <span className="__label">01 / EarthFi'S Resource Recovery</span>
             <p className="__allPara">
               we facilitate the recovery and repurposing of various waste
               materials, including plastics, organic waste, electronic waste,
@@ -60,7 +60,7 @@ const About = () => {
       {/* The Footer-Header */}
       <div className="__footer-header">
         <h6 style={{ fontSize: "4rem" }}>
-          Build your nature strategy with Avocet
+          Build your nature strategy with EarthFi
         </h6>
         <Link to="/get-started" className="--btn --btn-success">
           GET STARTED

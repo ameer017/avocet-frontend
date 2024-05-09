@@ -19,7 +19,7 @@ const Navbar = () => {
   const [web3, setWeb3] = useState(null);
 
   const launch = () => {
-    alert('Launching Soon')
+    alert('Launching Soon!!!')
   }
 
   useEffect(() => {

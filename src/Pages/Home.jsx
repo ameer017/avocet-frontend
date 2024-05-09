@@ -36,7 +36,7 @@ const Home = () => {
       <section className="hero">
         <div className="hero-text --pad">
           <p>
-            <span>AVOCET </span> &nbsp; &nbsp;
+            <span>EarthFi </span> &nbsp; &nbsp;
             <Swapper /> &nbsp; &nbsp;
           </p>
 

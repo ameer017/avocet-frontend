@@ -5,7 +5,7 @@ import Web3 from "web3";
 
 const lists = [
   { tag: "About", path: "/about" },
-  { tag: "Avocoin", path: "/token" },
+  { tag: "EarthFi", path: "/token" },
   { tag: "Profile", path: "/profile" },
   { tag: "Create", path: "/order-creation" },
 ];

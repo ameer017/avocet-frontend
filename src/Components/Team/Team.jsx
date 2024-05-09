@@ -23,6 +23,13 @@ const Team = () => {
           linkedin="https://www.linkedin.com/in/raji-abdullahi-a-4598b42a5/"
         />
         <TeamMembers
+          name="Abdullahi Raji"
+          role="Co-Founder, CTO"
+          image="/src/assets/IMG_20220206_143138_235.jpg"
+          x="https://twitter.com/alAmeer170"
+          linkedin="https://www.linkedin.com/in/raji-abdullahi-a-4598b42a5/"
+        />
+        <TeamMembers
           name="Abdulakeem Adebayo"
           role="Blockchain Dev."
           image="/src/assets/bayo.png"

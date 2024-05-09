@@ -2,6 +2,7 @@ import React from "react";
 import "./Footer.scss";
 import { BsTwitterX, BsEnvelopeOpen } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import logo from "../../../public/logo-no-background.png";
 
 const Footer = () => {
   const currentTime = new Date().getFullYear();
@@ -18,12 +19,7 @@ const Footer = () => {
       <footer>
         <div className="--flex-between">
           <div>
-            <img
-              src="../../../public/logo-no-background.png"
-              alt="Logo"
-              
-              className="f__logo"
-            />
+            <img src={logo} alt="Logo" className="f__logo" />
           </div>
 
           {/* <div className="res">

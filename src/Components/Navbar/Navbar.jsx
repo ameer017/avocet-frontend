@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import Web3 from "web3";
+import logo from "../../../public/logo-no-background.png";
+
 
 const lists = [
   { tag: "About", path: "/about" },
@@ -80,7 +82,7 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="navbar-container">
           <div className="navbar-logo" onClick={home}>
-            <img src="../../../public/logo-no-background.png" alt="Logo" />
+            <img src={logo} alt="Logo" />
           </div>
 
           <div className={`navbar-links ${isOpen ? "active" : ""}`}>

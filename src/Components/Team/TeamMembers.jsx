@@ -7,7 +7,8 @@ const TeamMember = ({ name, role, image, x, insta, linkedin }) => {
   return (
     <div className="team-member">
       <div className="member-details">
-        <h3>{name}</h3>
+        <img src={image} className="--mt" alt={name} />
+        <h3 className="--mt">{name}</h3>
         <p>{role}</p>
         <div className="--flex-center">
           <Link to={x}>
@@ -17,7 +18,6 @@ const TeamMember = ({ name, role, image, x, insta, linkedin }) => {
             <BsLinkedin />
           </Link>
         </div>
-        <img src={image} className="--mt" alt={name} />
       </div>
     </div>
   );

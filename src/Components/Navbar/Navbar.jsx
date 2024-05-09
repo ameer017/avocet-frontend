@@ -18,6 +18,10 @@ const Navbar = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [web3, setWeb3] = useState(null);
 
+  const launch = () => {
+    alert('Launching Soon')
+  }
+
   useEffect(() => {
     checkConnectionOnMount();
   }, []);
@@ -87,8 +91,12 @@ const Navbar = () => {
             ))}
           </div>
 
-          <button className="--btn --btn-success btn" onClick={connectWallet}>
+          {/* <button className="--btn --btn-success btn" onClick={connectWallet} disabled>
             {isConnected ? shortenText(account, 6) : "Connect Wallet"}
+          </button> */}
+
+          <button className="--btn --btn-success btn" onClick={launch}>
+            Connect Wallet
           </button>
           
           <div className="navbar-toggle" onClick={toggleNavbar}>

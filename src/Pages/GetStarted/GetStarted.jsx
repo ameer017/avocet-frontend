@@ -61,7 +61,7 @@ const GetStarted = () => {
           <h2>4. Get Support</h2>
           <p>
             Have questions or need assistance? Our dedicated support team is
-            here to help! Reach out to us via email at avocet907@gmail.com or
+            here to help! Reach out to us via email at team@earthfi.xyz or
             visit our Help Center for FAQs and troubleshooting guides.
           </p>
         </div>

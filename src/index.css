@@ -522,3 +522,7 @@ a:hover {
   height: 2px;
   background-color: #fff;
 }
+
+.gap-2px {
+  gap: 15px;
+}

@@ -47,13 +47,13 @@ const Home = () => {
               <Link to="/get-started">Get Started</Link>
             </button>
 
-            <button
+            {/* <button
               onClick={handleDownload}
               className="--btn --btn-primary"
               target="_blank"
             >
               whitepaper
-            </button>
+            </button> */}
           </div>
         </div>
       </section>

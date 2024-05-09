@@ -7,9 +7,8 @@
   min-height: 100vh;
   max-width: 100%;
   background-blend-mode: multiply;
-
-
 }
+
 .hero-text {
   width: 100%;
 
@@ -144,9 +143,10 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 992px) {
   .hero {
     flex-direction: column;
+    min-height: 50vh;
   }
 
   .hero-text {
@@ -165,3 +165,5 @@
     }
   }
 }
+
+

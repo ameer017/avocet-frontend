@@ -44,16 +44,16 @@ const Footer = () => {
           </div>
           <div className="__socials">
             <p>Socials</p>
-            <a href="mailto:avocet907@gmail.com">
-              <BsEnvelopeOpen />
-            </a>
 
-            <a href="https://twitter.com/avocet816589">
-              <BsTwitterX />
-            </a>
-            <a href="#">
-              <SlSocialLinkedin />
-            </a>
+            <div className="--flex-center">
+              <a href="mailto:avocet907@gmail.com">
+                <BsEnvelopeOpen />
+              </a>
+
+              <a href="https://twitter.com/EarthFi" target="__blank">
+                <BsTwitterX />
+              </a>
+            </div>
           </div>
         </div>
 

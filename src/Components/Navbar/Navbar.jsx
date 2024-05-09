@@ -80,7 +80,7 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="navbar-container">
           <div className="navbar-logo" onClick={home}>
-            <img src="/avocet-high-resolution-logo.png" alt="Logo" />
+            <img src="../../../public/logo-no-background.png" alt="Logo" />
           </div>
 
           <div className={`navbar-links ${isOpen ? "active" : ""}`}>

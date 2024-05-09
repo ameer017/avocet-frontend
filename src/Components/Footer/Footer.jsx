@@ -1,15 +1,6 @@
 import React from "react";
 import "./Footer.scss";
-import {
-  BsTwitterX,
-  BsInstagram,
-  BsEnvelopeOpen,
-  BsTelephone,
-} from "react-icons/bs";
-import { SlSocialLinkedin } from "react-icons/sl";
-
-import { FaGooglePlusG } from "react-icons/fa";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { BsTwitterX, BsEnvelopeOpen } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -26,15 +17,23 @@ const Footer = () => {
       <hr style={{ width: "100%" }} />
       <footer>
         <div className="--flex-between">
-          <h1 className="f__logo">EarthFi</h1>
+          <div>
+            <img
+              src="../../../public/logo-no-background.png"
+              alt="Logo"
+              
+              className="f__logo"
+            />
+          </div>
 
-          <div className="res">
+          {/* <div className="res">
             <p>Resources</p>
 
             <button onClick={handleDownload} className="--btn">
               Whitepaper
             </button>
-          </div>
+          </div> */}
+
           <div>
             <p>Company</p>
             <Link to="/about">About Us</Link>
@@ -42,10 +41,11 @@ const Footer = () => {
             <Link to="/service">Service</Link>
             <Link to="/team">Team</Link>
           </div>
+
           <div className="__socials">
             <p>Socials</p>
 
-            <div className="--flex-center">
+            <div className="--flex-center gap-2px">
               <a href="mailto:avocet907@gmail.com">
                 <BsEnvelopeOpen />
               </a>

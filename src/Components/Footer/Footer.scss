@@ -1,5 +1,5 @@
 footer {
-  padding: 3em 4em;
+  padding: 3em 10em;
   color: green;
 
   > div:nth-child(1) {
@@ -10,19 +10,20 @@ footer {
     }
     @media screen and (max-width: 460px) {
       flex-direction: column;
+      text-align: center;
     }
     .f__logo {
       color: green;
       font-weight: 500;
       margin-Top: 3rem;
-      
+      width: 105px
     }
 
  
     > div {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: left;
       gap: 2px;
 
       p {

@@ -7,8 +7,8 @@ const termsData = [
     content: [
       "1.1 Account Creation: In order to access certain features of our platform, you may be required to create an account. You agree to provide accurate, current, and complete information during the registration process. You are solely responsible for safeguarding your account credentials and for any activities or actions taken under your account.",
       "1.2 Wallet Integration: By using our platform, you may have the option to connect your digital wallet for on-chain transactions. By connecting your wallet, you acknowledge and agree to the following:",
-      "- Security: You are solely responsible for the security of your digital wallet and any associated private keys. AVOCET shall not be held liable for any loss or unauthorized access to your wallet or digital assets.",
-      "- Transaction Authorization: By connecting your wallet, you authorize AVOCET to execute on-chain transactions on your behalf as instructed through our platform. You acknowledge that once a transaction is initiated, it cannot be reversed, and you agree to bear any associated transaction fees.",
+      "- Security: You are solely responsible for the security of your digital wallet and any associated private keys. EarthFi shall not be held liable for any loss or unauthorized access to your wallet or digital assets.",
+      "- Transaction Authorization: By connecting your wallet, you authorize EarthFi to execute on-chain transactions on your behalf as instructed through our platform. You acknowledge that once a transaction is initiated, it cannot be reversed, and you agree to bear any associated transaction fees.",
       "- Privacy: We respect your privacy and will not access or store your wallet's private keys. However, certain transaction data may be stored on our platform for record-keeping purposes in accordance with our Privacy Policy.",
       "1.3 User Conduct: You agree to use your connected wallet for lawful purposes only and to comply with all applicable laws and regulations regarding cryptocurrency transactions.",
     ],
@@ -38,7 +38,7 @@ const TermsAndCondition = () => {
     <div className="terms-of-use">
       <h1>Terms of Use</h1>
       <p className="--mb">
-        These Terms of Use ("Terms") govern your use of AVOCET and any
+        These Terms of Use ("Terms") govern your use of EarthFi and any
         associated services provided by us. By accessing or using our platform,
         you agree to comply with these Terms. If you do not agree with these
         Terms, please do not use our platform.

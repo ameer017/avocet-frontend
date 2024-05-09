@@ -26,7 +26,7 @@ const Footer = () => {
       <hr style={{ width: "100%" }} />
       <footer>
         <div className="--flex-between">
-          <h1 className="f__logo">AVOCET</h1>
+          <h1 className="f__logo">EarthFi</h1>
 
           <div className="res">
             <p>Resources</p>

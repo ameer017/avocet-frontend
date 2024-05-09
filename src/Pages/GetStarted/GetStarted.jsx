@@ -17,7 +17,7 @@ const GetStarted = () => {
       <div className="get-started">
         <h1>Get Started</h1>
         <p>
-          Welcome to AVOCET! We're excited to have you join our community and
+          Welcome to EarthFi! We're excited to have you join our community and
           start your journey towards a more sustainable future. Follow the steps
           below to get started:
         </p>
@@ -42,7 +42,7 @@ const GetStarted = () => {
           <h2>2. Explore Our Services</h2>
           <p>
             Take some time to explore the various services and features offered
-            by AVOCET. From waste management solutions to resource recovery and
+            by EarthFi. From waste management solutions to resource recovery and
             community engagement initiatives, there's something for everyone!
           </p>
         </div>
@@ -69,7 +69,7 @@ const GetStarted = () => {
         <div className="step">
           <h2>5. Spread the Word</h2>
           <p>
-            Help us spread the word about AVOCET and the importance of waste
+            Help us spread the word about EarthFi and the importance of waste
             recycling initiatives. Follow us on social media, share your
             experiences, and invite others to join our mission!
           </p>
@@ -82,11 +82,11 @@ const GetStarted = () => {
               className={`accordion ${activeIndex === 0 ? "active" : ""}`}
               onClick={() => toggleAccordion(0)}
             >
-              What is AVOCET?
+              What is EarthFi?
             </button>
             <div className={`panel ${activeIndex === 0 ? "show" : ""}`}>
               <p>
-                AVOCET is a cutting-edge platform that connects individuals,
+              EarthFi is a cutting-edge platform that connects individuals,
                 businesses, and organizations to innovative waste management
                 solutions. Our platform aims to transform waste into valuable
                 resources, promoting environmental sustainability and economic
@@ -100,11 +100,11 @@ const GetStarted = () => {
               className={`accordion ${activeIndex === 1 ? "active" : ""}`}
               onClick={() => toggleAccordion(1)}
             >
-              How does AVOCET work?
+              How does EarthFi work?
             </button>
             <div className={`panel ${activeIndex === 1 ? "show" : ""}`}>
               <p>
-                AVOCET offers a range of services and technologies designed to
+              EarthFi offers a range of services and technologies designed to
                 optimize waste management processes. Users can access features
                 such as waste collection, recycling programs, resource recovery
                 initiatives, and community engagement projects. By leveraging
@@ -119,11 +119,11 @@ const GetStarted = () => {
               className={`accordion ${activeIndex === 2 ? "active" : ""}`}
               onClick={() => toggleAccordion(2)}
             >
-              Is AVOCET available in my area?
+              Is EarthFi available in my area?
             </button>
             <div className={`panel ${activeIndex === 2 ? "show" : ""}`}>
               <p>
-                AVOCET strives to expand its reach and impact globally. While
+              EarthFi strives to expand its reach and impact globally. While
                 our services may not be available in every location at the
                 moment, we are continuously working to broaden our network and
                 establish partnerships with local communities and organizations.
@@ -138,12 +138,12 @@ const GetStarted = () => {
               className={`accordion ${activeIndex === 3 ? "active" : ""}`}
               onClick={() => toggleAccordion(3)}
             >
-              What measures does AVOCET take to ensure environmental
+              What measures does EarthFi take to ensure environmental
               responsibility?
             </button>
             <div className={`panel ${activeIndex === 3 ? "show" : ""}`}>
               <p>
-                Environmental responsibility is a core value of AVOCET. We
+                Environmental responsibility is a core value of EarthFi. We
                 adhere to strict environmental standards and regulations in all
                 our operations and collaborate with certified recycling
                 facilities and waste management partners. Additionally, we
@@ -160,11 +160,11 @@ const GetStarted = () => {
               className={`accordion ${activeIndex === 4 ? "active" : ""}`}
               onClick={() => toggleAccordion(4)}
             >
-              How can I contribute to AVOCET's mission?
+              How can I contribute to EarthFi's mission?
             </button>
             <div className={`panel ${activeIndex === 4 ? "show" : ""}`}>
               <p>
-                There are several ways to contribute to AVOCET's mission of
+                There are several ways to contribute to EarthFi's mission of
                 promoting waste-to-wealth initiatives and environmental
                 sustainability:
                 <ul style={{ listStyle: "bullet" }}>

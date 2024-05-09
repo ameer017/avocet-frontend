@@ -9,20 +9,20 @@ const Token = () => {
           Welcome to the world of future of <span>scalable sustainability</span>
         </h1>
         <p>
-          We introduce the AVOCOIN token, the digital currency that funds the
+          We introduce the EarthFiCoin token, the digital currency that funds the
           recovery of waste while generating profit. Every time plastic is
           recovered and recycled, the token&apos;s worth scales up. Ready to
           make positive impact?
         </p>
 
-        <button className="--btn --btn-primary">Explore AVOCOIN</button>
+        <button className="--btn --btn-primary">Explore EarthFiCoin</button>
       </div>
 
       <div className="token__wrapper__two">
         <div>
           <h1>Let&apos;s talk utility</h1>
           <p>
-            This is not about hype, it&apos;s about utility. The AVOCOIN ensures
+            This is not about hype, it&apos;s about utility. The EarthFiCoin ensures
             transparent plastic recovery, funding our certified entities
             worldwide to clean the environment.
           </p>
@@ -31,14 +31,14 @@ const Token = () => {
           <h1>Transparency as a lifestyle</h1>
           <p>
             Legitimacy is our flagship. Through blockchain technology, the
-            AVOCOIN ensures that our entities comply and effectively use their
+            EarthFiCoin ensures that our entities comply and effectively use their
             funds for plastic recovery and recycling.
           </p>
         </div>
         <div>
           <h1>Gain with ethics</h1>
           <p>
-            AVOCOIN incentivize its certified entities to be truthful in their
+          EarthFiCoin incentivize its certified entities to be truthful in their
             reporting and operations. Recovery entities go through a strict
             verification process, and are constantly under audit to provide
             transparent information.

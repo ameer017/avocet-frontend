@@ -35,7 +35,7 @@ const OrderCreation = () => {
                     </div>
                     <div className="form-group">
                         <label>Weight</label>
-                        <input type="text" name="weight" value={formData.weight} onChange={handleChange} placeholder='KG' />
+                        <input type="number" name="weight" value={formData.weight} onChange={handleChange} placeholder='KG' />
                     </div>
                     <div className="form-group">
                         <label>Location</label>
@@ -43,7 +43,7 @@ const OrderCreation = () => {
                     </div>
                     <div className="form-group">
                         <label>Amount</label>
-                        <input type="text" name="amount" value={formData.amount} onChange={handleChange} placeholder='Enter your amount' />
+                        <input type="number" name="amount" value={formData.amount} onChange={handleChange} placeholder='Enter your amount' />
                     </div>
                     <button type="create" className='--btn --btn-success --btn-block'>Create</button>
                 </form>

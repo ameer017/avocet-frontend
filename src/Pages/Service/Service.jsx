@@ -41,12 +41,9 @@ const Service = () => {
                 <br></br> separate the packaging, bio-digest the liquids, and
                 recycle the<br></br> plastic containers.
               </p>
-              <p className="content_section_medium_description">
-                We offer plastic recycling services in California, Utah,
-                Arizona,<br></br> Nevada, Texas, and Washington.
-              </p>
-              <button className="--btn --btn-secondary">
-                <Link to="/contact">
+              
+              <button className="--btn --btn-primary">
+                <Link to="/contact" className="--btn --btn-primary">
                   CONTACT US <span className="arrow">&#8594;</span>
                 </Link>
               </button>

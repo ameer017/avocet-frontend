@@ -20,8 +20,6 @@
   --color-primary: #007bff;
   --color-success: #28a745;
   --color-danger: orangered;
-
-  
 }
 
 * {
@@ -38,6 +36,12 @@ html {
 body {
   font-family: var(--font-family);
   background: #fff;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 section {

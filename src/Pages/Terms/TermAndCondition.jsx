@@ -28,7 +28,7 @@ const termsData = [
   {
     title: "Contact Information",
     content: [
-      "If you have any questions or comments about these Terms of Use, please contact us at avocet907@gmail.com.",
+      "If you have any questions or comments about these Terms of Use, please contact us at team@earthfi.xyz.",
     ],
   },
 ];

@@ -46,7 +46,7 @@ const Footer = () => {
             <p>Socials</p>
 
             <div className="--flex-center gap-2px">
-              <a href="mailto:avocet907@gmail.com">
+              <a href="mailto:team@earthfi.xyz">
                 <BsEnvelopeOpen />
               </a>
 

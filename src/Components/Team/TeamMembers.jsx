@@ -13,9 +13,6 @@ const TeamMember = ({ name, role, image, x, insta, linkedin }) => {
           <Link to={x}>
             <BsTwitterX />
           </Link>
-          <Link to={insta}>
-            <BsInstagram />
-          </Link>
           <Link to={linkedin}>
             <BsLinkedin />
           </Link>

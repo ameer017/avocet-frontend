@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import Web3 from "web3";
@@ -10,20 +10,24 @@ const lists = [
   { tag: "Create", path: "/order-creation" },
 ];
 
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const [account, setAccount] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const [web3, setWeb3] = useState(null);
+  const navbarRef = useRef(null);
 
   const launch = () => {
-    alert('Launching Soon!!!')
-  }
+    alert("Launching Soon!!!");
+  };
 
   useEffect(() => {
     checkConnectionOnMount();
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   useEffect(() => {
@@ -34,6 +38,12 @@ const Navbar = () => {
   const home = () => navigate("/");
 
   const toggleNavbar = () => setIsOpen(!isOpen);
+
+  const handleClickOutside = (event) => {
+    if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
 
   const checkConnectionOnMount = async () => {
     if (window.ethereum) {
@@ -77,35 +87,31 @@ const Navbar = () => {
   };
 
   return (
-      <nav className="navbar">
-        <div className="navbar-container">
-          <div className="navbar-logo" onClick={home}>
-            <img src="../../../public/logo-no-background.png" alt="Logo" />
-          </div>
-
-          <div className={`navbar-links ${isOpen ? "active" : ""}`}>
-            {lists.map(({ tag, path }, i) => (
-              <Link to={path} key={i}>
-                {tag}
-              </Link>
-            ))}
-          </div>
-
-          {/* <button className="--btn --btn-success btn" onClick={connectWallet} disabled>
-            {isConnected ? shortenText(account, 6) : "Connect Wallet"}
-          </button> */}
-
-          <button className="--btn --btn-success btn" onClick={launch}>
-            Connect Wallet
-          </button>
-          
-          <div className="navbar-toggle" onClick={toggleNavbar}>
-            <span className={`bar ${isOpen ? "open" : ""}`}></span>
-            <span className={`bar ${isOpen ? "open" : ""}`}></span>
-            <span className={`bar ${isOpen ? "open" : ""}`}></span>
-          </div>
+    <nav className="navbar" ref={navbarRef}>
+      <div className="navbar-container">
+        <div className="navbar-logo" onClick={home}>
+          <img src="../../../public/logo-no-background.png" alt="Logo" />
         </div>
-      </nav>
+
+        <div className={`navbar-links ${isOpen ? "active" : ""}`}>
+          {lists.map(({ tag, path }, i) => (
+            <Link to={path} key={i}>
+              {tag}
+            </Link>
+          ))}
+        </div>
+
+        <button className="--btn --btn-success btn" onClick={launch}>
+          Connect Wallet
+        </button>
+
+        <div className="navbar-toggle" onClick={toggleNavbar}>
+          <span className={`bar ${isOpen ? "open" : ""}`}></span>
+          <span className={`bar ${isOpen ? "open" : ""}`}></span>
+          <span className={`bar ${isOpen ? "open" : ""}`}></span>
+        </div>
+      </div>
+    </nav>
   );
 };
 

@@ -14,7 +14,7 @@ const Contact = () => {
               id="name"
               name="name"
               required
-              placeholder="John Doe"
+              placeholder="Your Name"
             />
           </div>
           <div class="form-group">
@@ -23,7 +23,7 @@ const Contact = () => {
               id="email"
               name="email"
               required
-              placeholder="yourname@gmail.com"
+              placeholder="example@gmail.com"
             />
           </div>
           <div class="form-group">

@@ -14,20 +14,21 @@ const Profile = () => {
               alt="John Doe"
               className="profile-pic"
             />
-            <h1 className="heading">Claire Doe</h1>
+            <h1 className="heading">EarthFi</h1>
 
             <div className="stats">
               <div>
                 <h4>Wallet:</h4>
-                <p>{account}</p>
+                {/* <p>{account}</p> */}
+                <p>Wallet Address</p>
               </div>
               <div>
                 <h4>Points:</h4>
-                <p>-- EFC</p>
+                <p>EFC</p>
               </div>
               <div>
                 <h4>Assets Bought:</h4>
-                <p>--</p>
+                <p>00</p>
               </div>
             </div>
           </div>

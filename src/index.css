@@ -4,6 +4,7 @@
   --nav-width: 68px;
   --header-height: 45px;
 
+
   --font-family: "Nunito", sans-serif;
   --dark-blue: #0a1930;
   --light-blue: #1f93ff;
@@ -325,7 +326,7 @@ p {
 
 .--btn-primary {
   color: #fff;
-  background: #007bff;
+  background: #28a745;
 }
 .--btn-secondary {
   color: #fff;

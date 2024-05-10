@@ -328,6 +328,10 @@ p {
   width: 100%;
 }
 
+.--btn-blue {
+  color: #fff;
+  background: rgb(13, 13, 163);
+}
 .--btn-primary {
   color: #fff;
   background: #28a745;
@@ -530,4 +534,8 @@ a:hover {
 
 .gap-2px {
   gap: 15px;
+}
+
+.gap-12px {
+  gap: 10rem;
 }

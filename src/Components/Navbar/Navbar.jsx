@@ -7,8 +7,13 @@ const lists = [
   { tag: "About", path: "/about" },
   { tag: "EarthFi", path: "/token" },
   { tag: "Profile", path: "/profile" },
-  { tag: "Create", path: "/order-creation" },
 ];
+
+const dropDownList = [
+  { tag: "Create", path: "/order-creation" },
+  { tag: "Market Place", path: "/market-place" },
+
+]
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -99,6 +104,20 @@ const Navbar = () => {
               {tag}
             </Link>
           ))}
+          <ul>
+            <li className="dropdown">
+              <a href="#" className="dropbtn">
+                Pages
+              </a>
+              <div className="dropdown-content">
+                {dropDownList.map(({ tag, path }, i) => (
+                  <Link to={path} key={i}>
+                    {tag}
+                  </Link>
+                ))}
+              </div>
+            </li>
+          </ul>
         </div>
 
         <button className="--btn --btn-success btn" onClick={launch}>

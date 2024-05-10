@@ -1,0 +1,37 @@
+{
+  "marketList": [
+    {
+      "id": 1,
+      "title": "HDPE",
+      "amount": 100,
+      "location": "Ajah, Lagos",
+      "orderStatus": "Processing",
+      "weight": 100
+    },
+    {
+      "id": 2,
+      "title": "PET",
+      "amount": 20,
+      "location": "Ajah, Lagos",
+      "orderStatus": "Processing",
+      "weight": 100
+    },
+    {
+      "id": 3,
+      "title": "PDE",
+      "amount": 10,
+      "location": "Ajah, Lagos",
+      "orderStatus": "Processing",
+      "weight": 100
+    },
+
+    {
+      "id": 4,
+      "title": "PDE",
+      "amount": 10,
+      "location": "Ajah, Lagos",
+      "orderStatus": "Processing",
+      "weight": 100
+    }
+  ]
+}

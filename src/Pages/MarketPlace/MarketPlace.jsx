@@ -1,39 +1,39 @@
 import React from "react";
 import "./MarketPlace.scss";
 
-const marketList = [
-  {
-    title: "HDPE",
-    amount: 100,
-    location: "Ajah, Lagos",
-    orderStatus: "Processing",
-    weight: 100,
-  },
-  {
-    title: "PET",
-    amount: 20,
-    location: "Ajah, Lagos",
-    orderStatus: "Processing",
-    weight: 100,
-  },
-  {
-    title: "PDE",
-    amount: 10,
-    location: "Ajah, Lagos",
-    orderStatus: "Processing",
-    weight: 100,
-  },
+// const marketList = [
+//   {
+//     title: "HDPE",
+//     amount: 100,
+//     location: "Ajah, Lagos",
+//     orderStatus: "Processing",
+//     weight: 100,
+//   },
+//   {
+//     title: "PET",
+//     amount: 20,
+//     location: "Ajah, Lagos",
+//     orderStatus: "Processing",
+//     weight: 100,
+//   },
+//   {
+//     title: "PDE",
+//     amount: 10,
+//     location: "Ajah, Lagos",
+//     orderStatus: "Processing",
+//     weight: 100,
+//   },
 
-  {
-    title: "PDE",
-    amount: 10,
-    location: "Ajah, Lagos",
-    orderStatus: "Processing",
-    weight: 100,
-  },
-];
+//   {
+//     title: "PDE",
+//     amount: 10,
+//     location: "Ajah, Lagos",
+//     orderStatus: "Processing",
+//     weight: 100,
+//   },
+// ];
 
-const MarketPlace = () => {
+const MarketPlace = ({items}) => {
   return (
     <section>
       <div className="container">
@@ -41,7 +41,7 @@ const MarketPlace = () => {
 
         <div className="--flex wrapper_mpc">
           {/* displays only orders with status -> "processing" */}
-          {marketList.map(
+          {items.map(
             ({ title, amount, location, orderStatus, weight }, idx) => (
               <div key={idx} className="mpc --p2">
                 <div>

@@ -15,15 +15,12 @@ import Service from "./Pages/Service/Service";
 import TermsAndCondition from "./Pages/Terms/TermAndCondition";
 import GetStarted from "./Pages/GetStarted/GetStarted";
 import ConnectWallet from "./Pages/Connect/ConnectWallet";
-import { ethers } from "ethers";
-import { contractAbi, contractAddress } from "./constant/constant";
 import Register from "./Pages/Auth/Register";
 import MarketPlace from "./Pages/MarketPlace/MarketPlace";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
-  const [plastiks, setPlastiks] = useState([]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -31,65 +28,36 @@ function App() {
     }, 3000);
   }, []);
 
-  // Smart contract integration
-  async function createPlastik() {
-    try {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      await provider.send("eth_requestAccounts", []);
-      const signer = provider.getSigner();
+  // Static data integration
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("shoppinglist")) || []
+  );
+  const [newItem, setNewItem] = useState("");
+  const [search, setSearch] = useState("");
 
-      const contractInstance = new ethers.Contract(
-        contractAbi,
-        contractAddress,
-        signer
-      );
+  useEffect(() => {
+    localStorage.setItem("marketList", JSON.stringify(items));
+  }, [items]);
 
-      const result = await contractInstance.listPlastik(
-        "OWNER_ADDRESS",
-        0.0005,
-        10,
-        "HDPE Bottle",
-        "https://www.theplasticbottlescompany.com/uploads/webpage-images/457835-pbc-product-image-template-bottle-3.jpg",
-        "Zone A, Garki, Abuja"
-      );
+  const addItem = (
+    title,
+    amount,
+    location,
+    orderStatus = "Processing",
+    weight
+  ) => {
+    const id = items.length ? items[items.length - 1].id + 1 : 1;
+    const myNewItem = { id, title, amount, location, orderStatus, weight };
+    const listItems = [...items, myNewItem];
+    setItems(listItems);
+  };
 
-      console.log("Plastik listed:", result);
-    } catch (error) {
-      console.error("Error creating plastik:", error);
-    }
-  }
-
-  async function updateCreatePrice() {}
-  async function updatePlastik() {}
-  async function updatePrice() {}
-  async function buyPlastik(orderId) {}
-  async function getAllPlastiks() {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    await provider.send("eth_requestAccounts", []);
-    const signer = provider.getSigner();
-    const contractInstance = new ethers.Contract(
-      contractAbi,
-      contractAddress,
-      signer
-    );
-    const plastiksList = await contractInstance.getAllPlastiks();
-    const formattedPlastiks = plastiksList.map((plastik, index) => {
-      return {
-        index: index,
-        name: plastik._orderTitle,
-        amount: plastik.price.toNumber(),
-        location: plastik._location,
-        image: plastik._images,
-        weight: plastik.weight,
-      };
-    });
-    setPlastiks(formattedPlastiks);
-  }
-  async function getPlastik() {}
-  async function getUserPlastiks() {}
-  async function getListingPrice() {}
-
-  // End
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!newItem) return;
+    addItem(newItem);
+    setNewItem("");
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -103,7 +71,7 @@ function App() {
     { path: "/profile", element: <Profile /> },
     {
       path: "/order-creation",
-      element: <OrderCreation createPlastik={createPlastik} />,
+      element: <OrderCreation  newItem={newItem} setNewItem={setNewItem} handleSubmit={handleSubmit} />,
     },
     { path: "/token", element: <Token /> },
     { path: "/register", element: <Register /> },
@@ -112,7 +80,7 @@ function App() {
     { path: "/terms", element: <TermsAndCondition /> },
     { path: "/get-started", element: <GetStarted /> },
     { path: "/wallet-connect", element: <ConnectWallet /> },
-    { path: "/market-place", element: <MarketPlace /> },
+    { path: "/market-place", element: <MarketPlace items={items} /> },
   ];
 
   return (

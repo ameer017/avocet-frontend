@@ -18,6 +18,7 @@ import ConnectWallet from "./Pages/Connect/ConnectWallet";
 import { ethers } from "ethers";
 import { contractAbi, contractAddress } from "./constant/constant";
 import Register from "./Pages/Auth/Register";
+import MarketPlace from "./Pages/MarketPlace/MarketPlace";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -111,6 +112,7 @@ function App() {
     { path: "/terms", element: <TermsAndCondition /> },
     { path: "/get-started", element: <GetStarted /> },
     { path: "/wallet-connect", element: <ConnectWallet /> },
+    { path: "/market-place", element: <MarketPlace /> },
   ];
 
   return (

@@ -9,7 +9,7 @@ const Partner = () => {
       <div className="partner">
         <h1>Our Partners And Clients</h1>
 
-        <div className="--flex-between">
+        <div className="--flex-center gap-12px">
           <img src={planet3r} alt="planet3r" title="" />
 
           <img

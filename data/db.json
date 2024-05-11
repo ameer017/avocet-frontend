@@ -23,15 +23,6 @@
       "location": "Ajah, Lagos",
       "orderStatus": "Processing",
       "weight": 100
-    },
-
-    {
-      "id": 4,
-      "title": "PDE",
-      "amount": 10,
-      "location": "Ajah, Lagos",
-      "orderStatus": "Processing",
-      "weight": 100
     }
   ]
 }

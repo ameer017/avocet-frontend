@@ -19,7 +19,7 @@ const Partner = () => {
 
           <img srcSet="ghrng.com/wp-content/uploads/2023/01/ghr_primary-300x86.png 300w, https://ghrng.com/wp-content/uploads/2023/01/ghr_primary-768x220.png 768w, https://ghrng.com/wp-content/uploads/2023/01/ghr_primary-1536x441.png 1536w, https://ghrng.com/wp-content/uploads/2023/01/ghr_primary-2048x588.png 2048w" />
 
-          <img src={logo} alt="" srcset="" />
+          <img src={logo} alt="" />
         </div>
       </div>
     </section>

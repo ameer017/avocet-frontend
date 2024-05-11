@@ -1,39 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./MarketPlace.scss";
+import axios from "axios";
 
-// const marketList = [
-//   {
-//     title: "HDPE",
-//     amount: 100,
-//     location: "Ajah, Lagos",
-//     orderStatus: "Processing",
-//     weight: 100,
-//   },
-//   {
-//     title: "PET",
-//     amount: 20,
-//     location: "Ajah, Lagos",
-//     orderStatus: "Processing",
-//     weight: 100,
-//   },
-//   {
-//     title: "PDE",
-//     amount: 10,
-//     location: "Ajah, Lagos",
-//     orderStatus: "Processing",
-//     weight: 100,
-//   },
 
-//   {
-//     title: "PDE",
-//     amount: 10,
-//     location: "Ajah, Lagos",
-//     orderStatus: "Processing",
-//     weight: 100,
-//   },
-// ];
+const MarketPlace = () => {
 
-const MarketPlace = ({items}) => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from localhost:3500/marketList
+    axios.get("http://localhost:3500/marketList")
+      .then(response => {
+        setItems(response.data);
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+      });
+  }, []); 
+
   return (
     <section>
       <div className="container">

@@ -71,7 +71,13 @@ function App() {
     { path: "/profile", element: <Profile /> },
     {
       path: "/order-creation",
-      element: <OrderCreation  newItem={newItem} setNewItem={setNewItem} handleSubmit={handleSubmit} />,
+      element: (
+        <OrderCreation
+          newItem={newItem}
+          setNewItem={setNewItem}
+          handleSubmit={handleSubmit}
+        />
+      ),
     },
     { path: "/token", element: <Token /> },
     { path: "/register", element: <Register /> },
@@ -80,7 +86,7 @@ function App() {
     { path: "/terms", element: <TermsAndCondition /> },
     { path: "/get-started", element: <GetStarted /> },
     { path: "/wallet-connect", element: <ConnectWallet /> },
-    { path: "/market-place", element: <MarketPlace items={items} /> },
+    { path: "/market-place", element: <MarketPlace /> },
   ];
 
   return (

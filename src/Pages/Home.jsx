@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./Home.scss";
-// import loginImg from "../../assets/login.svg";
 import { Link } from "react-router-dom";
-import Info from "../Components/Info/Info";
 import Partner from "../Components/Partners/Partner";
 import Impact from "../Components/Impact/Impact";
 import Restore from "../Components/Restore/Restore";
 
-const WORDS = ["Re-Fi", "Recycling", "Collecting", "Processing"];
+const WORDS = ["Recycling", "Collecting", "Processing"];
 
 const Swapper = () => {
   const [count, setCount] = useState(0);
@@ -46,19 +44,10 @@ const Home = () => {
             <button className="--btn --btn-success">
               <Link to="/get-started">Get Started</Link>
             </button>
-
-            {/* <button
-              onClick={handleDownload}
-              className="--btn --btn-primary"
-              target="_blank"
-            >
-              whitepaper
-            </button> */}
           </div>
         </div>
       </section>
       <Restore />
-      {/* <Info /> */} 
       <Impact />
       <Partner />
     </div>

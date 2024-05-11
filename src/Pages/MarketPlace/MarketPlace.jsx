@@ -2,21 +2,22 @@ import React, { useEffect, useState } from "react";
 import "./MarketPlace.scss";
 import axios from "axios";
 
-
 const MarketPlace = () => {
-
   const [items, setItems] = useState([]);
+
+  // To get the data on the marketPlace, type this command in your terminal: npx json-server -w data/db.json -p 3500
 
   useEffect(() => {
     // Fetch data from localhost:3500/marketList
-    axios.get("http://localhost:3500/marketList")
-      .then(response => {
+    axios
+      .get("http://localhost:3500/marketList")
+      .then((response) => {
         setItems(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []); 
+  }, []);
 
   return (
     <section>

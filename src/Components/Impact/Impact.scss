@@ -1,5 +1,5 @@
 .impact {
-  padding: 4em;
+  padding: 4em 8rem;
   flex-wrap: wrap;
   color: aliceblue;
 
@@ -74,7 +74,7 @@
         rotate: 5deg;
       }
       &:nth-child(3) {
-        background-color: rgba(0, 128, 0, 0.59);
+        background-color: #00800096;
         rotate: -5deg;
       }
     }

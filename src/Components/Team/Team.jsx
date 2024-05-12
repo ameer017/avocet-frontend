@@ -21,13 +21,7 @@ const Team = () => {
           x="https://twitter.com/herlew99"
           linkedin="https://www.linkedin.com/in/aliumusa/"
         />
-        <TeamMembers
-          name="Rokeebah Olajide"
-          role="Marketing Lead"
-          image={roqeebah}
-          x="https://twitter.com/Olabimpe963"
-          linkedin="https://www.linkedin.com/in/olajide-rokeebat-98507329a/"
-        />
+
         <TeamMembers
           name="Abdullahi Raji"
           role="Co-Founder, CTO"
@@ -35,6 +29,23 @@ const Team = () => {
           x="https://twitter.com/alAmeer170"
           linkedin="https://www.linkedin.com/in/raji-abdullahi-a-4598b42a5/"
         />
+
+        <TeamMembers
+          name="Rokeebah Olajide"
+          role="Marketing Lead"
+          image={roqeebah}
+          x="https://twitter.com/Olabimpe963"
+          linkedin="https://www.linkedin.com/in/olajide-rokeebat-98507329a/"
+        />
+
+        <TeamMembers
+          name="Abubakar Kehinde"
+          role="Project Lead"
+          image={kenny}
+          x="https://twitter.com/kennySpec"
+          linkedin="https://www.linkedin.com/in/kehinde-abubakar-029223252/"
+        />
+
         <TeamMembers
           name="Khadijah Musa"
           role="Software Dev."
@@ -42,19 +53,13 @@ const Team = () => {
           x="https://twitter.com/khady_bola"
           linkedin="https://www.linkedin.com/in/khadijah-musa-851a80251"
         />
+
         <TeamMembers
           name="Abdulakeem Adebayo"
           role="Blockchain Dev."
           image={bayo}
           x="https://twitter.com/AkeemAd28605307"
           linkedin="https://www.linkedin.com/in/adebayo-ademola-678530199"
-        />
-        <TeamMembers
-          name="Abubakar Kehinde"
-          role="Project Lead"
-          image={kenny}
-          x="https://twitter.com/kennySpec"
-          linkedin="https://www.linkedin.com/in/kehinde-abubakar-029223252/"
         />
       </div>
     </div>

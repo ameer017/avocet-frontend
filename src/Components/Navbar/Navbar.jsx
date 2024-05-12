@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import Web3 from "web3";
+import logo from "../../../public/logo-no-background.png";
 
 const lists = [
   { tag: "About", path: "/about" },
@@ -12,8 +13,7 @@ const lists = [
 const dropDownList = [
   { tag: "Create", path: "/order-creation" },
   { tag: "Market Place", path: "/market-place" },
-
-]
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -95,7 +95,7 @@ const Navbar = () => {
     <nav className="navbar" ref={navbarRef}>
       <div className="navbar-container">
         <div className="navbar-logo" onClick={home}>
-          <img src="../../../public/logo-no-background.png" alt="Logo" />
+          <img src={logo} alt="Logo" />
         </div>
 
         <div className={`navbar-links ${isOpen ? "active" : ""}`}>

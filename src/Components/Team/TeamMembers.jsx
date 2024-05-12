@@ -1,9 +1,9 @@
 // TeamMembers.js
 import React from "react";
 import { Link } from "react-router-dom";
-import { BsTwitterX, BsInstagram, BsLinkedin } from "react-icons/bs";
+import { BsTwitterX, BsLinkedin } from "react-icons/bs";
 
-const TeamMember = ({ name, role, image, x, insta, linkedin }) => {
+const TeamMember = ({ name, role, image, x,  linkedin }) => {
   return (
     <div className="team-member">
       <div className="member-details">

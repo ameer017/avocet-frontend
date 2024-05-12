@@ -22,13 +22,6 @@ const Footer = () => {
             <img src={logo} alt="Logo" className="f__logo" />
           </div>
 
-          {/* <div className="res">
-            <p>Resources</p>
-
-            <button onClick={handleDownload} className="--btn">
-              Whitepaper
-            </button>
-          </div> */}
 
           <div>
             <p>Company</p>

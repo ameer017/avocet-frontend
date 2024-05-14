@@ -21,15 +21,51 @@ const Buy = () => {
   const handleSearch = () => {
     // Filter items based on search criteria
     const filteredItems = items.filter((item) => {
-      const titleMatch = item.title
-        .toLowerCase()
-        .includes(searchTitle.toLowerCase());
-      const statusMatch = item.orderStatus
-        .toLowerCase()
-        .includes(searchStatus.toLowerCase());
+      const titleMatch =
+        item.title &&
+        item.title.toLowerCase().includes(searchTitle.toLowerCase());
+      const statusMatch =
+        item.orderStatus &&
+        item.orderStatus.toLowerCase().includes(searchStatus.toLowerCase());
       return titleMatch && statusMatch;
     });
     return filteredItems;
+  };
+
+  const handleBuyAsset = async (itemId) => {
+    try {
+      const updatedItems = items.map((item) => {
+        if (item.id === itemId) {
+          return { ...item, orderStatus: "Processing", bought: true };
+        }
+        return item;
+      });
+      await axios.put(`http://localhost:3500/marketList/${itemId}`, {
+        orderStatus: "Processing",
+      });
+      setItems(updatedItems);
+      console.log("Order status updated to Processing.");
+    } catch (error) {
+      console.error("Error updating order status:", error);
+    }
+  };
+
+  const handleAssetReceived = async (itemId) => {
+    try {
+      const updatedItems = items.map((item) => {
+        if (item.id === itemId) {
+          return { ...item, orderStatus: "Delivered" };
+        }
+        return item;
+      });
+      await axios.put(`http://localhost:3500/marketList/${itemId}`, {
+        orderStatus: "Delivered",
+      });
+      setItems(updatedItems);
+      console.log("Order status updated to Delivered.");
+    } catch (error) {
+      console.error("Error updating order status:", error);
+    }
   };
 
   return (
@@ -44,19 +80,16 @@ const Buy = () => {
             value={searchTitle}
             onChange={(e) => setSearchTitle(e.target.value)}
           />
-          <input
-            type="text"
-            placeholder="Search by status"
-            value={searchStatus}
-            onChange={(e) => setSearchStatus(e.target.value)}
-          />
           <button onClick={handleSearch}>Search</button>
         </div>
 
         <div className="--flex wrapper_mpc">
           {/* displays only orders with status -> "processing" */}
           {handleSearch().map(
-            ({ title, amount, location, orderStatus, weight }, idx) => (
+            (
+              { id, title, amount, location, orderStatus, weight, bought },
+              idx
+            ) => (
               <div key={idx} className="mpc --p2">
                 <div>
                   <p> Title: {title} </p>
@@ -66,7 +99,23 @@ const Buy = () => {
                   <p>{orderStatus}! </p>
 
                   <div className="--mt --flex-between">
-                    <button className="--btn --btn-blue">Buy Asset</button>
+                    {!bought && (
+                      <button
+                        className="--btn --btn-blue"
+                        onClick={() => handleBuyAsset(id)}
+                      >
+                        Buy Asset
+                      </button>
+                    )}
+                    {bought && (
+                      <button
+                        className="--btn --btn-blue"
+                        onClick={() => handleAssetReceived(id)}
+                        disabled={orderStatus !== "Processing"}
+                      >
+                        Asset Received
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

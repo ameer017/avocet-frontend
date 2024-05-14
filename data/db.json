@@ -1,20 +1,12 @@
 {
   "marketList": [
     {
-      "id": "1e94",
-      "title": "HDPE",
-      "weight": "40",
-      "location": "No 2, Blessing str. Surveyor B/S - Elejigbo Estate",
-      "amount": "15000",
-      "orderStatus": "Processing!!"
+      "orderStatus": "Completed",
+      "id": "4608"
     },
     {
-      "id": "bb48",
-      "title": "bayo",
-      "weight": "50",
-      "location": "lagos",
-      "amount": "2000",
-      "orderStatus": "Processing!!"
+      "orderStatus": "Processing",
+      "id": "8ed2"
     }
   ]
 }

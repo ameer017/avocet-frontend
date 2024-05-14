@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./MarketPlace.scss";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const MarketPlace = () => {
   const [items, setItems] = useState([]);
-
-  // To get the data on the marketPlace, type this command in your terminal: npx json-server -w data/db.json -p 3500
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -18,6 +18,28 @@ const MarketPlace = () => {
       });
   }, []);
 
+  const handleConfirmPayment = async (itemId) => {
+    const confirmed = window.confirm("Have you received the payment?");
+    if (confirmed) {
+      try {
+        const updatedItems = items.map((item) => {
+          if (item.id === itemId) {
+            return { ...item, orderStatus: "Completed" };
+          }
+          return item;
+        });
+        await axios.put(`http://localhost:3500/marketList/${itemId}`, {
+          orderStatus: "Completed",
+        });
+        setItems(updatedItems);
+        console.log("Payment confirmed and order status updated to Completed.");
+        navigate("/");
+      } catch (error) {
+        console.error("Error confirming payment:", error);
+      }
+    }
+  };
+
   return (
     <section>
       <div className="container">
@@ -26,7 +48,7 @@ const MarketPlace = () => {
         <div className="--flex wrapper_mpc">
           {/* displays only orders with status -> "processing" */}
           {items.map(
-            ({ title, amount, location, orderStatus, weight }, idx) => (
+            ({ id, title, amount, location, orderStatus, weight }, idx) => (
               <div key={idx} className="mpc --p2">
                 <div>
                   <p> Title: {title} </p>
@@ -35,18 +57,16 @@ const MarketPlace = () => {
                   <p> Weight: {weight} kg</p>
                   <p>{orderStatus}! </p>
 
-                  <div className="--mt">
-                    {/* to  be rendered for the buyer only */}
-                    {/* <button className="--btn --btn-blue">Buy Asset</button> */}
-                    {/* to  be rendered for the seller after creating an order --> to confirm payment receipt */}
-                    <button className="--btn --btn-success">
-                      Confirm Payment
-                    </button>
-                    {/* to  be rendered for the buyer after receiving the order --> to confirm order receipt */}
-                    {/* <button className="--btn --btn-danger">
-                      Asset Received
-                    </button> */}
-                  </div>
+                  {orderStatus === "Delivered" && (
+                    <div className="--mt">
+                      <button
+                        className="--btn --btn-success"
+                        onClick={() => handleConfirmPayment(id)}
+                      >
+                        Confirm Payment
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             )

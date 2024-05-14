@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 const OrderCreation = () => {
   const navigate = useNavigate();
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
   const [formData, setFormData] = useState({
     title: "",
     weight: "",
@@ -23,6 +25,10 @@ const OrderCreation = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setShowConfirmation(true);
+  };
+
+  const confirmOrder = async () => {
     try {
       await axios.post("http://localhost:3500/marketList", formData);
       setFormData({
@@ -30,13 +36,29 @@ const OrderCreation = () => {
         weight: "",
         location: "",
         amount: "",
-        orderStatus: "Processing!!",
+        orderStatus: "in order!!",
       });
       console.log("Order created successfully!");
       navigate("/market-place");
+
+      setTimeout(async () => {
+        try {
+          const response = await axios.get("http://localhost:3500/marketList");
+          const lastOrderId = response.data[response.data.length - 1].id;
+
+          await axios.delete(`http://localhost:3500/marketList/${lastOrderId}`);
+          console.log("Order deleted successfully after 10 minutes.");
+        } catch (error) {
+          console.error("Error deleting order:", error);
+        }
+      }, 10 * 60 * 1000);
     } catch (error) {
       console.error("Error creating order:", error);
     }
+  };
+
+  const cancelOrder = () => {
+    setShowConfirmation(false);
   };
 
   return (
@@ -86,12 +108,31 @@ const OrderCreation = () => {
                 placeholder="Enter amount"
               />
             </div>
+
             <button type="create" className="--btn --btn-success --btn-block">
               Create
             </button>
           </form>
         </div>
       </div>
+
+      {showConfirmation && (
+        <div className="confirmation-panel">
+          <p>Are you sure you want to create this order?</p>
+          <p>
+            If your order is not picked in 10 minutes, <br />
+            it&apos;ll automatically cancel
+          </p>
+          <div className="--flex --flex-direction --flex-center">
+            <button onClick={confirmOrder} className="--btn --btn-primary">
+              Yes
+            </button>
+            <button onClick={cancelOrder} className="--btn-danger --btn">
+              No
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

@@ -1,28 +1,20 @@
 {
   "marketList": [
     {
-      "id": 1,
+      "id": "1e94",
       "title": "HDPE",
-      "amount": 100,
-      "location": "Ajah, Lagos",
-      "orderStatus": "Processing",
-      "weight": 100
+      "weight": "40",
+      "location": "No 2, Blessing str. Surveyor B/S - Elejigbo Estate",
+      "amount": "15000",
+      "orderStatus": "Processing!!"
     },
     {
-      "id": 2,
-      "title": "PET",
-      "amount": 20,
-      "location": "Ajah, Lagos",
-      "orderStatus": "Processing",
-      "weight": 100
-    },
-    {
-      "id": 3,
-      "title": "PDE",
-      "amount": 10,
-      "location": "Ajah, Lagos",
-      "orderStatus": "Processing",
-      "weight": 100
+      "id": "bb48",
+      "title": "bayo",
+      "weight": "50",
+      "location": "lagos",
+      "amount": "2000",
+      "orderStatus": "Processing!!"
     }
   ]
 }

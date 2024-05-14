@@ -15,3 +15,36 @@
    
   }
 }
+
+.input-container {
+  margin-bottom: 20px;
+
+  input[type="text"] {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+
+    &:focus {
+      outline: none;
+      border-color: #0b3b18;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #0b3b18;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}

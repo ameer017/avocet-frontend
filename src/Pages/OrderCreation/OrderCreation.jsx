@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import "./OrderCreation.scss";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const OrderCreation = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     weight: "",
     location: "",
     amount: "",
+    orderStatus: "Processing!!",
   });
 
   const handleChange = (e) => {
@@ -17,10 +21,22 @@ const OrderCreation = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
+    try {
+      await axios.post("http://localhost:3500/marketList", formData);
+      setFormData({
+        title: "",
+        weight: "",
+        location: "",
+        amount: "",
+        orderStatus: "Processing!!",
+      });
+      console.log("Order created successfully!");
+      navigate("/market-place");
+    } catch (error) {
+      console.error("Error creating order:", error);
+    }
   };
 
   return (
@@ -71,7 +87,7 @@ const OrderCreation = () => {
               />
             </div>
             <button type="create" className="--btn --btn-success --btn-block">
-              Create 
+              Create
             </button>
           </form>
         </div>

@@ -17,6 +17,7 @@ import GetStarted from "./Pages/GetStarted/GetStarted";
 import ConnectWallet from "./Pages/Connect/ConnectWallet";
 import Register from "./Pages/Auth/Register";
 import MarketPlace from "./Pages/MarketPlace/MarketPlace";
+import Buy from "./Pages/MarketPlace/Buy";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -87,6 +88,7 @@ function App() {
     { path: "/get-started", element: <GetStarted /> },
     { path: "/wallet-connect", element: <ConnectWallet /> },
     { path: "/market-place", element: <MarketPlace /> },
+    { path: "/buy-asset", element: <Buy /> },
   ];
 
   return (

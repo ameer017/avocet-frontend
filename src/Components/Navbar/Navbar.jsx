@@ -13,8 +13,11 @@ const lists = [
 const dropDownList = [
   { tag: "Create", path: "/order-creation" },
   { tag: "Market Place", path: "/market-place" },
+  { tag: "Buy Asset", path: "/buy-asset" },
+  { tag: "Confirm", path: null },
 ];
 
+const confirmList = [{ tag: "Transaction", path: "/confirm-transaction" }];
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -111,9 +114,11 @@ const Navbar = () => {
               </a>
               <div className="dropdown-content">
                 {dropDownList.map(({ tag, path }, i) => (
-                  <Link to={path} key={i}>
-                    {tag}
-                  </Link>
+                  <>
+                    <Link to={path} key={i}>
+                      {tag}
+                    </Link>
+                  </>
                 ))}
               </div>
             </li>

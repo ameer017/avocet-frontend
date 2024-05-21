@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./OrderCreation.scss";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const OrderCreation = () => {
@@ -30,7 +29,12 @@ const OrderCreation = () => {
 
   const confirmOrder = async () => {
     try {
-      await axios.post("http://localhost:3500/marketList", formData);
+      const orders = JSON.parse(localStorage.getItem("orders")) || [];
+      const newOrder = { ...formData, id: Date.now() };
+
+      orders.push(newOrder);
+      localStorage.setItem("orders", JSON.stringify(orders));
+
       setFormData({
         title: "",
         weight: "",
@@ -41,16 +45,12 @@ const OrderCreation = () => {
       console.log("Order created successfully!");
       navigate("/market-place");
 
-      setTimeout(async () => {
-        try {
-          const response = await axios.get("http://localhost:3500/marketList");
-          const lastOrderId = response.data[response.data.length - 1].id;
+      setTimeout(() => {
+        const updatedOrders = JSON.parse(localStorage.getItem("orders")) || [];
+        const updatedOrderList = updatedOrders.filter(order => order.id !== newOrder.id);
 
-          await axios.delete(`http://localhost:3500/marketList/${lastOrderId}`);
-          console.log("Order deleted successfully after 10 minutes.");
-        } catch (error) {
-          console.error("Error deleting order:", error);
-        }
+        localStorage.setItem("orders", JSON.stringify(updatedOrderList));
+        console.log("Order deleted successfully after 10 minutes.");
       }, 10 * 60 * 1000);
     } catch (error) {
       console.error("Error creating order:", error);

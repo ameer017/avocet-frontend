@@ -4,13 +4,17 @@ footer {
 
   > div:nth-child(1) {
     flex-wrap: wrap;
+    margin-right: 10rem;
 
     @media screen and (max-width: 660px) {
       gap: 20px;
+      
+      
     }
     @media screen and (max-width: 460px) {
       flex-direction: column;
       text-align: center;
+      
     }
     .f__logo {
       color: green;
@@ -18,13 +22,16 @@ footer {
       margin-Top: 3rem;
       width: 105px
     }
+    .--flex-para {
+      font-size: 15px;
+    }
 
  
     > div {
       display: flex;
       flex-direction: column;
       align-items: left;
-      gap: 2px;
+      gap: 20px;
 
       p {
         color: rgb(17, 68, 17);
@@ -78,4 +85,6 @@ footer {
       }
     }
   }
+
+  
 }

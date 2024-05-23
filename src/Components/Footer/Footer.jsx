@@ -20,6 +20,7 @@ const Footer = () => {
         <div className="--flex-between">
           <div>
             <img src={logo} alt="Logo" className="f__logo" />
+            <p className="--flex-para">We leverage blockchain technology to revolutionize waste collection, recycling, <br/> and disposal  services. Our decentralized facilities and smart contract-based <br/> systems ensure transparent, efficient, and environmentally <br/> responsible waste management practices.</p>
           </div>
 
 

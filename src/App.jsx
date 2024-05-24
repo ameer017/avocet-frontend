@@ -18,6 +18,7 @@ import ConnectWallet from "./Pages/Connect/ConnectWallet";
 import Register from "./Pages/Auth/Register";
 import MarketPlace from "./Pages/MarketPlace/MarketPlace";
 import Buy from "./Pages/MarketPlace/Buy";
+import ScrollToTop from "react-scroll-to-top";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -108,6 +109,7 @@ function App() {
           </Routes>
         </>
       )}
+      <ScrollToTop smooth />
     </div>
   );
 }

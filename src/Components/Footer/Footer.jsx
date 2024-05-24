@@ -2,7 +2,7 @@ import React from "react";
 import "./Footer.scss";
 import { BsTwitterX, BsEnvelopeOpen } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import logo from "../../../public/logo-no-background.png";
+import logo from "/logo.png"
 
 const Footer = () => {
   const currentTime = new Date().getFullYear();
@@ -16,12 +16,19 @@ const Footer = () => {
   return (
     <>
       <hr style={{ width: "100%" }} />
+
       <footer>
         <div className="--flex-between">
           <div>
             <img src={logo} alt="Logo" className="f__logo" />
-          </div>
 
+            <p>
+              We leverage blockchain technology to revolutionize waste
+              collection, recycling, and disposal services. Our decentralized
+              structure is to ensure transparent, efficient, and environmentally
+              responsible waste management practices.
+            </p>
+          </div>
 
           <div>
             <p>Company</p>

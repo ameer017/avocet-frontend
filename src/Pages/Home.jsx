@@ -22,19 +22,14 @@ const Swapper = () => {
 };
 
 const Home = () => {
-  const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/public/whitepaper.pdf";
-    link.download = "whitepaper.pdf";
-    link.click();
-  };
+ 
 
   return (
     <div>
       <section className="hero">
         <div className="hero-text --pad">
           <p>
-            <span>EarthFi </span> &nbsp; &nbsp;
+            <span>EarthFi </span> &nbsp; 
             <Swapper /> &nbsp; &nbsp;
           </p>
 
@@ -50,6 +45,7 @@ const Home = () => {
       <Restore />
       <Impact />
       <Partner />
+
     </div>
   );
 };

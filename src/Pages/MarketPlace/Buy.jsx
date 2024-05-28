@@ -66,15 +66,15 @@ const Buy = () => {
           return item;
         });
         setItems(updatedItems);
-        toast.success("Asset purchased and order status updated to Purchased.");
+        console.log("Asset purchased and order status updated to Purchased.");
       } catch (error) {
         console.error("Error processing purchase:", error);
         if (error.code === "INSUFFICIENT_FUNDS") {
-          toast.error(
+          console.log(
             "Insufficient funds to complete the transaction. Please add more ETH to your wallet."
           );
         } else {
-          toast.error(
+          console.log(
             "Insufficient funds to complete the transaction. Please add more ETH to your wallet."
           );
         }

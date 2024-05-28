@@ -53,12 +53,12 @@ const wasteSlice = createSlice({
       .addCase(fetchWastes.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.wastes = action.payload;
-        toast.success = action.payload;
+        console.log = action.payload;
       })
       .addCase(fetchWastes.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
-        toast.error(action.error.message);
+        console.log(action.error.message);
       })
 
       // ========================================================
@@ -71,7 +71,7 @@ const wasteSlice = createSlice({
       .addCase(fetchWaste.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
-        toast.error(action.error.message);
+        console.log(action.error.message);
       })
 
       // =======================================================
@@ -80,12 +80,12 @@ const wasteSlice = createSlice({
       })
       .addCase(createWaste.fulfilled, (state, action) => {
         state.wastes.push(action.payload);
-        toast.success = action.payload;
+        console.log = action.payload;
       })
       .addCase(createWaste.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
-        toast.error(action.error.message);
+        console.log(action.error.message);
       })
 
       // =======================================================
@@ -96,12 +96,12 @@ const wasteSlice = createSlice({
         state.wastes = state.wastes.filter(
           (waste) => waste._id !== action.payload
         );
-        toast.success = action.payload;
+        console.log = action.payload;
       })
       .addCase(deleteWaste.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
-        toast.error(action.error.message);
+        console.log(action.error.message);
       })
 
       // =======================================================
@@ -115,12 +115,12 @@ const wasteSlice = createSlice({
         if (index !== -1) {
           state.wastes[index] = action.payload;
         }
-        toast.success = action.payload;
+        console.log = action.payload;
       })
       .addCase(updateWaste.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
-        toast.error(action.error.message);
+        console.log(action.error.message);
       });
   },
 });

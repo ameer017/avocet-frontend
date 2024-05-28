@@ -1,42 +1,54 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./MarketPlace.scss";
 import { useNavigate } from "react-router-dom";
+import { TransactionContext } from "../../context/TransactionContext";
+import { getItems, updateItem, deleteItem } from "../../utils/indexedDB";
 
 const MarketPlace = () => {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
+  const { approveTransaction } = useContext(TransactionContext);
 
   useEffect(() => {
-    const storedItems = JSON.parse(localStorage.getItem("orders")) || [];
-    setItems(storedItems);
+    const fetchItems = async () => {
+      const storedItems = await getItems();
+      setItems(storedItems);
+    };
+    fetchItems();
   }, []);
 
-  const handleConfirmPayment = (itemId) => {
-    const confirmed = window.confirm("Have you received the payment?");
-    if (confirmed) {
-      try {
+  const handleApprove = async (itemId) => {
+    try {
+      const isBuyerDeposited = await contract.isBuyerDeposited();
+      const isSellerApproved = await contract.isSellerApproved();
+      if (isBuyerDeposited && isSellerApproved) {
+        await approveTransaction();
         const updatedItems = items.map((item) => {
           if (item.id === itemId) {
-            return { ...item, orderStatus: "Completed" };
+            const updatedItem = { ...item, orderStatus: "Completed" };
+            updateItem(updatedItem);
+            return updatedItem;
           }
           return item;
         });
-        localStorage.setItem("orders", JSON.stringify(updatedItems));
         setItems(updatedItems);
-        console.log("Payment confirmed and order status updated to Completed.");
+        console.log("Transaction approved and order status updated to Completed.");
         navigate("/");
-      } catch (error) {
-        console.error("Error confirming payment:", error);
+      } else {
+        alert("Payment not yet received by the seller.");
       }
+    } catch (error) {
+      console.error("Error approving transaction:", error);
+      alert('Only the seller can approve the transaction.');
     }
   };
 
-  const handleDeleteItem = (itemId) => {
+  const handleDeleteItem = async (itemId) => {
     const confirmed = window.confirm("Are you sure you want to delete this item?");
     if (confirmed) {
       try {
+        await deleteItem(itemId);
         const updatedItems = items.filter((item) => item.id !== itemId);
-        localStorage.setItem("orders", JSON.stringify(updatedItems));
         setItems(updatedItems);
         console.log("Item deleted.");
       } catch (error) {
@@ -58,7 +70,6 @@ const MarketPlace = () => {
     <section>
       <div className="container">
         <h1>MarketPlace</h1>
-
         <div className="--flex wrapper_mpc">
           {items.map(({ id, title, amount, location, orderStatus, weight }, idx) => (
             <div key={idx} className="mpc --p2">
@@ -68,15 +79,13 @@ const MarketPlace = () => {
                 <p> Location: {location} </p>
                 <p> Weight: {weight} kg</p>
                 <p>{orderStatus}! </p>
-
-                {orderStatus === "Delivered" && (
+                {orderStatus === "Purchased" && (
                   <div className="--mt">
-                    <button className="--btn --btn-success" onClick={() => handleConfirmPayment(id)}>
+                    <button className="--btn --btn-success" onClick={() => handleApprove(id)}>
                       Confirm Payment
                     </button>
                   </div>
                 )}
-
                 {orderStatus !== "Completed" && (
                   <div className="--mt">
                     <button className="--btn --btn-danger" onClick={() => handleDeleteItem(id)}>
@@ -84,15 +93,11 @@ const MarketPlace = () => {
                     </button>
                   </div>
                 )}
-
-                {/* ADMIN DELETE */}
-
-                {/* <div className="--mt">
+                <div className="--mt">
                   <button className="--btn --btn-success" onClick={() => handleAdminDelete(id)}>
                     Admin Delete
                   </button>
-                </div> */}
-
+                </div>
               </div>
             </div>
           ))}

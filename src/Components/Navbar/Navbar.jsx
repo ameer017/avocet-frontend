@@ -5,18 +5,49 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="nav">
-      <Link to="/">
-        <img src={logo} alt="" className="logo" />
-      </Link>
-      <div className="nav-right">
-        <Link to="/about">About</Link>
-        <Link to="/token">EarthFi</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/order-creation">Create</Link>
-        <Link to="/buy-asset">Buy Asset</Link>
-      </div>
+
+    <nav className="navbar" ref={navbarRef}>
+      <div className="navbar-container">
+        <div className="navbar-logo" onClick={home}>
+          <img src={logo} alt="Logo" />
+        </div>
+
+        <div className={`navbar-links ${isOpen ? "active" : ""}`}>
+          {lists.map(({ tag, path }, i) => (
+            <Link to={path} key={i}>
+              {tag}
+            </Link>
+          ))}
+          <ul>
+            <li className="dropdown">
+              <a href="#" className="dropbtn">
+                Pages
+              </a>
+              <div className="dropdown-content">
+                {dropDownList.map(({ tag, path }, i) => (
+                  <>
+                    <Link to={path} key={i}>
+                      {tag}
+                    </Link>
+                  </>
+                ))}
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <button className="--btn --btn-success btn" onClick={launch}>
+          Expired Connect Wallet
+        </button>
+
+        <div className="navbar-toggle" onClick={toggleNavbar}>
+          <span className={`bar ${isOpen ? "open" : ""}`}></span>
+          <span className={`bar ${isOpen ? "open" : ""}`}></span>
+          <span className={`bar ${isOpen ? "open" : ""}`}></span>
+        </div>
+
     </div>
+    </nav>
   );
 };
 

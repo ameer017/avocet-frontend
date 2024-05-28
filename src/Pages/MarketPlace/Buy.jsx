@@ -3,7 +3,7 @@ import { TransactionContext } from "../../context/TransactionContext";
 import { ethers } from "ethers";
 import "./MarketPlace.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchWastes } from "../../redux/features/plastik/plastikSlice";
+import { fetchWastes, updateWaste } from "../../redux/features/plastik/plastikSlice";
 import { toast } from "react-toastify";
 
 const Buy = () => {
@@ -60,7 +60,7 @@ const Buy = () => {
               orderStatus: "Purchased",
               bought: true,
             };
-            updateItem(updatedItem);
+            updateWaste(updatedItem);
             return updatedItem;
           }
           return item;

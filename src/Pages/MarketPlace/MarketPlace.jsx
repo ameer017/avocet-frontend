@@ -91,7 +91,7 @@ const MarketPlace = () => {
                     </div>
                   )}
 
-                  {orderStatus !== "Completed" && (
+                  {orderStatus !== "Purchased" && (
                     <div className="--mt">
                       <button
                         className="--btn --btn-danger"

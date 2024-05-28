@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = "https://avocet-backend.vercel.app";
 export const API_URL = `${BACKEND_URL}/api/plastik/`;
 
 export const fetchWastes = createAsyncThunk("wastes/fetchAll", async () => {

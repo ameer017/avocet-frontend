@@ -10,7 +10,7 @@ const initialState = {
   weight: "",
   location: "",
   amount: "",
-  orderStatus: "",
+  orderStatus: "Created",
 };
 
 const OrderCreation = () => {

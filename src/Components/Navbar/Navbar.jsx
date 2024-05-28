@@ -1,52 +1,79 @@
-import React from "react";
-import "./Navbar.css";
+import { Link, NavLink } from "react-router-dom";
 import logo from "/logo.png";
-import { Link } from "react-router-dom";
+import "./Navbar.css";
+import { useEffect, useState } from "react";
+import { IoMenu } from "react-icons/io5";
 
 const Navbar = () => {
+  const [showNav, setShowNav] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(false);
+  const [scroll, setScroll] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > 10);
+    });
+  });
+
+  const handleShowNavbar = () => {
+    setShowNavbar(!showNavbar);
+  };
+
+  const toggleNavItems = () => {
+    setShowNav(!showNav);
+  };
   return (
-
-    <nav className="navbar" ref={navbarRef}>
-      <div className="navbar-container">
-        <div className="navbar-logo" onClick={home}>
-          <img src={logo} alt="Logo" />
+    <nav className={`navbar ${scroll ? "sticky" : ""}`}>
+      <div className="containerOne">
+        <Link to="/" className="logo">
+          <img src={logo} alt="" className="logo" />
+        </Link>
+        <div className="menu-icon" onClick={handleShowNavbar}>
+          <IoMenu size={25} color="green" />
         </div>
-
-        <div className={`navbar-links ${isOpen ? "active" : ""}`}>
-          {lists.map(({ tag, path }, i) => (
-            <Link to={path} key={i}>
-              {tag}
-            </Link>
-          ))}
+        <div className={`nav-elements  ${showNavbar && "active"}`}>
           <ul>
+            <li>
+              <NavLink to="/about">About</NavLink>
+            </li>
+            <li>
+              <NavLink to="/token">EarthFi</NavLink>
+            </li>
+            <li>
+              <NavLink to="/profile">Profile</NavLink>
+            </li>
             <li className="dropdown">
-              <a href="#" className="dropbtn">
+              <li onClick={toggleDropdown} className="dropdown-toggle">
                 Pages
-              </a>
-              <div className="dropdown-content">
-                {dropDownList.map(({ tag, path }, i) => (
-                  <>
-                    <Link to={path} key={i}>
-                      {tag}
-                    </Link>
-                  </>
-                ))}
-              </div>
+              </li>
+              {dropdownOpen && (
+                <ul className="dropdown-menu">
+                  <li>
+                    <NavLink to="/order-creation" onClick={toggleDropdown}>
+                      Order Creation
+                    </NavLink>
+                  </li>
+                  {/* <li>
+                    <NavLink to="/buy-asset" onClick={toggleDropdown}>
+                      Market Place
+                    </NavLink>
+                  </li> */}
+                  <li>
+                    <NavLink to="/buy-asset" onClick={toggleDropdown}>
+                      Buy Asset
+                    </NavLink>
+                  </li>
+                </ul>
+              )}
             </li>
           </ul>
         </div>
-
-        <button className="--btn --btn-success btn" onClick={launch}>
-          Expired Connect Wallet
-        </button>
-
-        <div className="navbar-toggle" onClick={toggleNavbar}>
-          <span className={`bar ${isOpen ? "open" : ""}`}></span>
-          <span className={`bar ${isOpen ? "open" : ""}`}></span>
-          <span className={`bar ${isOpen ? "open" : ""}`}></span>
-        </div>
-
-    </div>
+      </div>
     </nav>
   );
 };

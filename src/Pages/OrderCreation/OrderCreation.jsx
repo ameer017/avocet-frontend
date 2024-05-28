@@ -1,19 +1,25 @@
 import React, { useState } from "react";
 import "./OrderCreation.scss";
 import { useNavigate } from "react-router-dom";
-import { addItem, deleteItem } from '../../utils/indexedDB';
+import { useDispatch } from "react-redux";
+import { createWaste } from "../../redux/features/plastik/plastikSlice";
+import { toast } from "react-toastify";
+
+const initialState = {
+  title: "",
+  weight: "",
+  location: "",
+  amount: "",
+  orderStatus: "Created",
+};
 
 const OrderCreation = () => {
   const navigate = useNavigate();
-  const [showConfirmation, setShowConfirmation] = useState(false);
+  const dispatch = useDispatch();
 
-  const [formData, setFormData] = useState({
-    title: "",
-    weight: "",
-    location: "",
-    amount: "",
-    orderStatus: "Processing!!",
-  });
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [formData, setFormData] = useState(initialState);
+  const { title, weight, location, amount } = formData;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,23 +37,12 @@ const OrderCreation = () => {
   const confirmOrder = async () => {
     try {
       const newOrder = { ...formData, id: Date.now() };
-      await addItem(newOrder);
+      dispatch(createWaste(newOrder));
 
-      setFormData({
-        title: "",
-        weight: "",
-        location: "",
-        amount: "",
-        orderStatus: "Processing!!",
-      });
-
-      console.log("Order created successfully!");
+      setFormData(initialState);
+      toast.success("Order created successfully!");
       navigate("/market-place");
 
-      setTimeout(async () => {
-        await deleteItem(newOrder.id);
-        console.log("Order deleted successfully after 10 minutes.");
-      }, 10 * 60 * 1000);
     } catch (error) {
       console.error("Error creating order:", error);
     }
@@ -69,7 +64,7 @@ const OrderCreation = () => {
               <input
                 type="text"
                 name="title"
-                value={formData.title}
+                value={title}
                 onChange={handleChange}
                 placeholder="Input order Title"
               />
@@ -79,7 +74,7 @@ const OrderCreation = () => {
               <input
                 type="text"
                 name="weight"
-                value={formData.weight}
+                value={weight}
                 onChange={handleChange}
                 placeholder="KG"
               />
@@ -89,7 +84,7 @@ const OrderCreation = () => {
               <input
                 type="text"
                 name="location"
-                value={formData.location}
+                value={location}
                 onChange={handleChange}
                 placeholder="No 5, Ibadan str Ebute Meta - Lagos"
               />
@@ -99,7 +94,7 @@ const OrderCreation = () => {
               <input
                 type="text"
                 name="amount"
-                value={formData.amount}
+                value={amount}
                 onChange={handleChange}
                 placeholder="Enter amount"
               />
@@ -115,10 +110,7 @@ const OrderCreation = () => {
       {showConfirmation && (
         <div className="confirmation-panel">
           <p>Are you sure you want to create this order?</p>
-          <p>
-            If your order is not picked in 10 minutes, <br />
-            it&apos;ll automatically cancel
-          </p>
+          
           <div className="--flex --flex-direction --flex-center">
             <button onClick={confirmOrder} className="--btn --btn-primary">
               Yes

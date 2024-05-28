@@ -34,35 +34,6 @@ function App() {
   }, []);
 
   // Static data integration
-  const [items, setItems] = useState(
-    JSON.parse(localStorage.getItem("shoppinglist")) || []
-  );
-  const [newItem, setNewItem] = useState("");
-  const [search, setSearch] = useState("");
-
-  useEffect(() => {
-    localStorage.setItem("marketList", JSON.stringify(items));
-  }, [items]);
-
-  const addItem = (
-    title,
-    amount,
-    location,
-    orderStatus = "Processing",
-    weight
-  ) => {
-    const id = items.length ? items[items.length - 1].id + 1 : 1;
-    const myNewItem = { id, title, amount, location, orderStatus, weight };
-    const listItems = [...items, myNewItem];
-    setItems(listItems);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!newItem) return;
-    addItem(newItem);
-    setNewItem("");
-  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -76,13 +47,7 @@ function App() {
     { path: "/profile", element: <Profile /> },
     {
       path: "/order-creation",
-      element: (
-        <OrderCreation
-          newItem={newItem}
-          setNewItem={setNewItem}
-          handleSubmit={handleSubmit}
-        />
-      ),
+      element: <OrderCreation />,
     },
     { path: "/token", element: <Token /> },
     { path: "/register", element: <Register /> },

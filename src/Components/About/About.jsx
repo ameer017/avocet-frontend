@@ -59,7 +59,7 @@ const About = () => {
 
       {/* The Footer-Header */}
       <div className="__footer-header">
-        <h6 style={{ fontSize: "4rem" }}>
+        <h6 >
           Build your nature strategy with EarthFi
         </h6>
         <Link to="/get-started" className="--btn --btn-success">

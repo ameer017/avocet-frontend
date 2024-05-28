@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authSlice from "./features/auth/authSlice";
-import filterSlice from "./features/auth/filterSlice";
+import wasteReducer from "./features/plastik/plastikSlice";
 
-export const store = configureStore({
-    reducer: {
-        auth: authSlice,
-        filter: filterSlice
-    }
-})
+const store = configureStore({
+  reducer: {
+    wastes: wasteReducer,
+  },
+});
+
+export default store;

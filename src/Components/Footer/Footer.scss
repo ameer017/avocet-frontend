@@ -2,15 +2,31 @@ footer {
   padding: 3em 10em;
   color: green;
 
+  @media  screen and (max-width: 460px) {
+    padding-right: 3em;
+    padding-left: 3em;
+  }
+
   > div:nth-child(1) {
+
     flex-wrap: wrap;
+    div:nth-child(1) {
+
+      p {
+        font-size: 15px;
+        width: 400px;
+
+        @media screen and (max-width: 660px) {
+          width: 300px;
+        }
+      }
+    }
 
     @media screen and (max-width: 660px) {
       gap: 20px;
     }
     @media screen and (max-width: 460px) {
       flex-direction: column;
-      text-align: center;
     }
     .f__logo {
       color: green;

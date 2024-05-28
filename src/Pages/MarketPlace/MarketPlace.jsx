@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import "./MarketPlace.scss";
 import { useNavigate } from "react-router-dom";
 import { TransactionContext } from "../../context/TransactionContext";
@@ -19,6 +19,7 @@ const MarketPlace = () => {
   const items = useSelector((state) => state.wastes.wastes);
   const status = useSelector((state) => state.wastes.status);
   const error = useSelector((state) => state.wastes.error);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     dispatch(fetchWastes());
@@ -34,17 +35,17 @@ const MarketPlace = () => {
         if (updatedItem) {
           const updatedItemData = { ...updatedItem, orderStatus: "Completed" };
           dispatch(updateWaste({ id: itemId, wasteData: updatedItemData }));
-          toast.success(
+          setMessage(
             "Transaction approved and order status updated to Completed."
           );
           navigate("/");
         }
       } else {
-        toast.error("Payment not yet received by the seller.");
+        console.log("Payment not yet received by the seller.");
       }
     } catch (error) {
-      toast.error("Error approving transaction:", error);
-      toast.error("Only the seller can approve the transaction.");
+      setMessage("Error approving transaction:", error);
+      setMessage("Only the seller can approve the transaction.");
     }
   };
 
@@ -55,10 +56,10 @@ const MarketPlace = () => {
     if (confirmed) {
       try {
         dispatch(deleteWaste(itemId));
-        toast.success("Item deleted.");
+        setMessage("Item deleted.");
       } catch (error) {
-        console.error("Error deleting item:", error);
-        toast.error("Failed to delete item.");
+        setMessage("Error deleting item:", error);
+        setMessage("Failed to delete item.");
       }
     }
   };
@@ -71,39 +72,41 @@ const MarketPlace = () => {
         {status === "failed" && <p>Error: {error}</p>}
         {status === "succeeded" && (
           <div className="--flex wrapper_mpc">
-            {items.map(({ _id, title, amount, location, orderStatus, weight }) => (
-              <div key={_id} className="mpc --p2">
-                <div>
-                  <p> Title: {title} </p>
-                  <p> Amount: {amount} </p>
-                  <p> Location: {location} </p>
-                  <p> Weight: {weight} kg</p>
-                  <p>Status: {orderStatus}! </p>
+            {items.map(
+              ({ _id, title, amount, location, orderStatus, weight }) => (
+                <div key={_id} className="mpc --p2">
+                  <div>
+                    <p> Title: {title} </p>
+                    <p> Amount: {amount} </p>
+                    <p> Location: {location} </p>
+                    <p> Weight: {weight} kg</p>
+                    <p>Status: {orderStatus}! </p>
 
-                  {orderStatus === "Delivered" && (
-                    <div className="--mt">
-                      <button
-                        className="--btn --btn-success"
-                        onClick={() => handleApprove(_id)}
-                      >
-                        Confirm Payment
-                      </button>
-                    </div>
-                  )}
+                    {orderStatus === "Delivered" && (
+                      <div className="--mt">
+                        <button
+                          className="--btn --btn-success"
+                          onClick={() => handleApprove(_id)}
+                        >
+                          Confirm Payment
+                        </button>
+                      </div>
+                    )}
 
-                  {orderStatus !== "Purchased" && (
-                    <div className="--mt">
-                      <button
-                        className="--btn --btn-danger"
-                        onClick={() => handleDeleteItem(_id)}
-                      >
-                        Delete {title}
-                      </button>
-                    </div>
-                  )}
+                    {orderStatus !== "Purchased" && (
+                      <div className="--mt">
+                        <button
+                          className="--btn --btn-danger"
+                          onClick={() => handleDeleteItem(_id)}
+                        >
+                          Delete {title}
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         )}
       </div>

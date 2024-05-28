@@ -19,6 +19,9 @@ import Register from "./Pages/Auth/Register";
 import MarketPlace from "./Pages/MarketPlace/MarketPlace";
 import Buy from "./Pages/MarketPlace/Buy";
 
+
+
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();

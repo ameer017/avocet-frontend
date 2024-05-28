@@ -126,7 +126,7 @@ const Navbar = () => {
         </div>
 
         <button className="--btn --btn-success btn" onClick={launch}>
-          Connect Wallet
+          Expired Connect Wallet
         </button>
 
         <div className="navbar-toggle" onClick={toggleNavbar}>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./OrderCreation.scss";
 import { useNavigate } from "react-router-dom";
+import { addItem, deleteItem } from '../../utils/indexedDB';
 
 const OrderCreation = () => {
   const navigate = useNavigate();
@@ -22,34 +23,29 @@ const OrderCreation = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setShowConfirmation(true);
   };
 
   const confirmOrder = async () => {
     try {
-      const orders = JSON.parse(localStorage.getItem("orders")) || [];
       const newOrder = { ...formData, id: Date.now() };
-
-      orders.push(newOrder);
-      localStorage.setItem("orders", JSON.stringify(orders));
+      await addItem(newOrder);
 
       setFormData({
         title: "",
         weight: "",
         location: "",
         amount: "",
-        orderStatus: "in order!!",
+        orderStatus: "Processing!!",
       });
+
       console.log("Order created successfully!");
       navigate("/market-place");
 
-      setTimeout(() => {
-        const updatedOrders = JSON.parse(localStorage.getItem("orders")) || [];
-        const updatedOrderList = updatedOrders.filter(order => order.id !== newOrder.id);
-
-        localStorage.setItem("orders", JSON.stringify(updatedOrderList));
+      setTimeout(async () => {
+        await deleteItem(newOrder.id);
         console.log("Order deleted successfully after 10 minutes.");
       }, 10 * 60 * 1000);
     } catch (error) {

@@ -1,78 +1,75 @@
-import { Link, NavLink } from "react-router-dom";
-import logo from "/logo.png";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../../../public/logo.png";
 import "./Navbar.css";
-import { useEffect, useState } from "react";
-import { IoMenu } from "react-icons/io5";
 
 const Navbar = () => {
-  const [showNav, setShowNav] = useState(false);
-  const [showNavbar, setShowNavbar] = useState(false);
-  const [scroll, setScroll] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [active, setActive] = useState("nav__menu");
+  const [icon, setIcon] = useState("nav__toggler");
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
+  const navToggle = () => {
+    if (active === "nav__menu") {
+      setActive("nav__menu nav__active");
+    } else setActive("nav__menu");
+
+    // Icon Toggler
+    if (icon === "nav__toggler") {
+      setIcon("nav__toggler toggle");
+    } else setIcon("nav__toggler");
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      setScroll(window.scrollY > 10);
-    });
-  });
-
-  const handleShowNavbar = () => {
-    setShowNavbar(!showNavbar);
+  const closeSidebar = () => {
+    setActive("nav__menu");
+    setIcon("nav__toggler");
   };
 
-  const toggleNavItems = () => {
-    setShowNav(!showNav);
-  };
   return (
-    <nav className={`navbar ${scroll ? "sticky" : ""}`}>
-      <div className="containerOne">
-        <Link to="/" className="logo">
-          <img src={logo} alt="" className="logo" />
-        </Link>
-        <div className="menu-icon" onClick={handleShowNavbar}>
-          <IoMenu size={25} color="green" />
-        </div>
-        <div className={`nav-elements  ${showNavbar && "active"}`}>
-          <ul>
-            <li>
-              <NavLink to="/about">About</NavLink>
-            </li>
-            <li>
-              <NavLink to="/token">EarthFi</NavLink>
-            </li>
-            <li>
-              <NavLink to="/profile">Profile</NavLink>
-            </li>
-            <li className="dropdown">
-              <li onClick={toggleDropdown} className="dropdown-toggle">
-                Pages
-              </li>
-              {dropdownOpen && (
-                <ul className="dropdown-menu">
-                  <li>
-                    <NavLink to="/order-creation" onClick={toggleDropdown}>
-                      Order Creation
-                    </NavLink>
-                  </li>
-                  {/* <li>
-                    <NavLink to="/buy-asset" onClick={toggleDropdown}>
-                      Market Place
-                    </NavLink>
-                  </li> */}
-                  <li>
-                    <NavLink to="/buy-asset" onClick={toggleDropdown}>
-                      Buy Asset
-                    </NavLink>
-                  </li>
-                </ul>
-              )}
-            </li>
-          </ul>
-        </div>
+    <nav className="nav">
+      <Link to="/">
+        <img src={logo} alt="" width={100} onClick={closeSidebar} />
+      </Link>
+
+      <ul className={active}>
+        <li className="nav__item">
+          <Link to="/about" className="nav__link" onClick={closeSidebar}>
+            About
+          </Link>
+        </li>
+        <li className="nav__item">
+          <Link to="/token" className="nav__link" onClick={closeSidebar}>
+            EarthFi
+          </Link>
+        </li>
+        <li className="nav__item">
+          <Link to="/profile" className="nav__link" onClick={closeSidebar}>
+            Profile
+          </Link>
+        </li>
+        <li className="nav__item">
+          <Link
+            to="/order-creation"
+            className="nav__link"
+            onClick={closeSidebar}
+          >
+            Create
+          </Link>
+        </li>
+        <li className="nav__item">
+          <Link to="/buy-asset" className="nav__link" onClick={closeSidebar}>
+            Buy
+          </Link>
+        </li>
+        <li className="nav__item">
+          <Link to="/market-place" className="nav__link" onClick={closeSidebar}>
+            Market-Place
+          </Link>
+        </li>
+      </ul>
+
+      <div onClick={navToggle} className={icon}>
+        <div className="line1"></div>
+        <div className="line1"></div>
+        <div className="line1"></div>
       </div>
     </nav>
   );

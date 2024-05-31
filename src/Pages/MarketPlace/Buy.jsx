@@ -3,8 +3,11 @@ import { TransactionContext } from "../../context/TransactionContext";
 import { ethers } from "ethers";
 import "./MarketPlace.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchWastes, updateWaste } from "../../redux/features/plastik/plastikSlice";
-import { toast } from "react-toastify";
+import {
+  fetchWastes,
+  updateWaste,
+} from "../../redux/features/plastik/plastikSlice";
+import useWindowSize from "../../../hooks/useWindowSize";
 
 const Buy = () => {
   const dispatch = useDispatch();
@@ -12,6 +15,7 @@ const Buy = () => {
   const items = useSelector((state) => state.wastes.wastes);
   const status = useSelector((state) => state.wastes.status);
   const error = useSelector((state) => state.wastes.error);
+  const { width } = useWindowSize();
 
   useEffect(() => {
     dispatch(fetchWastes());
@@ -60,23 +64,20 @@ const Buy = () => {
               orderStatus: "Purchased",
               bought: true,
             };
-            updateWaste(updatedItem);
+            dispatch(updateWaste(updatedItem));
             return updatedItem;
           }
           return item;
         });
-        setItems(updatedItems);
         console.log("Asset purchased and order status updated to Purchased.");
-      } catch (error) {
-        console.error("Error processing purchase:", error);
-        if (error.code === "INSUFFICIENT_FUNDS") {
-          console.log(
+      } catch (err) {
+        console.error("Error processing purchase:", err);
+        if (err.code === "INSUFFICIENT_FUNDS") {
+          console.error(
             "Insufficient funds to complete the transaction. Please add more ETH to your wallet."
           );
         } else {
-          console.log(
-            "Insufficient funds to complete the transaction. Please add more ETH to your wallet."
-          );
+          console.error("Error processing purchase. Please try again later.");
         }
       }
     }
@@ -132,14 +133,51 @@ const Buy = () => {
           </div>
         </div>
       ) : (
-        <div>
-          <div>
-            <h1>Please connect to your MetaMask Account to use this service</h1>
-          </div>
-          <button onClick={connectWallet} className="--btn --btn-success btn">
-            Connect Wallet
-          </button>
-        </div>
+        <section>
+          {width < 768 ? (
+            <div style={{ textAlign: "left", padding: "2em" }}>
+              <div>
+                <h1 style={{ fontWeight: 900, fontSize: "20px" }}>
+                  Please connect to your MetaMask Account to use this service
+                </h1>
+              </div>
+              <button
+                onClick={connectWallet}
+                className="--btn --btn-success btn"
+              >
+                Connect Wallet
+              </button>
+            </div>
+          ) : width < 992 ? (
+            <div style={{ textAlign: "left", padding: "2em" }}>
+              <div>
+                <h1 style={{ fontWeight: 900, fontSize: "30px" }}>
+                  Please connect to your MetaMask Account to use this service
+                </h1>
+              </div>
+              <button
+                onClick={connectWallet}
+                className="--btn --btn-success btn"
+              >
+                Connect Wallet
+              </button>
+            </div>
+          ) : (
+            <div style={{ textAlign: "left", padding: "2em" }}>
+              <div>
+                <h1 style={{ fontWeight: 900, fontSize: "40px" }}>
+                  Please connect to your MetaMask Account to use this service
+                </h1>
+              </div>
+              <button
+                onClick={connectWallet}
+                className="--btn --btn-success btn"
+              >
+                Connect Wallet
+              </button>
+            </div>
+          )}
+        </section>
       )}
     </section>
   );

@@ -40,7 +40,7 @@ const OrderCreation = () => {
       dispatch(createWaste(newOrder));
 
       setFormData(initialState);
-      console.log("Order created successfully!");
+      // console.log("Order created successfully!");
       navigate("/market-place");
 
     } catch (error) {

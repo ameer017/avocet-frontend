@@ -19,9 +19,7 @@ import Register from "./Pages/Auth/Register";
 import MarketPlace from "./Pages/MarketPlace/MarketPlace";
 import Buy from "./Pages/MarketPlace/Buy";
 import ScrollToTop from "react-scroll-to-top";
-
-
-
+import ProductPage from "./Pages/MarketPlace/ProductPage";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -58,6 +56,7 @@ function App() {
     { path: "/wallet-connect", element: <ConnectWallet /> },
     { path: "/market-place", element: <MarketPlace /> },
     { path: "/buy-asset", element: <Buy /> },
+    { path: "/productPage/:productId", element: <ProductPage /> },
   ];
 
   return (

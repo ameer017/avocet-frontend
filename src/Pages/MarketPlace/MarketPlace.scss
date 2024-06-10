@@ -11,8 +11,6 @@
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-
-   
   }
 }
 
@@ -45,6 +43,88 @@
 
     &:hover {
       background-color: #0056b3;
+    }
+  }
+}
+
+.search-bar {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search-bar input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+  border-color: #a500ff;
+  outline: none;
+}
+
+.search-bar input::placeholder {
+  color: #aaa;
+}
+
+.p-page {
+  padding: 3em 10em;
+  
+  .product-details {
+    margin-bottom: 1rem;
+
+    div {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      span {
+        font-weight: bold;
+      }
+
+      .text-sm {
+        font-size: 0.875rem;
+      }
+
+      .text-wrap {
+        word-wrap: break-word;
+      }
+    }
+  }
+
+  .action-buttons {
+    margin-top: 1rem;
+
+    .enableEthereumButton {
+      background-color: #4caf50;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+
+    .owner-message {
+      font-size: 0.875rem;
+      color: #f44336;
+    }
+
+    .message {
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: #ff9800;
     }
   }
 }

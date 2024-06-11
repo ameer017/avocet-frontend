@@ -1,112 +1,91 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useState } from "react";
 import "./MarketPlace.scss";
-import { useNavigate } from "react-router-dom";
-import { TransactionContext } from "../../context/TransactionContext";
-import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchWastes,
-  deleteWaste,
-  updateWaste,
-} from "../../redux/features/plastik/plastikSlice";
+import { ethers } from "ethers";
+import EarthfiABI from "../../constant/EarthfiABI.json";
+import { GetIpfsUrlFromPinata } from "../../utils/test/utils";
+import axios from "axios";
+import Buy from "./Buy";
+import bin from "../../assets/bin.png";
 
 const MarketPlace = () => {
-  const navigate = useNavigate();
-  const { approveTransaction } = useContext(TransactionContext);
+  const [dataFetched, updateFetched] = useState(false);
+  const [data, updateData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const dispatch = useDispatch();
+  async function getAllProducts() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
 
-  const items = useSelector((state) => state.wastes.wastes);
-  const status = useSelector((state) => state.wastes.status);
-  const error = useSelector((state) => state.wastes.error);
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    dispatch(fetchWastes());
-  }, [dispatch]);
-
-  const handleApprove = async (itemId) => {
-    try {
-      const isBuyerDeposited = await contract.isBuyerDeposited();
-      const isSellerApproved = await contract.isSellerApproved();
-      if (isBuyerDeposited && isSellerApproved) {
-        await approveTransaction();
-        const updatedItem = items.find((item) => item._id === itemId);
-        if (updatedItem) {
-          const updatedItemData = { ...updatedItem, orderStatus: "Completed" };
-          dispatch(updateWaste({ id: itemId, wasteData: updatedItemData }));
-          setMessage(
-            "Transaction approved and order status updated to Completed."
-          );
-          navigate("/");
-        }
-      } else {
-        console.log("Payment not yet received by the seller.");
-      }
-    } catch (error) {
-      setMessage("Error approving transaction:", error);
-      setMessage("Only the seller can approve the transaction.");
-    }
-  };
-
-  const handleDeleteItem = async (itemId) => {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this item?"
+    let contract = new ethers.Contract(
+      EarthfiABI.address,
+      EarthfiABI.abi,
+      signer
     );
-    if (confirmed) {
-      try {
-        dispatch(deleteWaste(itemId));
-        setMessage("Item deleted.");
-      } catch (error) {
-        setMessage("Error deleting item:", error);
-        setMessage("Failed to delete item.");
-      }
-    }
+
+    let transaction = await contract.getAllProducts();
+
+    const items = await Promise.all(
+      transaction.map(async (i) => {
+        var productURI = await contract.tokenURI(i.productId);
+        productURI = GetIpfsUrlFromPinata(productURI);
+        let meta = await axios.get(productURI);
+        meta = meta.data;
+
+        let item = {
+          amount: meta.amount,
+          productId: i.productId.toNumber(),
+          seller: i.seller,
+          owner: i.owner,
+          title: meta.title,
+          weight: meta.weight,
+          location: meta.location,
+        };
+        return item;
+      })
+    );
+
+    updateFetched(true);
+    updateData(items);
+  }
+
+  getAllProducts();
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
   };
+
+  const filteredData = data.filter((item) =>
+    item.location.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <section>
       <div className="container">
-        <h1>MarketPlace</h1>
-        {status === "loading" && <p>Loading...</p>}
-        {status === "failed" && <p>Error: {error}</p>}
-        {status === "succeeded" && (
+        <h2>Top Products</h2>
+
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search by location"
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+        </div>
+
+        {!dataFetched ? (
+          <div className="--mh-50vh --flex-center ">
+            <p>Connect wallet to view products</p>
+            <img src={bin} width={200} alt="bin" />
+          </div>
+        ) : (
           <div className="--flex wrapper_mpc">
-            {items.map(
-              ({ _id, title, amount, location, orderStatus, weight }) => (
-                <div key={_id} className="mpc --p2">
-                  <div>
-                    <p> Title: {title} </p>
-                    <p> Amount: {amount} </p>
-                    <p> Location: {location} </p>
-                    <p> Weight: {weight} kg</p>
-                    <p>Status: {orderStatus}! </p>
-
-                    {orderStatus === "Delivered" && (
-                      <div className="--mt">
-                        <button
-                          className="--btn --btn-success"
-                          onClick={() => handleApprove(_id)}
-                        >
-                          Confirm Payment
-                        </button>
-                      </div>
-                    )}
-
-                    {orderStatus !== "Purchased" && (
-                      <div className="--mt">
-                        <button
-                          className="--btn --btn-danger"
-                          onClick={() => handleDeleteItem(_id)}
-                        >
-                          Delete {title}
-                        </button>
-                      </div>
-                    )}
-                  </div>
+            {filteredData.map((value, index) => {
+              return (
+                <div className="mpc --p2">
+                  <Buy data={value} key={index} />
                 </div>
-              )
-            )}
+              );
+            })}
           </div>
         )}
       </div>

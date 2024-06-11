@@ -543,3 +543,8 @@ a:hover {
 .gap-12px {
   gap: 10rem;
 }
+
+.--mh-50vh {
+  min-height: 70vh;
+  flex-direction: column;
+}

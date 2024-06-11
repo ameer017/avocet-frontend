@@ -1,18 +1,26 @@
 .hero {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   background-color: #2b5e14;
   background-image: url("https://images.pexels.com/photos/20286951/pexels-photo-20286951/free-photo-of-green-plain-surface.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   min-height: 100vh;
   max-width: 100%;
   background-blend-mode: multiply;
   padding: 6em;
+
+  @media screen and (max-width:660px) {
+    padding: unset;
+  }
 }
 
 .hero-text {
   width: 100%;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
   & > * {
     color: #fff;
@@ -26,10 +34,10 @@
   }
   & > p span {
     contain: paint;
-    padding: 1rem 0;
 
     font-size: 50px;
   }
+  
   & .hero-buttons a {
     color: #fff;
   }
@@ -42,6 +50,7 @@
     & span:nth-of-type(2) {
       view-transition-name: swap;
       color: hsl(64, 100%, 50%);
+
     }
 
     &:last-of-type {

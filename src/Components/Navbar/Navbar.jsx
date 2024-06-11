@@ -39,7 +39,8 @@ const Navbar = () => {
     }
   }
 
-  async function connectWebsite() {
+  async function connectWebsite(e) {
+    e.preventDefault();
     const celoTestnetChainId = "0xaef3"; // Chain ID for Celo Alfajores Testnet
     const celoTestnetChainParams = {
       chainId: celoTestnetChainId,
@@ -137,11 +138,6 @@ const Navbar = () => {
             Create
           </Link>
         </li>
-        {/* <li className="nav__item">
-          <Link to="/buy-asset" className="nav__link" onClick={closeSidebar}>
-            Buy
-          </Link>
-        </li> */}
         <li className="nav__item">
           <Link to="/market-place" className="nav__link" onClick={closeSidebar}>
             Market-Place

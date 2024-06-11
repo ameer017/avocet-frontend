@@ -5,7 +5,6 @@ import EarthfiABI from "../../constant/EarthfiABI.json";
 import axios from "axios";
 import { useState } from "react";
 import { ethers } from "ethers";
-import Buy from "../MarketPlace/Buy";
 
 const Profile = () => {
   const [data, updateData] = useState([]);
@@ -35,8 +34,10 @@ const Profile = () => {
         let meta = await axios.get(productURI);
         meta = meta.data;
 
-       
+        // console.log(meta.amount)
+
         // console.log(amount)
+        let amount = meta.amount.toString();
 
         let item = {
           productId: i.productId.toNumber(),
@@ -45,9 +46,10 @@ const Profile = () => {
           title: meta.title,
           weight: meta.weight,
           location: meta.location,
-          amount: meta.amount,
-
+          amount,
         };
+
+        sumPrice += Number(amount);
 
         return item;
       })
@@ -56,7 +58,7 @@ const Profile = () => {
     updateData(items);
     updateFetched(true);
     updateAddress(addr);
-    // updateTotalPrice(amount);
+    updateTotalPrice(sumPrice.toPrecision(3));
   }
 
   getProductData();
@@ -72,10 +74,14 @@ const Profile = () => {
           <div className="details">
             <div className="stats">
               <div>
-                <h4>Wallet:</h4>
+                <h4>Wallet Address:</h4>
                 {address}
               </div>
 
+              <div>
+                <h4>Total Price:</h4>
+                <p>{totalPrice} Celo</p>
+              </div>
               <div>
                 <h4>Total Assets:</h4>
                 <p>{data.length}</p>
@@ -83,22 +89,6 @@ const Profile = () => {
             </div>
           </div>
         </header>
-
-        <section>
-          <div className="container">
-            <h2 className="font-bold">Your Products</h2>
-            <div className="flex justify-center flex-wrap max-w-screen-xl">
-              {data.map((value, index) => {
-                return <Buy data={value} key={index} />;
-              })}
-            </div>
-            <div className="mt-10 text-xl">
-              {data.length === 0
-                ? "Oops, No product data to display (Are you logged in?)"
-                : ""}
-            </div>
-          </div>
-        </section>
       </section>
     </>
   );

@@ -5,6 +5,7 @@ import EarthfiABI from "../../constant/EarthfiABI.json";
 import { GetIpfsUrlFromPinata } from "../../utils/test/utils";
 import axios from "axios";
 import Buy from "./Buy";
+import bin from "../../assets/bin.png";
 
 const MarketPlace = () => {
   const [dataFetched, updateFetched] = useState(false);
@@ -72,7 +73,10 @@ const MarketPlace = () => {
         </div>
 
         {!dataFetched ? (
-          "oops!"
+          <div className="--mh-50vh --flex-center ">
+            <p>Connect wallet to view products</p>
+            <img src={bin} width={200} alt="bin" />
+          </div>
         ) : (
           <div className="--flex wrapper_mpc">
             {filteredData.map((value, index) => {

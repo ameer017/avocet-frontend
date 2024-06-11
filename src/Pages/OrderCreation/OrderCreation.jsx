@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import "./OrderCreation.scss";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { uploadJSONToIPFS } from "../../pinata";
+import { uploadFileToIPFS, uploadJSONToIPFS } from "../../pinata";
 import EarthfiABI from "../../constant/EarthfiABI.json";
-import {ethers} from "ethers";
+import { ethers } from "ethers";
 
 const OrderCreation = () => {
   const navigate = useNavigate();
+  const [fileURL, setFileURL] = useState(null);
 
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [formParams, setFormParams] = useState({
@@ -33,10 +34,31 @@ const OrderCreation = () => {
     listButton.style.opacity = 1;
   }
 
+  async function OnChangeFile(e) {
+    var file = e.target.files[0];
+    //check for file extension
+    try {
+      //upload the file to IPFS
+      disableButton();
+      updateMessage("Uploading image.. please dont click anything!");
+      const response = await uploadFileToIPFS(file);
+      if (response.success === true) {
+        enableButton();
+        updateMessage("");
+        console.log("Uploaded image to Pinata: ", response.pinataURL);
+        toast.success("Uploaded");
+        setFileURL(response.pinataURL);
+      }
+    } catch (e) {
+      console.log("Error during file upload", e);
+      toast.error("Error uploading file to pinata");
+    }
+  }
+
   async function uploadMetadataToIPFS() {
     const { title, weight, location, amount } = formParams;
     // Make sure that none of the fields are empty
-    if (!title || !weight || !location || !amount) {
+    if (!title || !weight || !location || !amount || !fileURL) {
       updateMessage("Please fill all the fields!");
       return -1;
     }
@@ -46,6 +68,7 @@ const OrderCreation = () => {
       weight,
       location,
       amount,
+      image: fileURL,
     };
 
     try {
@@ -64,10 +87,10 @@ const OrderCreation = () => {
     setShowConfirmation(false);
 
     if (transactionData) {
-      const { metadataURL, price, listingPrice, contract } = transactionData;
+      const { metadataURL, amount, listingPrice, contract } = transactionData;
       try {
         // Actually create the product
-        let transaction = await contract.createProduct(metadataURL, price, {
+        let transaction = await contract.createProduct(metadataURL, amount, {
           value: listingPrice,
         });
         await transaction.wait();
@@ -84,7 +107,7 @@ const OrderCreation = () => {
         navigate("/market-place");
       } catch (e) {
         toast.error("Upload error: " + e);
-        console.error("failed", e)
+        console.error("failed", e);
         enableButton();
       }
     }
@@ -118,12 +141,12 @@ const OrderCreation = () => {
       );
 
       // Massage the params to be sent to the create product request
-      const price = ethers.utils.parseUnits(formParams.amount, "ether");
+      const amount = ethers.utils.parseUnits(formParams.amount, "ether");
       let listingPrice = await contract.getListprice();
       listingPrice = listingPrice.toString();
 
       // Set the transaction data for confirmation
-      setTransactionData({ metadataURL, price, listingPrice, contract });
+      setTransactionData({ metadataURL, amount, listingPrice, contract });
 
       // Show the confirmation modal
       setShowConfirmation(true);
@@ -181,12 +204,16 @@ const OrderCreation = () => {
               <input
                 type="text"
                 name="amount"
-                placeholder="Enter amount"
+                placeholder="Enter amount in Celo"
                 onChange={(e) =>
                   setFormParams({ ...formParams, amount: e.target.value })
                 }
                 value={formParams.amount}
               />
+            </div>
+            <div className="form-group">
+              <label>Upload Image(&lt;500KB)</label>
+              <input type="file" onChange={OnChangeFile} />
             </div>
             <div>{message}</div>
             <button

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./Buy.scss"
 
 function Buy(data) {
   const newTo = {
@@ -7,7 +8,7 @@ function Buy(data) {
 
   return (
     <Link to={newTo}>
-      <div>
+      <div className="buy">
         <div>
           <div>
             <p>ID: {data.data.productId}</p>

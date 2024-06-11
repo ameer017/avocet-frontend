@@ -4,7 +4,7 @@ import EarthfiABI from "../../constant/EarthfiABI.json";
 import axios from "axios";
 import { useState } from "react";
 import { GetIpfsUrlFromPinata } from "../../utils/test/utils";
-import "./MarketPlace.scss"
+import "./MarketPlace.scss";
 import { toast } from "react-toastify";
 
 export default function ProductPage(props) {
@@ -37,6 +37,7 @@ export default function ProductPage(props) {
       productId: productId,
       seller: listedProduct.seller,
       owner: listedProduct.owner,
+      image: meta.image,
       title: meta.title,
       location: meta.location,
       weight: meta.weight,
@@ -79,37 +80,53 @@ export default function ProductPage(props) {
   const params = useParams();
   const productId = params.productId;
   if (!dataFetched) getproductData(productId);
+  if (typeof data.image == "string")
+    data.image = GetIpfsUrlFromPinata(data.image);
 
   return (
     <section>
       <div className="p-page">
-        <div className="product-details">
-          <h2>Title: {data.title}</h2>
-          <address>Location: {data.location}</address>
-          <p>
-            Amount: <span>{data.amount + " Celo"}</span>
-          </p>
-          <p>
-            Owner: <span className="text-sm text-wrap">{data.owner}</span>
-          </p>
-          <p>
-            Seller: <span className="text-sm text-wrap">{data.seller}</span>
-          </p>
-        </div>
-        <div className="action-buttons">
-          {currAddress !== data.owner && currAddress !== data.seller ? (
-            <button
-              className="enableEthereumButton"
-              onClick={() => buyProduct(productId)}
-            >
-              Buy Now
-            </button>
-          ) : (
-            <div className="owner-message">
-              You are the owner of this Product
+        <div className="product-details --flex-center gap-12px">
+          <div>
+            <img
+              src={data.image}
+              alt=""
+              width={250}
+              style={{ borderRadius: "10px", cursor: "pointer" }}
+            />
+          </div>
+
+          <div>
+            <h2>Title: {data.title}</h2>
+            <address>Location: {data.location}</address>
+            <p>
+              <span>{data.amount + " Celo"}</span> ||{" "}
+              <span>{data.weight + "KG"}</span>
+            </p>
+
+            <p>
+              Owner: <span className="text-sm text-wrap">{data.owner}</span>
+            </p>
+            <p>
+              Seller: <span className="text-sm text-wrap">{data.seller}</span>
+            </p>
+            
+            <div className="action-buttons">
+              {currAddress !== data.owner && currAddress !== data.seller ? (
+                <button
+                  className="enableEthereumButton"
+                  onClick={() => buyProduct(productId)}
+                >
+                  Buy Now
+                </button>
+              ) : (
+                <div className="owner-message" style={{ textAlign: "center" }}>
+                  You are the owner of this Product
+                </div>
+              )}
+              <div className="message">{message}</div>
             </div>
-          )}
-          <div className="message">{message}</div>
+          </div>
         </div>
       </div>
     </section>

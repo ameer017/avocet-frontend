@@ -1,16 +1,12 @@
 .wrapper_mpc {
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
 
   .mpc {
     box-shadow: 0px 2px 2px rgba(73, 125, 90, 0.367);
     width: 300px;
-    border: 1px solid;
     border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+    box-shadow: 0px 2px 15px gray;
   }
 }
 
@@ -74,13 +70,18 @@
 
 .p-page {
   padding: 3em 10em;
-  
+
   .product-details {
     margin-bottom: 1rem;
+
+    @media screen and (max-width: 800px) {
+      flex-direction: column;
+    }
 
     div {
       margin-bottom: 0.5rem;
       font-size: 1rem;
+      text-wrap: wrap;
 
       &:last-child {
         margin-bottom: 0;

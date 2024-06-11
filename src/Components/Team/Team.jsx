@@ -4,7 +4,7 @@ import TeamMembers from "./TeamMembers";
 import "./Team.scss";
 import aliumusa from "/src/assets/aliumusa.png";
 import roqeebah from "/src/assets/roqeebah.png";
-import abdullahi from "/src/assets/ameer.jpg";
+import abdullahi from "/src/assets/abdullahi.png";
 import khadija from "/src/assets/khadija.png";
 import bayo from "/src/assets/bayo.png";
 import kenny from "/src/assets/kenny.png";

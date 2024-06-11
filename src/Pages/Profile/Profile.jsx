@@ -9,7 +9,7 @@ import { ethers } from "ethers";
 const Profile = () => {
   const [data, updateData] = useState([]);
   const [dataFetched, updateFetched] = useState(false);
-  const [address, updateAddress] = useState("0x");
+  const [address, updateAddress] = useState("");
   const [totalPrice, updateTotalPrice] = useState("0");
 
   async function getProductData(productId) {
@@ -72,21 +72,27 @@ const Profile = () => {
       <section className="profile">
         <header className="header">
           <div className="details">
-            <div className="stats">
+            {!address ? (
               <div>
-                <h4>Wallet Address:</h4>
-                {address}
+                <p>Connect wallet to view profile details</p>
               </div>
+            ) : (
+              <div className="stats">
+                <div>
+                  <h4>Wallet Address:</h4>
+                  {address}
+                </div>
 
-              <div>
-                <h4>Total Price:</h4>
-                <p>{totalPrice} Celo</p>
+                <div>
+                  <h4>Total Price:</h4>
+                  <p>{totalPrice} Celo</p>
+                </div>
+                <div>
+                  <h4>Total Assets:</h4>
+                  <p>{data.length}</p>
+                </div>
               </div>
-              <div>
-                <h4>Total Assets:</h4>
-                <p>{data.length}</p>
-              </div>
-            </div>
+            )}
           </div>
         </header>
       </section>

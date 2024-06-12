@@ -14,17 +14,17 @@ export default function ProductPage(props) {
   const [currAddress, updateCurrAddress] = useState("0x");
 
   async function getproductData(productId) {
-    //After adding your Hardhat network to your metamask, this code will get providers and signers
+    // After adding your Hardhat network to your metamask, this code will get providers and signers
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const addr = await signer.getAddress();
-    //Pull the deployed contract instance
+    // Pull the deployed contract instance
     let contract = new ethers.Contract(
       EarthfiABI.address,
       EarthfiABI.abi,
       signer
     );
-    //create an product Token
+    // Create a product Token
     var productURI = await contract.tokenURI(productId);
     const listedProduct = await contract.getListedForProductId(productId);
     productURI = GetIpfsUrlFromPinata(productURI);
@@ -52,11 +52,11 @@ export default function ProductPage(props) {
 
   async function buyProduct(productId) {
     try {
-      //After adding your Hardhat network to your metamask, this code will get providers and signers
+      // After adding your Hardhat network to your metamask, this code will get providers and signers
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
 
-      //Pull the deployed contract instance
+      // Pull the deployed contract instance
       let contract = new ethers.Contract(
         EarthfiABI.address,
         EarthfiABI.abi,
@@ -64,7 +64,7 @@ export default function ProductPage(props) {
       );
       const salePrice = ethers.utils.parseUnits(data.amount, "ether");
       updateMessage("Buying the product... Please Wait (Upto 5 mins)");
-      //run the executeSale function
+      // Run the executeSale function
       let transaction = await contract.executeSale(productId, {
         value: salePrice,
       });
@@ -72,15 +72,43 @@ export default function ProductPage(props) {
 
       toast.success("You successfully bought the product!");
       updateMessage("");
+      getproductData(productId); // Refresh product data
     } catch (e) {
-      toast.error("Upload Error" + e);
+      toast.error("Transaction Error: " + e);
+      updateMessage("");
+    }
+  }
+
+  async function confirmReceipt(productId) {
+    try {
+      // After adding your Hardhat network to your metamask, this code will get providers and signers
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+
+      // Pull the deployed contract instance
+      let contract = new ethers.Contract(
+        EarthfiABI.address,
+        EarthfiABI.abi,
+        signer
+      );
+      updateMessage("Confirming receipt... Please Wait (Upto 5 mins)");
+      // Run the confirmReceipt function
+      let transaction = await contract.confirmReceipt(productId);
+      await transaction.wait();
+
+      toast.success("You have successfully confirmed receipt of the product!");
+      updateMessage("");
+      getproductData(productId); // Refresh product data
+    } catch (e) {
+      toast.error("Confirmation Error: " + e);
+      updateMessage("");
     }
   }
 
   const params = useParams();
   const productId = params.productId;
   if (!dataFetched) getproductData(productId);
-  if (typeof data.image == "string")
+  if (typeof data.image === "string")
     data.image = GetIpfsUrlFromPinata(data.image);
 
   return (
@@ -105,20 +133,30 @@ export default function ProductPage(props) {
             </p>
 
             <p>
-              Owner: <span className="text-sm text-wrap">{data.owner}</span>
+              {/* Owner: <span className="text-sm text-wrap">{data.owner}</span> */}
             </p>
             <p>
               Seller: <span className="text-sm text-wrap">{data.seller}</span>
             </p>
-            
+
             <div className="action-buttons">
               {currAddress !== data.owner && currAddress !== data.seller ? (
-                <button
-                  className="enableEthereumButton"
-                  onClick={() => buyProduct(productId)}
-                >
-                  Buy Now
-                </button>
+                <>
+                  <button
+                    className="enableEthereumButton"
+                    onClick={() => buyProduct(productId)}
+                  >
+                    Buy Now
+                  </button>
+                  {data.buyer === currAddress && (
+                    <button
+                      className="enableEthereumButton"
+                      onClick={() => confirmReceipt(productId)}
+                    >
+                      Confirm Receipt
+                    </button>
+                  )}
+                </>
               ) : (
                 <div className="owner-message" style={{ textAlign: "center" }}>
                   You are the owner of this Product

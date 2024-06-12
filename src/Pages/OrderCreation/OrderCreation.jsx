@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./OrderCreation.scss";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -19,6 +19,29 @@ const OrderCreation = () => {
   });
   const [message, updateMessage] = useState("");
   const [transactionData, setTransactionData] = useState(null);
+  const [isWalletConnected, setIsWalletConnected] = useState(false);
+
+  useEffect(() => {
+    checkWalletConnection();
+  }, []);
+
+  async function checkWalletConnection() {
+    if (window.ethereum) {
+      try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const accounts = await provider.listAccounts();
+        if (accounts.length > 0) {
+          setIsWalletConnected(true);
+        } else {
+          setIsWalletConnected(false);
+        }
+      } catch (e) {
+        console.log("Error checking wallet connection: ", e);
+      }
+    } else {
+      setIsWalletConnected(false);
+    }
+  }
 
   async function disableButton() {
     const listButton = document.getElementById("list-button");
@@ -158,74 +181,80 @@ const OrderCreation = () => {
 
   return (
     <section>
-      <div className="form-box">
-        <div className="form-container">
-          <h2>Enter Order Details</h2>
-          <code>Take a bold step today!... Join the revolution</code>
-          <form onSubmit={sell}>
-            <div className="form-group">
-              <label>Title</label>
-              <input
-                type="text"
-                name="title"
-                placeholder="Input order Title"
-                onChange={(e) =>
-                  setFormParams({ ...formParams, title: e.target.value })
-                }
-                value={formParams.title}
-              />
-            </div>
-            <div className="form-group">
-              <label>Weight</label>
-              <input
-                type="text"
-                name="weight"
-                placeholder="KG"
-                onChange={(e) =>
-                  setFormParams({ ...formParams, weight: e.target.value })
-                }
-                value={formParams.weight}
-              />
-            </div>
-            <div className="form-group">
-              <label>Location</label>
-              <input
-                type="text"
-                name="location"
-                placeholder="No 5, Ibadan str Ebute Meta - Lagos"
-                onChange={(e) =>
-                  setFormParams({ ...formParams, location: e.target.value })
-                }
-                value={formParams.location}
-              />
-            </div>
-            <div className="form-group">
-              <label>Amount</label>
-              <input
-                type="text"
-                name="amount"
-                placeholder="Enter amount in Celo"
-                onChange={(e) =>
-                  setFormParams({ ...formParams, amount: e.target.value })
-                }
-                value={formParams.amount}
-              />
-            </div>
-            <div className="form-group">
-              <label>Upload Image(&lt;500KB)</label>
-              <input type="file" onChange={OnChangeFile} />
-            </div>
-            <div>{message}</div>
-            <button
-              id="list-button"
-              type="submit"
-              className="--btn --btn-success --btn-block"
-            >
-              Create
-            </button>
-          </form>
+      {isWalletConnected ? (
+        <div className="form-box">
+          <div className="form-container">
+            <h2>Enter Order Details</h2>
+            <code>Take a bold step today!... Join the revolution</code>
+            <form onSubmit={sell}>
+              <div className="form-group">
+                <label>Title</label>
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Input order Title"
+                  onChange={(e) =>
+                    setFormParams({ ...formParams, title: e.target.value })
+                  }
+                  value={formParams.title}
+                />
+              </div>
+              <div className="form-group">
+                <label>Weight</label>
+                <input
+                  type="text"
+                  name="weight"
+                  placeholder="KG"
+                  onChange={(e) =>
+                    setFormParams({ ...formParams, weight: e.target.value })
+                  }
+                  value={formParams.weight}
+                />
+              </div>
+              <div className="form-group">
+                <label>Location</label>
+                <input
+                  type="text"
+                  name="location"
+                  placeholder="No 5, Ibadan str Ebute Meta - Lagos"
+                  onChange={(e) =>
+                    setFormParams({ ...formParams, location: e.target.value })
+                  }
+                  value={formParams.location}
+                />
+              </div>
+              <div className="form-group">
+                <label>Amount</label>
+                <input
+                  type="text"
+                  name="amount"
+                  placeholder="Enter amount in Celo"
+                  onChange={(e) =>
+                    setFormParams({ ...formParams, amount: e.target.value })
+                  }
+                  value={formParams.amount}
+                />
+              </div>
+              <div className="form-group">
+                <label>Upload Image(&lt;500KB)</label>
+                <input type="file" onChange={OnChangeFile} />
+              </div>
+              <div>{message}</div>
+              <button
+                id="list-button"
+                type="submit"
+                className="--btn --btn-success --btn-block"
+              >
+                Create
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="container">
+          <p style={{color: "green"}}>Please connect your wallet to create an order.</p>
+        </div>
+      )}
 
       {showConfirmation && (
         <div className="confirmation-panel">

@@ -124,11 +124,11 @@ const Navbar = () => {
             EarthFi
           </Link>
         </li>
-        <li className="nav__item">
+        {/* <li className="nav__item">
           <Link to="/profile" className="nav__link" onClick={closeSidebar}>
             Profile
           </Link>
-        </li>
+        </li> */}
         <li className="nav__item">
           <Link
             to="/order-creation"

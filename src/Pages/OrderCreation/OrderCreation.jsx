@@ -236,7 +236,7 @@ const OrderCreation = () => {
                 />
               </div>
               <div className="form-group">
-                <label>Upload Image(&lt;500KB)</label>
+                <label>Upload Image(&lt; 1MB)</label>
                 <input type="file" onChange={OnChangeFile} />
               </div>
               <div>{message}</div>

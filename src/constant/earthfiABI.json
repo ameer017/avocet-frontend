@@ -1,5 +1,5 @@
 {
-  "address": "0x240f35260fc596a5f2a2aacb23c51feaf9243ab9",
+  "address": "0x9618f1c6ea5123b06ad5a81791c03b193ae4095b",
   "abi": [
     {
       "inputs": [
@@ -15,19 +15,6 @@
         }
       ],
       "name": "approve",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "productId",
-          "type": "uint256"
-        }
-      ],
-      "name": "confirmReceipt",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -440,11 +427,6 @@
               "type": "bool"
             },
             {
-              "internalType": "bool",
-              "name": "confirmed",
-              "type": "bool"
-            },
-            {
               "internalType": "address payable",
               "name": "buyer",
               "type": "address"
@@ -522,11 +504,6 @@
               "type": "bool"
             },
             {
-              "internalType": "bool",
-              "name": "confirmed",
-              "type": "bool"
-            },
-            {
               "internalType": "address payable",
               "name": "buyer",
               "type": "address"
@@ -575,11 +552,6 @@
             {
               "internalType": "bool",
               "name": "currentlyListed",
-              "type": "bool"
-            },
-            {
-              "internalType": "bool",
-              "name": "confirmed",
               "type": "bool"
             },
             {
@@ -638,11 +610,6 @@
             {
               "internalType": "bool",
               "name": "currentlyListed",
-              "type": "bool"
-            },
-            {
-              "internalType": "bool",
-              "name": "confirmed",
               "type": "bool"
             },
             {

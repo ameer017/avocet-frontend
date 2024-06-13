@@ -37,11 +37,11 @@ export default function ProductPage(props) {
       productId: productId,
       seller: listedProduct.seller,
       owner: listedProduct.owner,
+      buyer: listedProduct.buyer,
       image: meta.image,
       title: meta.title,
       location: meta.location,
       weight: meta.weight,
-      number: meta.number,
     };
     console.log(item);
     updateData(item);
@@ -52,11 +52,9 @@ export default function ProductPage(props) {
 
   async function buyProduct(productId) {
     try {
-      // After adding your Hardhat network to your metamask, this code will get providers and signers
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
 
-      // Pull the deployed contract instance
       let contract = new ethers.Contract(
         EarthfiABI.address,
         EarthfiABI.abi,
@@ -64,46 +62,49 @@ export default function ProductPage(props) {
       );
       const salePrice = ethers.utils.parseUnits(data.amount, "ether");
       updateMessage("Buying the product... Please Wait (Upto 5 mins)");
-      // Run the executeSale function
+
       let transaction = await contract.executeSale(productId, {
         value: salePrice,
       });
       await transaction.wait();
 
-      toast.success("You successfully bought the product!");
+      toast.success(`Product Bought, Please Pickup and then confirm receipt!`);
       updateMessage("");
-      getproductData(productId); // Refresh product data
+      getproductData(productId);
     } catch (e) {
-      toast.error("Transaction Error: " + e);
+      toast.error("Transaction Error: " + e.message);
       updateMessage("");
     }
   }
 
   async function confirmReceipt(productId) {
     try {
-      // After adding your Hardhat network to your metamask, this code will get providers and signers
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
-
-      // Pull the deployed contract instance
+  
       let contract = new ethers.Contract(
         EarthfiABI.address,
         EarthfiABI.abi,
         signer
       );
-      updateMessage("Confirming receipt... Please Wait (Upto 5 mins)");
-      // Run the confirmReceipt function
-      let transaction = await contract.confirmReceipt(productId);
+  
+      updateMessage("Confirming receipt... Please Wait");
+  
+      let transaction = await contract.confirmReceipt(productId, {
+        gasLimit: 3000000,
+      });
+  
       await transaction.wait();
-
+  
       toast.success("You have successfully confirmed receipt of the product!");
       updateMessage("");
-      getproductData(productId); // Refresh product data
+      getproductData(productId); // Update product data after confirmation
     } catch (e) {
-      toast.error("Confirmation Error: " + e);
+      toast.error("Confirmation Error: " + e.message);
       updateMessage("");
     }
   }
+  
 
   const params = useParams();
   const productId = params.productId;
@@ -133,29 +134,28 @@ export default function ProductPage(props) {
             </p>
 
             <p>
-              {/* Owner: <span className="text-sm text-wrap">{data.owner}</span> */}
-            </p>
-            <p>
               Seller: <span className="text-sm text-wrap">{data.seller}</span>
             </p>
 
             <div className="action-buttons">
               {currAddress !== data.owner && currAddress !== data.seller ? (
                 <>
-                  <button
-                    className="enableEthereumButton"
-                    onClick={() => buyProduct(productId)}
-                  >
-                    Buy Now
-                  </button>
-                  {data.buyer === currAddress && (
+                  {data.buyer ===
+                  "0x0000000000000000000000000000000000000000" ? (
+                    <button
+                      className="enableEthereumButton"
+                      onClick={() => buyProduct(productId)}
+                    >
+                      Buy Now
+                    </button>
+                  ) : data.buyer === currAddress ? (
                     <button
                       className="enableEthereumButton"
                       onClick={() => confirmReceipt(productId)}
                     >
                       Confirm Receipt
                     </button>
-                  )}
+                  ) : null}
                 </>
               ) : (
                 <div className="owner-message" style={{ textAlign: "center" }}>

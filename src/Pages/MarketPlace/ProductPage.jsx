@@ -14,23 +14,22 @@ export default function ProductPage(props) {
   const [currAddress, updateCurrAddress] = useState("0x");
 
   async function getproductData(productId) {
-    // After adding your Hardhat network to your metamask, this code will get providers and signers
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const addr = await signer.getAddress();
-    // Pull the deployed contract instance
+
     let contract = new ethers.Contract(
       EarthfiABI.address,
       EarthfiABI.abi,
       signer
     );
-    // Create a product Token
+
+    // Fetch product details
     var productURI = await contract.tokenURI(productId);
     const listedProduct = await contract.getListedForProductId(productId);
     productURI = GetIpfsUrlFromPinata(productURI);
     let meta = await axios.get(productURI);
     meta = meta.data;
-    console.log(listedProduct);
 
     let item = {
       amount: meta.amount,
@@ -43,10 +42,10 @@ export default function ProductPage(props) {
       location: meta.location,
       weight: meta.weight,
     };
-    console.log(item);
+
+    console.log(item)
     updateData(item);
     updateDataFetched(true);
-    console.log("address", addr);
     updateCurrAddress(addr);
   }
 
@@ -54,21 +53,21 @@ export default function ProductPage(props) {
     try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
-
       let contract = new ethers.Contract(
         EarthfiABI.address,
         EarthfiABI.abi,
         signer
       );
+
       const salePrice = ethers.utils.parseUnits(data.amount, "ether");
-      updateMessage("Buying the product... Please Wait (Upto 5 mins)");
+      updateMessage("Buying the product... Please Wait (Up to 5 mins)");
 
       let transaction = await contract.executeSale(productId, {
         value: salePrice,
       });
       await transaction.wait();
 
-      toast.success(`Product Bought, Please Pickup and then confirm receipt!`);
+      toast.success("Product Bought, Please Pickup and then confirm receipt!");
       updateMessage("");
       getproductData(productId);
     } catch (e) {
@@ -81,22 +80,20 @@ export default function ProductPage(props) {
     try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
-  
       let contract = new ethers.Contract(
         EarthfiABI.address,
         EarthfiABI.abi,
         signer
       );
-  
+
       updateMessage("Confirming receipt... Please Wait");
-  
+
       let transaction = await contract.confirmReceipt(productId, {
         gasLimit: 3000000,
       });
-  
       await transaction.wait();
-  
-      toast.success("You have successfully confirmed receipt of the product!");
+
+      toast.success("You have successfully confirmed receipt of the product and fund has been delivered to the seller!");
       updateMessage("");
       getproductData(productId); // Update product data after confirmation
     } catch (e) {
@@ -104,7 +101,6 @@ export default function ProductPage(props) {
       updateMessage("");
     }
   }
-  
 
   const params = useParams();
   const productId = params.productId;
@@ -124,7 +120,6 @@ export default function ProductPage(props) {
               style={{ borderRadius: "10px", cursor: "pointer" }}
             />
           </div>
-
           <div>
             <h2>Title: {data.title}</h2>
             <address>Location: {data.location}</address>
@@ -132,11 +127,9 @@ export default function ProductPage(props) {
               <span>{data.amount + " Celo"}</span> ||{" "}
               <span>{data.weight + "KG"}</span>
             </p>
-
             <p>
               Seller: <span className="text-sm text-wrap">{data.seller}</span>
             </p>
-
             <div className="action-buttons">
               {currAddress !== data.owner && currAddress !== data.seller ? (
                 <>

@@ -1,5 +1,5 @@
 {
-  "address": "0x9618f1c6ea5123b06ad5a81791c03b193ae4095b",
+  "address": "0x4d2413eced46e2a41c927405da60fa18d4d23285",
   "abi": [
     {
       "inputs": [
@@ -15,6 +15,19 @@
         }
       ],
       "name": "approve",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "productId",
+          "type": "uint256"
+        }
+      ],
+      "name": "confirmReceipt",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -430,6 +443,11 @@
               "internalType": "address payable",
               "name": "buyer",
               "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "receiptConfirmed",
+              "type": "bool"
             }
           ],
           "internalType": "struct Earthfi.ListedProducts[]",
@@ -507,6 +525,11 @@
               "internalType": "address payable",
               "name": "buyer",
               "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "receiptConfirmed",
+              "type": "bool"
             }
           ],
           "internalType": "struct Earthfi.ListedProducts",
@@ -558,6 +581,11 @@
               "internalType": "address payable",
               "name": "buyer",
               "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "receiptConfirmed",
+              "type": "bool"
             }
           ],
           "internalType": "struct Earthfi.ListedProducts",
@@ -616,6 +644,11 @@
               "internalType": "address payable",
               "name": "buyer",
               "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "receiptConfirmed",
+              "type": "bool"
             }
           ],
           "internalType": "struct Earthfi.ListedProducts[]",

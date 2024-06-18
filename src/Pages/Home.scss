@@ -3,13 +3,16 @@
   justify-content: center;
   align-items: center;
   background-color: #2b5e14;
-  background-image: url("https://images.pexels.com/photos/20286951/pexels-photo-20286951/free-photo-of-green-plain-surface.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-image: url("https://waste-management-world.com/imager/media/wasteManagementWorld/3820706/AdobeStock_571968683_472cff0c4144c55bd3c7a71085cee21f.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
   min-height: 100vh;
   max-width: 100%;
   background-blend-mode: multiply;
   padding: 6em;
 
-  @media screen and (max-width:660px) {
+  @media screen and (max-width: 660px) {
     padding: unset;
   }
 }
@@ -37,7 +40,7 @@
 
     font-size: 50px;
   }
-  
+
   & .hero-buttons a {
     color: #fff;
   }
@@ -50,7 +53,6 @@
     & span:nth-of-type(2) {
       view-transition-name: swap;
       color: hsl(64, 100%, 50%);
-
     }
 
     &:last-of-type {

@@ -74,7 +74,7 @@ const MarketPlace = () => {
 
         {!dataFetched ? (
           <div className="--mh-50vh --flex-center ">
-            <p>Connect wallet to view products</p>
+            <p>Connect wallet to view listed products</p>
             <img src={bin} width={200} alt="bin" />
           </div>
         ) : (

@@ -252,7 +252,7 @@ const OrderCreation = () => {
         </div>
       ) : (
         <div className="container">
-          <p style={{color: "green"}}>Please connect your wallet to create an order.</p>
+          <p style={{color: "green", textAlign: "center"}} >Please connect your wallet to create an order.</p>
         </div>
       )}
 

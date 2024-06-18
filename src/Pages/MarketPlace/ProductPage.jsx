@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import EarthfiABI from "../../constant/EarthfiABI.json";
 import axios from "axios";
 import { useState } from "react";
@@ -12,6 +12,7 @@ export default function ProductPage(props) {
   const [dataFetched, updateDataFetched] = useState(false);
   const [message, updateMessage] = useState("");
   const [currAddress, updateCurrAddress] = useState("0x");
+  const navigate = useNavigate();
 
   async function getproductData(productId) {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -43,7 +44,7 @@ export default function ProductPage(props) {
       weight: meta.weight,
     };
 
-    console.log(item)
+    console.log(item);
     updateData(item);
     updateDataFetched(true);
     updateCurrAddress(addr);
@@ -60,7 +61,7 @@ export default function ProductPage(props) {
       );
 
       const salePrice = ethers.utils.parseUnits(data.amount, "ether");
-      updateMessage("Buying the product... Please Wait (Up to 5 mins)");
+      updateMessage("Buying the product... Please Wait!");
 
       let transaction = await contract.executeSale(productId, {
         value: salePrice,
@@ -93,9 +94,12 @@ export default function ProductPage(props) {
       });
       await transaction.wait();
 
-      toast.success("You have successfully confirmed receipt of the product and fund has been delivered to the seller!");
+      toast.success(
+        "You have successfully confirmed receipt of the product and fund has been transferred to the seller!"
+      );
       updateMessage("");
-      getproductData(productId); // Update product data after confirmation
+      getproductData(productId);
+      navigate("/");
     } catch (e) {
       toast.error("Confirmation Error: " + e.message);
       updateMessage("");

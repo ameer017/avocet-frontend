@@ -4,12 +4,14 @@ import logo from "/logo.png";
 import "./Navbar.css";
 import { useLocation } from "react-router";
 import { ethers } from "ethers";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
+
   const [connected, toggleConnect] = useState(false);
-  const [currAddress, updateAddress] = useState("0x");
+  const [currAddress, updateAddress] = useState("");
   const location = useLocation();
 
   const navToggle = () => {
@@ -33,7 +35,7 @@ const Navbar = () => {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const addr = await signer.getAddress();
-      updateAddress(addr);
+      updateAddress(addr ? addr : "");
     } catch (error) {
       console.error("Failed to get address:", error);
     }
@@ -87,25 +89,21 @@ const Navbar = () => {
       await window.ethereum.request({ method: "eth_requestAccounts" });
 
       console.log("Connected to MetaMask and Celo Alfajores network");
-      await getAddress(); // Ensure getAddress is awaited to handle async
-      window.location.replace(location.pathname);
+      toggleConnect(true);
+      await getAddress();
+
+      window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
+      window.ethereum.on("accountsChanged", handleAccountsChanged);
+      // window.location.replace(location.pathname);
     } catch (error) {
       console.error("Failed to connect to MetaMask:", error);
       toast.error("Error Connecting wallet");
     }
   }
 
-  useEffect(() => {
-    let val = window.ethereum.isConnected();
-    if (val) {
-      // console.log("is it because of this?", val);
-      getAddress();
-      toggleConnect(val);
-    }
-    window.ethereum.on("accountsChanged", function (account) {
-      window.location.replace(location.pathname);
-    });
-  });
+  function handleAccountsChanged() {
+    window.location.replace(location.pathname);
+  }
 
   return (
     <nav className="nav">
@@ -124,11 +122,6 @@ const Navbar = () => {
             EarthFi
           </Link>
         </li>
-        {/* <li className="nav__item">
-          <Link to="/profile" className="nav__link" onClick={closeSidebar}>
-            Profile
-          </Link>
-        </li> */}
         <li className="nav__item">
           <Link
             to="/order-creation"
@@ -145,7 +138,7 @@ const Navbar = () => {
         </li>
 
         <button className="--btn --btn-blue" onClick={connectWebsite}>
-          {connected ? `${currAddress.substring(0, 5)}...` : "Connect Wallet"}
+          {connected ? `${currAddress.substring(0, 4)}...${currAddress.substring(currAddress.length - 4)}` : "Connect Wallet"}
         </button>
       </ul>
 

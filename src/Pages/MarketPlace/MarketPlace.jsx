@@ -78,6 +78,11 @@ const MarketPlace = () => {
             <img src={bin} width={200} alt="bin" />
           </div>
         ) : (
+          <>
+          {data.length === 0 ? <div>
+          <p>Oops! No Product is currently listed in the market place</p>
+        </div> : 
+        
           <div className="--flex wrapper_mpc">
             {filteredData.map((value, index) => {
               return (
@@ -87,7 +92,12 @@ const MarketPlace = () => {
               );
             })}
           </div>
-        )}
+        }
+          </>
+        ) 
+        }
+
+        
       </div>
     </section>
   );

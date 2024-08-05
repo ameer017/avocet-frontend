@@ -5,11 +5,12 @@ import { toast } from "react-toastify";
 import { uploadFileToIPFS, uploadJSONToIPFS } from "../../pinata";
 import EarthfiABI from "../../constant/EarthfiABI.json";
 import { ethers } from "ethers";
+import { createPublicClient, http } from "viem";
+import { celo } from "viem/chains";
 
 const OrderCreation = () => {
   const navigate = useNavigate();
   const [fileURL, setFileURL] = useState(null);
-
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [formParams, setFormParams] = useState({
     title: "",
@@ -20,6 +21,7 @@ const OrderCreation = () => {
   const [message, updateMessage] = useState("");
   const [transactionData, setTransactionData] = useState(null);
   const [isWalletConnected, setIsWalletConnected] = useState(false);
+  const [accountBalance, setAccountBalance] = useState(null);
 
   useEffect(() => {
     checkWalletConnection();
@@ -32,6 +34,8 @@ const OrderCreation = () => {
         const accounts = await provider.listAccounts();
         if (accounts.length > 0) {
           setIsWalletConnected(true);
+          const balance = await provider.getBalance(accounts[0]);
+          setAccountBalance(ethers.utils.formatEther(balance));
         } else {
           setIsWalletConnected(false);
         }
@@ -59,9 +63,7 @@ const OrderCreation = () => {
 
   async function OnChangeFile(e) {
     var file = e.target.files[0];
-    //check for file extension
     try {
-      //upload the file to IPFS
       disableButton();
       updateMessage("Uploading image.. please dont click anything!");
       const response = await uploadFileToIPFS(file);
@@ -80,7 +82,6 @@ const OrderCreation = () => {
 
   async function uploadMetadataToIPFS() {
     const { title, weight, location, amount } = formParams;
-    // Make sure that none of the fields are empty
     if (!title || !weight || !location || !amount || !fileURL) {
       updateMessage("Please fill all the fields!");
       return -1;
@@ -95,7 +96,6 @@ const OrderCreation = () => {
     };
 
     try {
-      // Upload the metadata JSON to IPFS
       const response = await uploadJSONToIPFS(productJSON);
       if (response.success === true) {
         console.log("Uploaded JSON to Pinata: ", response);
@@ -106,15 +106,22 @@ const OrderCreation = () => {
     }
   }
 
+  async function estimateGas(publicClient, transaction, feeCurrency = "") {
+    return await publicClient.estimateGas({
+      ...transaction,
+      feeCurrency: feeCurrency ? feeCurrency : "",
+    });
+  }
+
   async function confirmOrder() {
     setShowConfirmation(false);
 
     if (transactionData) {
-      const { metadataURL, amount, listingPrice, contract } = transactionData;
+      const { metadataURL, amount, listingPrice, contract, gasLimit } = transactionData;
       try {
-        // Actually create the product
         let transaction = await contract.createProduct(metadataURL, amount, {
           value: listingPrice,
+          gasLimit: gasLimit,
         });
         await transaction.wait();
 
@@ -144,11 +151,9 @@ const OrderCreation = () => {
   async function sell(e) {
     e.preventDefault();
 
-    // Upload data to IPFS
     try {
       const metadataURL = await uploadMetadataToIPFS();
       if (metadataURL === -1) return;
-      // After adding your Hardhat network to your Metamask, this code will get providers and signers
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       disableButton();
@@ -156,22 +161,49 @@ const OrderCreation = () => {
         "Uploading product (takes a few mins).. please don't click anything!"
       );
 
-      // Pull the deployed contract instance
       let contract = new ethers.Contract(
         EarthfiABI.address,
         EarthfiABI.abi,
         signer
       );
 
-      // Massage the params to be sent to the create product request
       const amount = ethers.utils.parseUnits(formParams.amount, "ether");
       let listingPrice = await contract.getListprice();
       listingPrice = listingPrice.toString();
 
-      // Set the transaction data for confirmation
-      setTransactionData({ metadataURL, amount, listingPrice, contract });
+      const publicClient = createPublicClient({
+        chain: celo,
+        transport: http(),
+      });
 
-      // Show the confirmation modal
+      const gasLimit = await estimateGas(publicClient, {
+        account: await signer.getAddress(),
+        to: EarthfiABI.address,
+        value: listingPrice,
+        data: contract.interface.encodeFunctionData("createProduct", [metadataURL, amount]),
+      });
+
+      const totalCost = ethers.BigNumber.from(gasLimit)
+        .mul(await provider.getGasPrice())
+        .add(listingPrice)
+        .add(amount);
+
+      const balance = await provider.getBalance(await signer.getAddress());
+
+      if (balance.lt(totalCost)) {
+        toast.error(
+          `Insufficient funds: Required ${ethers.utils.formatEther(
+            totalCost
+          )} CELO, but only ${ethers.utils.formatEther(
+            balance
+          )} CELO available.`
+        );
+        enableButton();
+        return;
+      }
+
+      setTransactionData({ metadataURL, amount, listingPrice, contract, gasLimit });
+
       setShowConfirmation(true);
     } catch (e) {
       toast.error("Upload error: " + e);
@@ -236,10 +268,15 @@ const OrderCreation = () => {
                 />
               </div>
               <div className="form-group">
-                <label>Upload Image(&lt; 1MB)</label>
-                <input type="file" onChange={OnChangeFile} />
+                <label>Upload Image</label>
+                <input
+                  type={"file"}
+                  onChange={OnChangeFile}
+                />
               </div>
-              <div>{message}</div>
+              <div className="msg">{message}</div>
+              <div className="msg">{accountBalance}</div>
+              
               <button
                 id="list-button"
                 type="submit"
@@ -251,22 +288,15 @@ const OrderCreation = () => {
           </div>
         </div>
       ) : (
-        <div className="container">
-          <p style={{color: "green", textAlign: "center"}} >Please connect your wallet to create an order.</p>
-        </div>
+        <p>Please connect your wallet to list a product.</p>
       )}
-
       {showConfirmation && (
-        <div className="confirmation-panel">
-          <p>Are you sure you want to create this order?</p>
-
-          <div className="--flex --flex-direction --flex-center">
-            <button onClick={confirmOrder} className="--btn --btn-primary">
-              Yes
-            </button>
-            <button onClick={cancelOrder} className="--btn --btn-danger">
-              No
-            </button>
+        <div className="confirmation-dialog">
+          <h2>Confirm Order</h2>
+          <p>Are you sure you want to create this product?</p>
+          <div className="dialog-buttons">
+            <button onClick={confirmOrder}>Confirm</button>
+            <button onClick={cancelOrder}>Cancel</button>
           </div>
         </div>
       )}
@@ -275,3 +305,5 @@ const OrderCreation = () => {
 };
 
 export default OrderCreation;
+
+

@@ -3,15 +3,16 @@ import { Link } from "react-router-dom";
 import logo from "/logo.png";
 import "./Navbar.css";
 import { useLocation } from "react-router";
-import { ethers } from "ethers";
 import { toast } from "react-toastify";
+import { createWalletClient, custom } from "viem";
+import { celo, celoAlfajores } from "viem/chains";
 
 const Navbar = () => {
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
-
   const [connected, toggleConnect] = useState(false);
   const [currAddress, updateAddress] = useState("");
+  const [hideConnectBtn, setHideConnectBtn] = useState(false);
   const location = useLocation();
 
   const navToggle = () => {
@@ -32,9 +33,11 @@ const Navbar = () => {
 
   async function getAddress() {
     try {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      const addr = await signer.getAddress();
+      const client = createWalletClient({
+        chain: celo,
+        transport: custom(window.ethereum),
+      });
+      const [addr] = await client.getAddresses();
       updateAddress(addr ? addr : "");
     } catch (error) {
       console.error("Failed to get address:", error);
@@ -43,7 +46,7 @@ const Navbar = () => {
 
   async function connectWebsite(e) {
     e.preventDefault();
-    const celoTestnetChainId = "0xaef3"; // Chain ID for Celo Alfajores Testnet
+    const celoTestnetChainId = "0xaef3";
     const celoTestnetChainParams = {
       chainId: celoTestnetChainId,
       chainName: "Celo Alfajores Testnet",
@@ -94,7 +97,6 @@ const Navbar = () => {
 
       window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
       window.ethereum.on("accountsChanged", handleAccountsChanged);
-      // window.location.replace(location.pathname);
     } catch (error) {
       console.error("Failed to connect to MetaMask:", error);
       toast.error("Error Connecting wallet");
@@ -104,6 +106,14 @@ const Navbar = () => {
   function handleAccountsChanged() {
     window.location.replace(location.pathname);
   }
+
+  useEffect(() => {
+    if (window.ethereum && window.ethereum.isMiniPay) {
+      setHideConnectBtn(true);
+
+      connectWebsite();
+    }
+  }, []);
 
   return (
     <nav className="nav">
@@ -137,9 +147,20 @@ const Navbar = () => {
           </Link>
         </li>
 
-        <button className="--btn --btn-blue" onClick={connectWebsite}>
-          {connected ? `${currAddress.substring(0, 4)}...${currAddress.substring(currAddress.length - 4)}` : "Connect Wallet"}
-        </button>
+        {/* Conditional rendering of Connect Wallet button */}
+        {!hideConnectBtn && (
+          <button
+            className="--btn --btn-blue disabled"
+            onClick={connectWebsite}
+            disabled={true}
+          >
+            {connected
+              ? `${currAddress.substring(0, 4)}...${currAddress.substring(
+                  currAddress.length - 4
+                )}`
+              : "Connect Wallet"}
+          </button>
+        )}
       </ul>
 
       <div onClick={navToggle} className={icon}>

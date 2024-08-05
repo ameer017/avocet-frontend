@@ -14,13 +14,13 @@ const Team = () => {
     <div className="team-page">
       <h2>Our Team</h2>
       <div className="team-members">
-        <TeamMembers
+        {/* <TeamMembers
           name="Aliu Musa"
           role="Co-Founder, CEO"
           image={aliumusa}
           x="https://twitter.com/herlew99"
           linkedin="https://www.linkedin.com/in/aliumusa/"
-        />
+        /> */}
 
         <TeamMembers
           name="Abdullahi Raji"

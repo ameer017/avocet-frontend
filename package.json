@@ -11,6 +11,7 @@
   "dependencies": {
     "@metamask/detect-provider": "^2.0.0",
     "@reduxjs/toolkit": "^2.2.0",
+    "@wagmi/connectors": "^4.1.18",
     "axios": "^1.6.8",
     "ethers": "^5.7.2",
     "form-data": "^4.0.0",
@@ -25,6 +26,8 @@
     "react-router-dom": "^6.22.0",
     "react-scroll-to-top": "^3.0.0",
     "react-toastify": "^10.0.5",
+    "viem": "^2.18.7",
+    "wagmi": "^2.5.12",
     "web3": "4.5.0"
   },
   "devDependencies": {

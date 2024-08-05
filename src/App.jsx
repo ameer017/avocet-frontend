@@ -20,6 +20,7 @@ import MarketPlace from "./Pages/MarketPlace/MarketPlace";
 import Buy from "./Pages/MarketPlace/Buy";
 import ScrollToTop from "react-scroll-to-top";
 import ProductPage from "./Pages/MarketPlace/ProductPage";
+import Advisor from "./Components/Team/Advisor";
 
 function App() {
   const location = useLocation();
@@ -32,6 +33,7 @@ function App() {
 
   const routes = [
     { path: "/team", element: <Team /> },
+    { path: "/advisors", element: <Advisor /> },
     { path: "/about", element: <About /> },
     { path: "/documentation", element: <Docs /> },
     { path: "/profile", element: <Profile /> },

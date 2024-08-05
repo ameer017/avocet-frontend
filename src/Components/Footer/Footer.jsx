@@ -2,7 +2,7 @@ import React from "react";
 import "./Footer.scss";
 import { BsTwitterX, BsEnvelopeOpen } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import logo from "/logo.png"
+import logo from "/logo.png";
 
 const Footer = () => {
   const currentTime = new Date().getFullYear();
@@ -32,6 +32,7 @@ const Footer = () => {
 
           <div>
             <p>Company</p>
+            <Link to="/advisors">Advisor</Link>
             <Link to="/about">About Us</Link>
             <Link to="/contact">Contact Us</Link>
             <Link to="/service">Service</Link>

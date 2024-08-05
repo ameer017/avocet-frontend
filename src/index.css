@@ -4,7 +4,6 @@
   --nav-width: 68px;
   --header-height: 45px;
 
-
   --font-family: "Nunito", sans-serif;
   --dark-blue: #0a1930;
   --light-blue: #1f93ff;
@@ -21,8 +20,6 @@
   --color-primary: #007bff;
   --color-success: #28a745;
   --color-danger: orangered;
-
-  
 }
 
 * {
@@ -50,14 +47,12 @@ body {
 section {
   width: 100%;
   padding: 4rem 0;
-  
 }
 
 .container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
-  
 }
 
 .--pad {
@@ -547,4 +542,15 @@ a:hover {
 .--mh-50vh {
   min-height: 70vh;
   flex-direction: column;
+}
+
+.disabled {
+  background: #fff;
+  color: #0a1930;
+  transition: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  cursor: none;
 }

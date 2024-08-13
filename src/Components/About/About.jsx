@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import "./About.scss";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 const About = () => {
   return (
     <section className="hero-home">
+      <Helmet>
+        <title>About Us - EarthFi</title>
+        <meta name="description" content="Learn more about EarthFi, our mission, and our commitment to sustainable finance and environmental stewardship on the blockchain." />
+      </Helmet>
       <div className="container">
         <div className="row">
           <h1 className="headerText">EarthFi's Tech explained.</h1>

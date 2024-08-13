@@ -7,6 +7,8 @@ import EarthfiABI from "../../constant/EarthfiABI.json";
 import { ethers } from "ethers";
 import { createPublicClient, http } from "viem";
 import { celo } from "viem/chains";
+import { Helmet } from 'react-helmet';
+
 
 const OrderCreation = () => {
   const navigate = useNavigate();
@@ -213,6 +215,10 @@ const OrderCreation = () => {
 
   return (
     <section>
+      <Helmet>
+        <title>Create an Order - EarthFi</title>
+        <meta name="description" content="Create your order on EarthFi's marketplace. Engage in sustainable trade and contribute to the green economy." />
+      </Helmet>
       {isWalletConnected ? (
         <div className="form-box">
           <div className="form-container">
@@ -276,7 +282,7 @@ const OrderCreation = () => {
               </div>
               <div className="msg">{message}</div>
               <div className="msg">{accountBalance}</div>
-              
+
               <button
                 id="list-button"
                 type="submit"
@@ -288,7 +294,9 @@ const OrderCreation = () => {
           </div>
         </div>
       ) : (
-        <p>Please connect your wallet to list a product.</p>
+        <div className="--flex-center container">
+          <p>Please connect your wallet to create a product.</p>
+        </div>
       )}
       {showConfirmation && (
         <div className="confirmation-dialog">

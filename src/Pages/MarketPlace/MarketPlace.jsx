@@ -6,6 +6,8 @@ import { GetIpfsUrlFromPinata } from "../../utils/test/utils";
 import axios from "axios";
 import Buy from "./Buy";
 import bin from "../../assets/bin.png";
+import { Helmet } from 'react-helmet';
+
 
 const MarketPlace = () => {
   const [dataFetched, updateFetched] = useState(false);
@@ -60,6 +62,10 @@ const MarketPlace = () => {
 
   return (
     <section>
+      <Helmet>
+        <title>Marketplace - EarthFi</title>
+        <meta name="description" content="Browse EarthFi's marketplace for sustainable products and services. Join the green economy today." />
+      </Helmet>
       <div className="container">
         <h2>Top Products</h2>
 
@@ -79,25 +85,25 @@ const MarketPlace = () => {
           </div>
         ) : (
           <>
-          {data.length === 0 ? <div>
-          <p>Oops! No Product is currently listed in the market place</p>
-        </div> : 
-        
-          <div className="--flex wrapper_mpc">
-            {filteredData.map((value, index) => {
-              return (
-                <div className="mpc --p2">
-                  <Buy data={value} key={index} />
-                </div>
-              );
-            })}
-          </div>
-        }
+            {data.length === 0 ? <div>
+              <p>Oops! No Product is currently listed in the market place</p>
+            </div> :
+
+              <div className="--flex wrapper_mpc">
+                {filteredData.map((value, index) => {
+                  return (
+                    <div className="mpc --p2">
+                      <Buy data={value} key={index} />
+                    </div>
+                  );
+                })}
+              </div>
+            }
           </>
-        ) 
+        )
         }
 
-        
+
       </div>
     </section>
   );

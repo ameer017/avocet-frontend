@@ -1,10 +1,16 @@
 import React from "react";
 import "./Service.scss";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet';
+
 
 const Service = () => {
   return (
     <div>
+      <Helmet>
+        <title>Our Services - EarthFi</title>
+        <meta name="description" content="Discover the services EarthFi offers to promote environmental sustainability through blockchain technology." />
+      </Helmet>
       <section className="hero_service">
         <div className="service_text">
           <h1>Plastic Recycling.</h1>
@@ -41,7 +47,7 @@ const Service = () => {
                 <br></br> separate the packaging, bio-digest the liquids, and
                 recycle the<br></br> plastic containers.
               </p>
-              
+
               <button className="--btn --btn-primary">
                 <Link to="/contact" className="--btn --btn-primary">
                   CONTACT US <span className="arrow">&#8594;</span>

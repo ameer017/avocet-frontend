@@ -150,9 +150,8 @@ const Navbar = () => {
         {/* Conditional rendering of Connect Wallet button */}
         {!hideConnectBtn && (
           <button
-            className="--btn --btn-blue disabled"
-            onClick={connectWebsite}
-            disabled={true}
+            className="--btn --btn-blue "
+            onClick={() => alert("Launching soon!!!")}
           >
             {connected
               ? `${currAddress.substring(0, 4)}...${currAddress.substring(

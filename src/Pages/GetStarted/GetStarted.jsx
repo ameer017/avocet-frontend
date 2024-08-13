@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./GetStarted.scss";
 import { Link } from "react-router-dom";
 import Faq from "./Faq";
+import { Helmet } from 'react-helmet';
 
 const GetStarted = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -15,6 +16,10 @@ const GetStarted = () => {
   };
   return (
     <section>
+      <Helmet>
+        <title>Get Started - EarthFi</title>
+        <meta name="description" content="Begin your journey with EarthFi. Learn how to start your sustainable finance journey on the blockchain." />
+      </Helmet>
       <div className="get-started">
         <h1>Get Started</h1>
         <p>
@@ -77,10 +82,10 @@ const GetStarted = () => {
         </div>
 
         <div className="faq-section">
-          <Faq/>
+          <Faq />
         </div>
 
-        <p style={{marginTop: '8rem'}}>
+        <p style={{ marginTop: '8rem' }}>
           Ready to get started? Connect your wallet and let's make a difference
           together!
         </p>

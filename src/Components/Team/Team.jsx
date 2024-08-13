@@ -8,10 +8,16 @@ import abdullahi from "/src/assets/abdullahi.png";
 import khadija from "/src/assets/khadija.png";
 import bayo from "/src/assets/bayo.png";
 import kenny from "/src/assets/kenny.png";
+import { Helmet } from 'react-helmet';
+
 
 const Team = () => {
   return (
     <div className="team-page">
+      <Helmet>
+        <title>Our Team and Advisors - EarthFi</title>
+        <meta name="description" content="Meet the dedicated team and advisors behind EarthFi, driving the mission for a sustainable future." />
+      </Helmet>
       <h2>Our Team</h2>
       <div className="team-members">
         {/* <TeamMembers
